@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace LiveSplit.MemoryGraph
+namespace LiveSplit.Roboquest
 {
     public partial class TextStyleOverrideControl : UserControl
     {

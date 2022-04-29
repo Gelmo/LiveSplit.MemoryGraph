@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace LiveSplit.MemoryGraph
+namespace LiveSplit.Roboquest
 {
     class MonkeyDownloadingXML
     {

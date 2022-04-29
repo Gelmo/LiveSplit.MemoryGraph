@@ -7,8 +7,8 @@
     <ProjectGuid>{EC265AD9-9429-42CE-B27B-F45132029F38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LiveSplit.MemoryGraph</RootNamespace>
-    <AssemblyName>LiveSplit.MemoryGraph</AssemblyName>
+    <RootNamespace>LiveSplit.Roboquest</RootNamespace>
+    <AssemblyName>LiveSplit.Roboquest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

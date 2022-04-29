@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace LiveSplit.MemoryGraph
+namespace LiveSplit.Roboquest
 {
     class SonicHandling
     {

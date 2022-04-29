@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace LiveSplit.MemoryGraph
+namespace LiveSplit.Roboquest
 {
     enum MemoryType
     {
@@ -104,7 +104,7 @@ namespace LiveSplit.MemoryGraph
         CultureInfo ci = new CultureInfo(System.Threading.Thread.CurrentThread.CurrentCulture.Name);
         List<string> gamesOnTheList = new List<string>();
         static string componentsFolder = "Components";
-        public static string listsFile = "LiveSplit.MemoryGraph.Games.xml";
+        public static string listsFile = "LiveSplit.Roboquest.Games.xml";
         public static string ListsFilePath
         {
             get
@@ -117,7 +117,7 @@ namespace LiveSplit.MemoryGraph
                 else
                 {
                     // If the new file hasn't been downloaded, keep using the old one as a fallback.
-                    return Path.Combine(componentsFolder, "LiveSplit.MemoryGraphList.xml");
+                    return Path.Combine(componentsFolder, "LiveSplit.RoboquestList.xml");
                 }
             }
         }

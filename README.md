@@ -1,4 +1,4 @@
-LiveSplit.MemoryGraph
+LiveSplit.Roboquest
 =====================
 Shows a value of a game's memory in a graph.
 
@@ -6,7 +6,7 @@ Shows a value of a game's memory in a graph.
 
 Manual Installation
 -------------------
-Download "Components/LiveSplit.MemoryGraph.dll" and place it into the subdirectory "Components" of your LiveSplit folder. You can then add it to your layout (category "Information").
+Download "Components/LiveSplit.Roboquest.dll" and place it into the subdirectory "Components" of your LiveSplit folder. You can then add it to your layout (category "Information").
 
 Usage
 -----

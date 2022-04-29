@@ -1,4 +1,4 @@
-﻿namespace LiveSplit.MemoryGraph
+﻿namespace LiveSplit.Roboquest
 {
     partial class TextStyleOverrideControl
     {

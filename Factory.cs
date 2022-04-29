@@ -1,13 +1,13 @@
 ﻿using LiveSplit.UI.Components;
 using System;
 
-namespace LiveSplit.MemoryGraph
+namespace LiveSplit.Roboquest
 {
     public class Factory : IComponentFactory
     {
         public string ComponentName
         {
-            get { return "MemoryGraph"; }
+            get { return "Roboquest"; }
         }
         public ComponentCategory Category
         {
@@ -35,7 +35,7 @@ namespace LiveSplit.MemoryGraph
         }
         public string XMLURL
         {
-            get { return UpdateURL + "Components/update.LiveSplit.MemoryGraph.xml"; }
+            get { return UpdateURL + "Components/update.LiveSplit.Roboquest.xml"; }
         }
     }
 }

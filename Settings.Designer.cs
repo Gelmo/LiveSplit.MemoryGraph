@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 
-namespace LiveSplit.MemoryGraph
+namespace LiveSplit.Roboquest
 {
     partial class Settings
     {
@@ -35,7 +35,7 @@ namespace LiveSplit.MemoryGraph
         {
             this.components = new System.ComponentModel.Container();
             this.grpDescriptiveText = new System.Windows.Forms.GroupBox();
-            this.overrideControlDescriptiveText = new LiveSplit.MemoryGraph.TextStyleOverrideControl();
+            this.overrideControlDescriptiveText = new LiveSplit.Roboquest.TextStyleOverrideControl();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.txtDescriptiveText = new System.Windows.Forms.TextBox();
             this.lblDescriptiveTextPosition = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@ namespace LiveSplit.MemoryGraph
             this.localMaxCB = new System.Windows.Forms.CheckBox();
             this.numValueTextDecimals = new System.Windows.Forms.NumericUpDown();
             this.lblDecimals = new System.Windows.Forms.Label();
-            this.overrideControlValueText = new LiveSplit.MemoryGraph.TextStyleOverrideControl();
+            this.overrideControlValueText = new LiveSplit.Roboquest.TextStyleOverrideControl();
             this.cmbValueTextPosition = new System.Windows.Forms.ComboBox();
             this.lblValueTextPosition = new System.Windows.Forms.Label();
             this.cmbGraphStyle = new System.Windows.Forms.ComboBox();

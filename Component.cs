@@ -8,7 +8,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Diagnostics;
 
-namespace LiveSplit.MemoryGraph
+namespace LiveSplit.Roboquest
 {
     struct FloatVec2
     {
@@ -108,7 +108,7 @@ namespace LiveSplit.MemoryGraph
 
         SonicHandling sonic;
 
-        public string ComponentName => "MemoryGraph";
+        public string ComponentName => "Roboquest";
 
         public float PaddingTop => 0;
         public float PaddingLeft => 0;
