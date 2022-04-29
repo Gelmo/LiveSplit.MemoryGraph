@@ -27,7 +27,7 @@ namespace LiveSplit.MemoryGraph
         }
         public string UpdateURL
         {
-            get { return "https://raw.githubusercontent.com/kugelrund/LiveSplit.MemoryGraph/master/"; }
+            get { return "https://raw.githubusercontent.com/Gelmo/LiveSplit.Roboquest/roboquest/"; }
         }
         public Version Version
         {

@@ -13,7 +13,7 @@ namespace LiveSplit.MemoryGraph
     {
         public bool DownloadNew()
         {
-            string uriToSource = "https://raw.githubusercontent.com/kugelrund/LiveSplit.MemoryGraph/master/XML/";
+            string uriToSource = "https://raw.githubusercontent.com/Gelmo/LiveSplit.Roboquest/roboquest/XML/";
             string xmlFileName = Settings.listsFile;
             bool result = false;
             string downloadedFileLocation = "";
