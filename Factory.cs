@@ -11,7 +11,7 @@ namespace LiveSplit.Roboquest
         }
         public ComponentCategory Category
         {
-            get { return ComponentCategory.Information; }
+            get { return ComponentCategory.Other; }
         }
         public string Description
         {
