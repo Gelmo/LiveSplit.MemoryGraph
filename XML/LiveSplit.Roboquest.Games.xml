@@ -9,7 +9,6 @@
 	<type>The structure used to store the value in game.</type>
 	<maximumValue>The maximum value the variable can be.</maximumValue>
 	<decimals>The number of decimal places needed to express the variable. Defaults to 0.</decimals>
-	<unitConverter>The number of game units in a meter.</unitConverter>
 	Options articulate when there's difference in a game that might need to be switched regularly. This is often a version. Options override the values provided above. An option must always be selected if any are available.
 	<options>
 		<option name="Option name 1">

@@ -40,13 +40,6 @@ namespace LiveSplit.Roboquest
             this.txtDescriptiveText = new System.Windows.Forms.TextBox();
             this.lblDescriptiveTextPosition = new System.Windows.Forms.Label();
             this.cmbDescriptiveTextPosition = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbMeterToGameUnit = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbUnitsUsed = new System.Windows.Forms.ComboBox();
-            this.unitConversionCB = new System.Windows.Forms.CheckBox();
             this.grpPointerPath = new System.Windows.Forms.GroupBox();
             this.ComboBox_GameOption = new System.Windows.Forms.ComboBox();
             this.L_Requires = new System.Windows.Forms.Label();
@@ -118,11 +111,11 @@ namespace LiveSplit.Roboquest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpDescriptiveText.Controls.Add(this.overrideControlDescriptiveText);
             this.grpDescriptiveText.Controls.Add(this.tableLayoutPanel4);
-            this.grpDescriptiveText.Location = new System.Drawing.Point(11, 466);
-            this.grpDescriptiveText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpDescriptiveText.Location = new System.Drawing.Point(15, 407);
+            this.grpDescriptiveText.Margin = new System.Windows.Forms.Padding(2);
             this.grpDescriptiveText.Name = "grpDescriptiveText";
-            this.grpDescriptiveText.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grpDescriptiveText.Size = new System.Drawing.Size(436, 76);
+            this.grpDescriptiveText.Padding = new System.Windows.Forms.Padding(2);
+            this.grpDescriptiveText.Size = new System.Drawing.Size(428, 76);
             this.grpDescriptiveText.TabIndex = 2;
             this.grpDescriptiveText.TabStop = false;
             this.grpDescriptiveText.Text = "Descriptive Text";
@@ -132,13 +125,13 @@ namespace LiveSplit.Roboquest
             this.overrideControlDescriptiveText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.overrideControlDescriptiveText.Location = new System.Drawing.Point(4, 44);
-            this.overrideControlDescriptiveText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.overrideControlDescriptiveText.Margin = new System.Windows.Forms.Padding(2);
             this.overrideControlDescriptiveText.Name = "overrideControlDescriptiveText";
             this.overrideControlDescriptiveText.OverrideColor = false;
             this.overrideControlDescriptiveText.OverrideFont = false;
             this.overrideControlDescriptiveText.OverridingColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.overrideControlDescriptiveText.OverridingFont = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.overrideControlDescriptiveText.Size = new System.Drawing.Size(428, 29);
+            this.overrideControlDescriptiveText.Size = new System.Drawing.Size(420, 29);
             this.overrideControlDescriptiveText.TabIndex = 2;
             // 
             // tableLayoutPanel4
@@ -153,27 +146,27 @@ namespace LiveSplit.Roboquest
             this.tableLayoutPanel4.Controls.Add(this.lblDescriptiveTextPosition, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.cmbDescriptiveTextPosition, 2, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 15);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(428, 24);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(420, 24);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // txtDescriptiveText
             // 
             this.txtDescriptiveText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescriptiveText.Location = new System.Drawing.Point(2, 2);
-            this.txtDescriptiveText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescriptiveText.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescriptiveText.Name = "txtDescriptiveText";
-            this.txtDescriptiveText.Size = new System.Drawing.Size(210, 20);
+            this.txtDescriptiveText.Size = new System.Drawing.Size(206, 20);
             this.txtDescriptiveText.TabIndex = 2;
             // 
             // lblDescriptiveTextPosition
             // 
             this.lblDescriptiveTextPosition.AutoSize = true;
             this.lblDescriptiveTextPosition.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDescriptiveTextPosition.Location = new System.Drawing.Point(224, 0);
+            this.lblDescriptiveTextPosition.Location = new System.Drawing.Point(220, 0);
             this.lblDescriptiveTextPosition.Margin = new System.Windows.Forms.Padding(10, 0, 2, 0);
             this.lblDescriptiveTextPosition.Name = "lblDescriptiveTextPosition";
             this.lblDescriptiveTextPosition.Size = new System.Drawing.Size(58, 24);
@@ -186,92 +179,11 @@ namespace LiveSplit.Roboquest
             this.cmbDescriptiveTextPosition.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDescriptiveTextPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDescriptiveTextPosition.FormattingEnabled = true;
-            this.cmbDescriptiveTextPosition.Location = new System.Drawing.Point(286, 2);
-            this.cmbDescriptiveTextPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbDescriptiveTextPosition.Location = new System.Drawing.Point(282, 2);
+            this.cmbDescriptiveTextPosition.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDescriptiveTextPosition.Name = "cmbDescriptiveTextPosition";
-            this.cmbDescriptiveTextPosition.Size = new System.Drawing.Size(140, 21);
+            this.cmbDescriptiveTextPosition.Size = new System.Drawing.Size(136, 21);
             this.cmbDescriptiveTextPosition.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(349, 105);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "game units (u)";
-            // 
-            // tbMeterToGameUnit
-            // 
-            this.tbMeterToGameUnit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbMeterToGameUnit.Location = new System.Drawing.Point(136, 102);
-            this.tbMeterToGameUnit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tbMeterToGameUnit.Name = "tbMeterToGameUnit";
-            this.tbMeterToGameUnit.Size = new System.Drawing.Size(209, 20);
-            this.tbMeterToGameUnit.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(4, 104);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Conversion:";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(80, 105);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "1 meter is";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(163, 82);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Units:";
-            // 
-            // cmbUnitsUsed
-            // 
-            this.cmbUnitsUsed.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbUnitsUsed.FormattingEnabled = true;
-            this.cmbUnitsUsed.Location = new System.Drawing.Point(200, 80);
-            this.cmbUnitsUsed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.cmbUnitsUsed.Name = "cmbUnitsUsed";
-            this.cmbUnitsUsed.Size = new System.Drawing.Size(224, 21);
-            this.cmbUnitsUsed.TabIndex = 1;
-            this.cmbUnitsUsed.SelectedIndexChanged += new System.EventHandler(this.cmbUnitsUsed_SelectedIndexChanged);
-            // 
-            // unitConversionCB
-            // 
-            this.unitConversionCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.unitConversionCB.AutoSize = true;
-            this.unitConversionCB.Location = new System.Drawing.Point(4, 81);
-            this.unitConversionCB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.unitConversionCB.Name = "unitConversionCB";
-            this.unitConversionCB.Size = new System.Drawing.Size(137, 17);
-            this.unitConversionCB.TabIndex = 0;
-            this.unitConversionCB.Text = "Enable Unit Conversion";
-            this.unitConversionCB.UseVisualStyleBackColor = true;
             // 
             // grpPointerPath
             // 
@@ -287,9 +199,9 @@ namespace LiveSplit.Roboquest
             this.grpPointerPath.Controls.Add(this.lblProcessName);
             this.grpPointerPath.Controls.Add(this.tableLayoutPanel2);
             this.grpPointerPath.Location = new System.Drawing.Point(11, 11);
-            this.grpPointerPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpPointerPath.Margin = new System.Windows.Forms.Padding(2);
             this.grpPointerPath.Name = "grpPointerPath";
-            this.grpPointerPath.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpPointerPath.Padding = new System.Windows.Forms.Padding(2);
             this.grpPointerPath.Size = new System.Drawing.Size(436, 128);
             this.grpPointerPath.TabIndex = 0;
             this.grpPointerPath.TabStop = false;
@@ -301,7 +213,7 @@ namespace LiveSplit.Roboquest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBox_GameOption.FormattingEnabled = true;
             this.ComboBox_GameOption.Location = new System.Drawing.Point(248, 15);
-            this.ComboBox_GameOption.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBox_GameOption.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBox_GameOption.Name = "ComboBox_GameOption";
             this.ComboBox_GameOption.Size = new System.Drawing.Size(76, 21);
             this.ComboBox_GameOption.TabIndex = 12;
@@ -337,7 +249,7 @@ namespace LiveSplit.Roboquest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBox_ListOfGames.FormattingEnabled = true;
             this.ComboBox_ListOfGames.Location = new System.Drawing.Point(63, 15);
-            this.ComboBox_ListOfGames.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBox_ListOfGames.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBox_ListOfGames.Name = "ComboBox_ListOfGames";
             this.ComboBox_ListOfGames.Size = new System.Drawing.Size(181, 21);
             this.ComboBox_ListOfGames.TabIndex = 9;
@@ -347,7 +259,7 @@ namespace LiveSplit.Roboquest
             // 
             this.B_UpdateXML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.B_UpdateXML.Location = new System.Drawing.Point(327, 14);
-            this.B_UpdateXML.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.B_UpdateXML.Margin = new System.Windows.Forms.Padding(2);
             this.B_UpdateXML.Name = "B_UpdateXML";
             this.B_UpdateXML.Size = new System.Drawing.Size(105, 21);
             this.B_UpdateXML.TabIndex = 8;
@@ -370,7 +282,7 @@ namespace LiveSplit.Roboquest
             this.txtProcessName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProcessName.Location = new System.Drawing.Point(99, 104);
-            this.txtProcessName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProcessName.Margin = new System.Windows.Forms.Padding(2);
             this.txtProcessName.Name = "txtProcessName";
             this.txtProcessName.Size = new System.Drawing.Size(334, 20);
             this.txtProcessName.TabIndex = 5;
@@ -405,7 +317,7 @@ namespace LiveSplit.Roboquest
             this.tableLayoutPanel2.Controls.Add(this.lblType, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.cmbType, 3, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 52);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
@@ -429,7 +341,7 @@ namespace LiveSplit.Roboquest
             // 
             this.txtOffsets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtOffsets.Location = new System.Drawing.Point(170, 21);
-            this.txtOffsets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtOffsets.Margin = new System.Windows.Forms.Padding(2);
             this.txtOffsets.Name = "txtOffsets";
             this.txtOffsets.Size = new System.Drawing.Size(164, 20);
             this.txtOffsets.TabIndex = 1;
@@ -439,7 +351,7 @@ namespace LiveSplit.Roboquest
             // 
             this.txtBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBase.Location = new System.Drawing.Point(86, 21);
-            this.txtBase.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBase.Margin = new System.Windows.Forms.Padding(2);
             this.txtBase.Name = "txtBase";
             this.txtBase.Size = new System.Drawing.Size(80, 20);
             this.txtBase.TabIndex = 1;
@@ -449,7 +361,7 @@ namespace LiveSplit.Roboquest
             // 
             this.txtModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtModule.Location = new System.Drawing.Point(2, 21);
-            this.txtModule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtModule.Margin = new System.Windows.Forms.Padding(2);
             this.txtModule.Name = "txtModule";
             this.txtModule.Size = new System.Drawing.Size(80, 20);
             this.txtModule.TabIndex = 1;
@@ -496,7 +408,7 @@ namespace LiveSplit.Roboquest
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.FormattingEnabled = true;
             this.cmbType.Location = new System.Drawing.Point(338, 21);
-            this.cmbType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(88, 21);
             this.cmbType.TabIndex = 4;
@@ -519,10 +431,10 @@ namespace LiveSplit.Roboquest
             this.grpGraph.Controls.Add(this.btnBackgroundColor2);
             this.grpGraph.Controls.Add(this.cmbBackgroundGradientType);
             this.grpGraph.Location = new System.Drawing.Point(11, 141);
-            this.grpGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpGraph.Margin = new System.Windows.Forms.Padding(2);
             this.grpGraph.Name = "grpGraph";
-            this.grpGraph.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grpGraph.Size = new System.Drawing.Size(436, 321);
+            this.grpGraph.Padding = new System.Windows.Forms.Padding(2);
+            this.grpGraph.Size = new System.Drawing.Size(436, 346);
             this.grpGraph.TabIndex = 1;
             this.grpGraph.TabStop = false;
             this.grpGraph.Text = "Graph";
@@ -530,8 +442,8 @@ namespace LiveSplit.Roboquest
             // btnDeleteColor
             // 
             this.btnDeleteColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteColor.Location = new System.Drawing.Point(123, 166);
-            this.btnDeleteColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteColor.Location = new System.Drawing.Point(123, 167);
+            this.btnDeleteColor.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteColor.Name = "btnDeleteColor";
             this.btnDeleteColor.Size = new System.Drawing.Size(18, 20);
             this.btnDeleteColor.TabIndex = 9;
@@ -542,8 +454,8 @@ namespace LiveSplit.Roboquest
             // btnAddColor
             // 
             this.btnAddColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddColor.Location = new System.Drawing.Point(100, 166);
-            this.btnAddColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddColor.Location = new System.Drawing.Point(100, 167);
+            this.btnAddColor.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddColor.Name = "btnAddColor";
             this.btnAddColor.Size = new System.Drawing.Size(18, 20);
             this.btnAddColor.TabIndex = 8;
@@ -554,8 +466,8 @@ namespace LiveSplit.Roboquest
             // colorsCBSillyColors
             // 
             this.colorsCBSillyColors.AutoSize = true;
-            this.colorsCBSillyColors.Location = new System.Drawing.Point(7, 166);
-            this.colorsCBSillyColors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.colorsCBSillyColors.Location = new System.Drawing.Point(7, 169);
+            this.colorsCBSillyColors.Margin = new System.Windows.Forms.Padding(2);
             this.colorsCBSillyColors.Name = "colorsCBSillyColors";
             this.colorsCBSillyColors.Size = new System.Drawing.Size(76, 17);
             this.colorsCBSillyColors.TabIndex = 0;
@@ -570,7 +482,7 @@ namespace LiveSplit.Roboquest
             this.cmbGraphGradientType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGraphGradientType.FormattingEnabled = true;
             this.cmbGraphGradientType.Location = new System.Drawing.Point(100, 143);
-            this.cmbGraphGradientType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbGraphGradientType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbGraphGradientType.Name = "cmbGraphGradientType";
             this.cmbGraphGradientType.Size = new System.Drawing.Size(333, 21);
             this.cmbGraphGradientType.TabIndex = 4;
@@ -592,23 +504,16 @@ namespace LiveSplit.Roboquest
             this.grpValueText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpValueText.Controls.Add(this.localMaxCB);
-            this.grpValueText.Controls.Add(this.label5);
-            this.grpValueText.Controls.Add(this.cmbUnitsUsed);
-            this.grpValueText.Controls.Add(this.tbMeterToGameUnit);
-            this.grpValueText.Controls.Add(this.label2);
-            this.grpValueText.Controls.Add(this.label3);
-            this.grpValueText.Controls.Add(this.label4);
             this.grpValueText.Controls.Add(this.numValueTextDecimals);
             this.grpValueText.Controls.Add(this.lblDecimals);
-            this.grpValueText.Controls.Add(this.unitConversionCB);
             this.grpValueText.Controls.Add(this.overrideControlValueText);
             this.grpValueText.Controls.Add(this.cmbValueTextPosition);
             this.grpValueText.Controls.Add(this.lblValueTextPosition);
-            this.grpValueText.Location = new System.Drawing.Point(4, 190);
-            this.grpValueText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpValueText.Location = new System.Drawing.Point(4, 191);
+            this.grpValueText.Margin = new System.Windows.Forms.Padding(2);
             this.grpValueText.Name = "grpValueText";
-            this.grpValueText.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.grpValueText.Size = new System.Drawing.Size(428, 126);
+            this.grpValueText.Padding = new System.Windows.Forms.Padding(2);
+            this.grpValueText.Size = new System.Drawing.Size(428, 74);
             this.grpValueText.TabIndex = 5;
             this.grpValueText.TabStop = false;
             this.grpValueText.Text = "Value as Text";
@@ -617,7 +522,7 @@ namespace LiveSplit.Roboquest
             // 
             this.localMaxCB.AutoSize = true;
             this.localMaxCB.Location = new System.Drawing.Point(244, 19);
-            this.localMaxCB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.localMaxCB.Margin = new System.Windows.Forms.Padding(2);
             this.localMaxCB.Name = "localMaxCB";
             this.localMaxCB.Size = new System.Drawing.Size(75, 17);
             this.localMaxCB.TabIndex = 8;
@@ -629,7 +534,7 @@ namespace LiveSplit.Roboquest
             // 
             this.numValueTextDecimals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numValueTextDecimals.Location = new System.Drawing.Point(382, 18);
-            this.numValueTextDecimals.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numValueTextDecimals.Margin = new System.Windows.Forms.Padding(2);
             this.numValueTextDecimals.Maximum = new decimal(new int[] {
             20,
             0,
@@ -653,8 +558,8 @@ namespace LiveSplit.Roboquest
             // overrideControlValueText
             // 
             this.overrideControlValueText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.overrideControlValueText.Location = new System.Drawing.Point(4, 45);
-            this.overrideControlValueText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.overrideControlValueText.Location = new System.Drawing.Point(4, 42);
+            this.overrideControlValueText.Margin = new System.Windows.Forms.Padding(2);
             this.overrideControlValueText.Name = "overrideControlValueText";
             this.overrideControlValueText.OverrideColor = false;
             this.overrideControlValueText.OverrideFont = false;
@@ -670,7 +575,7 @@ namespace LiveSplit.Roboquest
             this.cmbValueTextPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbValueTextPosition.FormattingEnabled = true;
             this.cmbValueTextPosition.Location = new System.Drawing.Point(56, 17);
-            this.cmbValueTextPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbValueTextPosition.Margin = new System.Windows.Forms.Padding(2);
             this.cmbValueTextPosition.Name = "cmbValueTextPosition";
             this.cmbValueTextPosition.Size = new System.Drawing.Size(184, 21);
             this.cmbValueTextPosition.TabIndex = 1;
@@ -692,7 +597,7 @@ namespace LiveSplit.Roboquest
             this.cmbGraphStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGraphStyle.FormattingEnabled = true;
             this.cmbGraphStyle.Location = new System.Drawing.Point(74, 16);
-            this.cmbGraphStyle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbGraphStyle.Margin = new System.Windows.Forms.Padding(2);
             this.cmbGraphStyle.Name = "cmbGraphStyle";
             this.cmbGraphStyle.Size = new System.Drawing.Size(359, 21);
             this.cmbGraphStyle.TabIndex = 6;
@@ -745,7 +650,7 @@ namespace LiveSplit.Roboquest
             // 
             this.txtMaximumValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtMaximumValue.Location = new System.Drawing.Point(332, 2);
-            this.txtMaximumValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaximumValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaximumValue.Name = "txtMaximumValue";
             this.txtMaximumValue.Size = new System.Drawing.Size(94, 20);
             this.txtMaximumValue.TabIndex = 6;
@@ -779,7 +684,7 @@ namespace LiveSplit.Roboquest
             // 
             this.txtMinimumValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtMinimumValue.Location = new System.Drawing.Point(114, 2);
-            this.txtMinimumValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMinimumValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtMinimumValue.Name = "txtMinimumValue";
             this.txtMinimumValue.Size = new System.Drawing.Size(94, 20);
             this.txtMinimumValue.TabIndex = 5;
@@ -789,7 +694,7 @@ namespace LiveSplit.Roboquest
             // 
             this.numHeight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numHeight.Location = new System.Drawing.Point(332, 25);
-            this.numHeight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numHeight.Margin = new System.Windows.Forms.Padding(2);
             this.numHeight.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -827,7 +732,7 @@ namespace LiveSplit.Roboquest
             // 
             this.numWidth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numWidth.Location = new System.Drawing.Point(114, 25);
-            this.numWidth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numWidth.Margin = new System.Windows.Forms.Padding(2);
             this.numWidth.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -853,7 +758,7 @@ namespace LiveSplit.Roboquest
             // 
             this.numVerticalMargins.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numVerticalMargins.Location = new System.Drawing.Point(332, 48);
-            this.numVerticalMargins.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numVerticalMargins.Margin = new System.Windows.Forms.Padding(2);
             this.numVerticalMargins.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -867,7 +772,7 @@ namespace LiveSplit.Roboquest
             // 
             this.numHorizontalMargins.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numHorizontalMargins.Location = new System.Drawing.Point(114, 48);
-            this.numHorizontalMargins.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numHorizontalMargins.Margin = new System.Windows.Forms.Padding(2);
             this.numHorizontalMargins.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -903,7 +808,7 @@ namespace LiveSplit.Roboquest
             // 
             this.btnBackgroundColor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackgroundColor1.Location = new System.Drawing.Point(100, 119);
-            this.btnBackgroundColor1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackgroundColor1.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackgroundColor1.Name = "btnBackgroundColor1";
             this.btnBackgroundColor1.Size = new System.Drawing.Size(18, 20);
             this.btnBackgroundColor1.TabIndex = 2;
@@ -914,7 +819,7 @@ namespace LiveSplit.Roboquest
             // 
             this.btnBackgroundColor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackgroundColor2.Location = new System.Drawing.Point(123, 119);
-            this.btnBackgroundColor2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackgroundColor2.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackgroundColor2.Name = "btnBackgroundColor2";
             this.btnBackgroundColor2.Size = new System.Drawing.Size(18, 20);
             this.btnBackgroundColor2.TabIndex = 3;
@@ -928,7 +833,7 @@ namespace LiveSplit.Roboquest
             this.cmbBackgroundGradientType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBackgroundGradientType.FormattingEnabled = true;
             this.cmbBackgroundGradientType.Location = new System.Drawing.Point(145, 119);
-            this.cmbBackgroundGradientType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbBackgroundGradientType.Margin = new System.Windows.Forms.Padding(2);
             this.cmbBackgroundGradientType.Name = "cmbBackgroundGradientType";
             this.cmbBackgroundGradientType.Size = new System.Drawing.Size(288, 21);
             this.cmbBackgroundGradientType.TabIndex = 1;
@@ -941,9 +846,9 @@ namespace LiveSplit.Roboquest
             this.Controls.Add(this.grpDescriptiveText);
             this.Controls.Add(this.grpPointerPath);
             this.Controls.Add(this.grpGraph);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Settings";
-            this.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.Padding = new System.Windows.Forms.Padding(9);
             this.Size = new System.Drawing.Size(459, 553);
             this.grpDescriptiveText.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -1030,16 +935,6 @@ namespace LiveSplit.Roboquest
                     typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
                    value
                }).OrderBy(item => item.value).ToList();
-
-            cmbUnitsUsed.DisplayMember = "Description";
-            cmbUnitsUsed.ValueMember = "value";
-            cmbUnitsUsed.DataSource = Enum.GetValues(typeof(Units)).Cast<Enum>().Select(value =>
-               new
-               {
-                   (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()),
-                    typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
-                   value
-               }).OrderBy(item => item.value).ToList();
         }
         private System.Windows.Forms.GroupBox grpPointerPath;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -1094,13 +989,6 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.LinkLabel linkLabel_AdditionalFiles;
         private System.Windows.Forms.Label L_Requires;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbUnitsUsed;
-        private System.Windows.Forms.CheckBox unitConversionCB;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbMeterToGameUnit;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox localMaxCB;
         private System.Windows.Forms.Button btnAddColor;
         private System.Windows.Forms.Button btnDeleteColor;
