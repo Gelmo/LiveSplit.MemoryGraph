@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
-<game name="Common name of the game">
-	<process>The process which has the variable needed.</process>
-	<additional_requirement_url>A URL to provide to the user which has additional requirements.</additional_requirement_url>
-	<module>The dll which has the variable needed.</module>
-	<base>The base address which points to the variable.</base>
-	<speed_offsets>The offset for the pointer (speed).</speed_offsets>
-	<type>The structure used to store the value in game.</type>
-	<maximumValue>The maximum value the variable can be.</maximumValue>
-	<decimals>The number of decimal places needed to express the variable. Defaults to 0.</decimals>
-	Options articulate when there's difference in a game that might need to be switched regularly. This is often a version. Options override the values provided above. An option must always be selected if any are available.
-	<options>
-		<option name="Option name 1">
-			Any of the above tags are valid here.
-		</option>
-		<option name="Option name 2">
-			Any of the above tags are valid here.
-		</option>
-	</options>
-</game>
--->
 <games>
 	<game name="Roboquest (0.8.9)">
 		<process>RoboQuest-Win64-Shipping</process>
 		<base>04B427F0</base>
+		<!-- <lastlevel_offsets>120,3D0</lastlevel_offsets> -->
+		<gamelevel_offsets>120,3DB</gamelevel_offsets>
+		<!-- <playerlevel_offsets>120,5A0</playerlevel_offsets> -->
+		<gametime_offsets>120,858</gametime_offsets>
+		<!-- <gametimeonlevelstart_offsets>120,85C</gametimeonlevelstart_offsets>  -->
+		<totalruntime_offsets>120,860</totalruntime_offsets>
+		<!-- <bgametimepaused_offsets>120,864</bgametimepaused_offsets> -->
+		<bisdead_offsets>180,38,0,30,260,88A</bisdead_offsets>
+		<!-- <bcurrentlyfightingboss_offsets>180,38,0,30,260,4EF9</bcurrentlyfightingboss_offsets> -->
+		<!-- <classname_offsets>180,38,0,30,260,4EF9</classname_offsets> -->
 		<speed_offsets>180,38,0,30,260,46A0</speed_offsets>
 		<speed_type>Float</speed_type>
 		<maximumValue>3500</maximumValue>

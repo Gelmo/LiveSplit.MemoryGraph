@@ -6,6 +6,16 @@
 	<game name="Roboquest (0.8.9)">
 		<process>RoboQuest-Win64-Shipping</process>
 		<base>04B427F0</base>
+		<!-- <lastlevel_offsets>120,3D0</lastlevel_offsets> -->
+		<gamelevel_offsets>120,3DB</gamelevel_offsets>
+		<!-- <playerlevel_offsets>120,5A0</playerlevel_offsets> -->
+		<gametime_offsets>120,858</gametime_offsets>
+		<!-- <gametimeonlevelstart_offsets>120,85C</gametimeonlevelstart_offsets>  -->
+		<totalruntime_offsets>120,860</totalruntime_offsets>
+		<!-- <bgametimepaused_offsets>120,864</bgametimepaused_offsets> -->
+		<bisdead_offsets>180,38,0,30,260,88A</bisdead_offsets>
+		<!-- <bcurrentlyfightingboss_offsets>180,38,0,30,260,4EF9</bcurrentlyfightingboss_offsets> -->
+		<!-- <classname_offsets>180,38,0,30,260,4EF9</classname_offsets> -->
 		<speed_offsets>180,38,0,30,260,46A0</speed_offsets>
 		<speed_type>Float</speed_type>
 		<maximumValue>3500</maximumValue>
