@@ -4,9 +4,7 @@
             <file path="Components/LiveSplit.Roboquest.dll" status="changed"/>
         </files>
         <changelog>
-            <change>
-                Version bump to test update functionality.
-            </change>
+            <change>- Version bump to test update functionality</change>
         </changelog>
     </update>
     <update version="0.0.0">
@@ -14,9 +12,10 @@
             <file path="Components/LiveSplit.Roboquest.dll" status="changed"/>
         </files>
         <changelog>
-            <change>
-                Initial fork from kugelrund's MemoryGraph component. Adjusted defaults and games list to explicitly target Roboquest. Removed Unit Converter. Linted project files.
-            </change>
+            <change>- Initial fork from kugelrund's MemoryGraph component
+- Adjusted defaults and games list to explicitly target Roboquest
+- Removed Unit Converter
+- Linted project files</change>
         </changelog>
     </update>
 </updates>
