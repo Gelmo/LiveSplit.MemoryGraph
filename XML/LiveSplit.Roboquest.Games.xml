@@ -5,7 +5,7 @@
 	<additional_requirement_url>A URL to provide to the user which has additional requirements.</additional_requirement_url>
 	<module>The dll which has the variable needed.</module>
 	<base>The base address which points to the variable.</base>
-	<offsets>The offset for the pointer.</offsets>
+	<speed_offsets>The offset for the pointer (speed).</speed_offsets>
 	<type>The structure used to store the value in game.</type>
 	<maximumValue>The maximum value the variable can be.</maximumValue>
 	<decimals>The number of decimal places needed to express the variable. Defaults to 0.</decimals>
@@ -24,8 +24,8 @@
 	<game name="Roboquest (0.8.9)">
 		<process>RoboQuest-Win64-Shipping</process>
 		<base>04B427F0</base>
-		<offsets>180,38,0,30,260,46A0</offsets>
-		<type>Float</type>
+		<speed_offsets>180,38,0,30,260,46A0</speed_offsets>
+		<speed_type>Float</speed_type>
 		<maximumValue>3500</maximumValue>
 		<decimals>2</decimals>
 	</game>

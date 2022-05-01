@@ -208,7 +208,7 @@ namespace LiveSplit.Roboquest
 
             cmbDescriptiveTextPosition.DataBindings.Add("SelectedValue", this, "DescriptiveTextPosition", false, DataSourceUpdateMode.OnPropertyChanged);
             localMaxCB.DataBindings.Add("Checked", this, "LocalMax", false, DataSourceUpdateMode.OnPropertyChanged);
-            cmbType.DataBindings.Add("SelectedValue", this, "ValueType", false, DataSourceUpdateMode.OnPropertyChanged);
+            cmbSpeedType.DataBindings.Add("SelectedValue", this, "ValueType", false, DataSourceUpdateMode.OnPropertyChanged);
 
             txtProcessName.DataBindings.Add("Text", this, "ProcessName");
             txtDescriptiveText.DataBindings.Add("Text", this, "DescriptiveText");
@@ -229,37 +229,37 @@ namespace LiveSplit.Roboquest
 
         private void UpdatePointer(object sender, EventArgs e)
         {
-            int[] offsets;
+            int[] speed_offsets;
 
             if (TryParseHex(txtBase.Text, out int baseAddress))
             {
-                if (!string.IsNullOrWhiteSpace(txtOffsets.Text))
+                if (!string.IsNullOrWhiteSpace(txtSpeedOffsets.Text))
                 {
-                    string[] offsetStrings = txtOffsets.Text.Split(',');
-                    offsets = new int[offsetStrings.Length];
+                    string[] speedoffsetStrings = txtSpeedOffsets.Text.Split(',');
+                    speed_offsets = new int[speedoffsetStrings.Length];
                     int j = 0;
-                    foreach (string offset in offsetStrings)
+                    foreach (string speedoffset in speedoffsetStrings)
                     {
-                        TryParseHex(offset.Trim(), out offsets[j]);
+                        TryParseHex(speedoffset.Trim(), out speed_offsets[j]);
                         j += 1;
                     }
                 }
                 else
                 {
-                    offsets = new int[0];
+                    speed_offsets = new int[0];
                 }
 
                 if (string.IsNullOrWhiteSpace(txtModule.Text))
                 {
-                    Pointer = new DeepPointer(baseAddress, offsets);
+                    Pointer = new DeepPointer(baseAddress, speed_offsets);
                 }
                 else if (txtModule.Text == "[absolute_base]")
                 {
-                    Pointer = new DeepPointer(new IntPtr(baseAddress), offsets);
+                    Pointer = new DeepPointer(new IntPtr(baseAddress), speed_offsets);
                 }
                 else
                 {
-                    Pointer = new DeepPointer(txtModule.Text, baseAddress, offsets);
+                    Pointer = new DeepPointer(txtModule.Text, baseAddress, speed_offsets);
                 }
             }
             else
@@ -398,7 +398,7 @@ namespace LiveSplit.Roboquest
 
             txtModule.Text = SettingsHelper.ParseString(element["Module"]);
             txtBase.Text = SettingsHelper.ParseString(element["Base"]);
-            txtOffsets.Text = SettingsHelper.ParseString(element["Offsets"]);
+            txtSpeedOffsets.Text = SettingsHelper.ParseString(element["SpeedOffsets"]);
             ValueType = SettingsHelper.ParseEnum<MemoryType>(element["ValueType"]);
 
             DescriptiveTextColor = SettingsHelper.ParseColor(element["DescriptiveTextColor"]);
@@ -489,7 +489,7 @@ namespace LiveSplit.Roboquest
 
             SettingsHelper.CreateSetting(document, parent, "Module", txtModule.Text) ^
             SettingsHelper.CreateSetting(document, parent, "Base", txtBase.Text) ^
-            SettingsHelper.CreateSetting(document, parent, "Offsets", txtOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "SpeedOffsets", txtSpeedOffsets.Text) ^
             SettingsHelper.CreateSetting(document, parent, "ValueType", ValueType) ^
 
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextColor", DescriptiveTextColor) ^
@@ -564,26 +564,26 @@ namespace LiveSplit.Roboquest
         {
             if (!TryParseHex(txtBase.Text, out int parsed))
             {
-                MessageBox.Show("'Base' has to be a hexadecimal number!", "Invalid value!",
+                MessageBox.Show("'Base' needs to be a hexadecimal number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
             }
         }
 
-        private void TxtOffsets_Validating(object sender, CancelEventArgs e)
+        private void TxtSpeedOffsets_Validating(object sender, CancelEventArgs e)
         {
-            var offsets = txtOffsets.Text.Split(',');
-            if (offsets.Length == 1 && string.IsNullOrEmpty(offsets[0]))
+            var speed_offsets = txtSpeedOffsets.Text.Split(',');
+            if (speed_offsets.Length == 1 && string.IsNullOrEmpty(speed_offsets[0]))
             {
                 return;
             }
 
-            foreach (string offset in offsets)
+            foreach (string speedoffset in speed_offsets)
             {
-                if (!TryParseHex(offset, out int parsed))
+                if (!TryParseHex(speedoffset, out int parsed))
                 {
-                    MessageBox.Show("All offsets have to be hexadecimal numbers!", "Invalid value!",
+                    MessageBox.Show("All speed offsets need to be hexadecimal numbers!", "Invalid value!",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
                     return;
@@ -595,7 +595,7 @@ namespace LiveSplit.Roboquest
         {
             if (!float.TryParse(txtMinimumValue.Text, out float parsed))
             {
-                MessageBox.Show("Minimum Value has to be a number!", "Invalid value!",
+                MessageBox.Show("Minimum Value needs to be a number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
@@ -606,7 +606,7 @@ namespace LiveSplit.Roboquest
         {
             if (!float.TryParse(txtMaximumValue.Text, out float parsed))
             {
-                MessageBox.Show("Maximum Value has to be a number!", "Invalid value!",
+                MessageBox.Show("Maximum Value needs to be a number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
@@ -675,8 +675,8 @@ namespace LiveSplit.Roboquest
 
                         txtModule.Text = GetSafeStringValueFromXML(gameNode, "module");
                         txtBase.Text = GetSafeStringValueFromXML(gameNode, "base");
-                        txtOffsets.Text = GetSafeStringValueFromXML(gameNode, "offsets");
-                        cmbType.SelectedIndex = GetSafeTypeFromXML(gameNode, "type");
+                        txtSpeedOffsets.Text = GetSafeStringValueFromXML(gameNode, "speed_offsets");
+                        cmbSpeedType.SelectedIndex = GetSafeTypeFromXML(gameNode, "speed_type");
                         txtMaximumValue.Text = GetSafeStringValueFromXML(gameNode, "maximumValue", txtMaximumValue.Text);
                         numValueTextDecimals.Value = GetSafeDecimalFromXML(gameNode, "decimals");
 
@@ -705,10 +705,10 @@ namespace LiveSplit.Roboquest
 
                                     txtModule.Text = GetSafeStringValueFromXML(optionNode, "module", txtModule.Text);
                                     txtBase.Text = GetSafeStringValueFromXML(optionNode, "base", txtBase.Text);
-                                    txtOffsets.Text = GetSafeStringValueFromXML(optionNode, "offsets", txtOffsets.Text);
-                                    if (optionNode.SelectSingleNode("type") != null)
+                                    txtSpeedOffsets.Text = GetSafeStringValueFromXML(optionNode, "speed_offsets", txtSpeedOffsets.Text);
+                                    if (optionNode.SelectSingleNode("speed_type") != null)
                                     {
-                                        cmbType.SelectedIndex = GetSafeTypeFromXML(optionNode, "type");
+                                        cmbSpeedType.SelectedIndex = GetSafeTypeFromXML(optionNode, "speed_type");
                                     }
                                     txtMaximumValue.Text = GetSafeStringValueFromXML(optionNode, "maximumValue", txtMaximumValue.Text);
                                     numValueTextDecimals.Value = GetSafeDecimalFromXML(optionNode, "decimals", numValueTextDecimals.Value);
@@ -751,36 +751,36 @@ namespace LiveSplit.Roboquest
         {
             if (docNode.SelectSingleNode(nodeName) != null)
             {
-                string typeTemp = docNode.SelectSingleNode(nodeName).InnerText.ToLower();
-                if (typeTemp == "float")
+                string speedTypeTemp = docNode.SelectSingleNode(nodeName).InnerText.ToLower();
+                if (speedTypeTemp == "float")
                 {
                     return (int)MemoryType.Float;
                 }
-                else if (typeTemp == "int")
+                else if (speedTypeTemp == "int")
                 {
                     return (int)MemoryType.Int;
                 }
-                else if (typeTemp == "floatvec2")
+                else if (speedTypeTemp == "floatvec2")
                 {
                     return (int)MemoryType.FloatVec2;
                 }
-                else if (typeTemp == "floatvec3")
+                else if (speedTypeTemp == "floatvec3")
                 {
                     return (int)MemoryType.FloatVec3;
                 }
-                else if (typeTemp == "intvec2")
+                else if (speedTypeTemp == "intvec2")
                 {
                     return (int)MemoryType.IntVec2;
                 }
-                else if (typeTemp == "intvec3")
+                else if (speedTypeTemp == "intvec3")
                 {
                     return (int)MemoryType.IntVec3;
                 }
-                else if (typeTemp == "floatvec2xzy")
+                else if (speedTypeTemp == "floatvec2xzy")
                 {
                     return (int)MemoryType.FloatVec2XZY;
                 }
-                else if (typeTemp == "intvec2xzy")
+                else if (speedTypeTemp == "intvec2xzy")
                 {
                     return (int)MemoryType.IntVec2XZY;
                 }

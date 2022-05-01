@@ -1,4 +1,4 @@
-﻿using LiveSplit.UI;
+using LiveSplit.UI;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -51,13 +51,13 @@ namespace LiveSplit.Roboquest
             this.lblProcessName = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.lblModule = new System.Windows.Forms.Label();
-            this.txtOffsets = new System.Windows.Forms.TextBox();
+            this.txtSpeedOffsets = new System.Windows.Forms.TextBox();
             this.txtBase = new System.Windows.Forms.TextBox();
             this.txtModule = new System.Windows.Forms.TextBox();
             this.lblBase = new System.Windows.Forms.Label();
-            this.lblOffsets = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.lblSpeedOffsets = new System.Windows.Forms.Label();
+            this.lblSpeedType = new System.Windows.Forms.Label();
+            this.cmbSpeedType = new System.Windows.Forms.ComboBox();
             this.grpGraph = new System.Windows.Forms.GroupBox();
             this.btnDeleteColor = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
@@ -309,13 +309,13 @@ namespace LiveSplit.Roboquest
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel2.Controls.Add(this.lblModule, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtOffsets, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.txtSpeedOffsets, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtBase, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.txtModule, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblBase, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblOffsets, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblType, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.cmbType, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblSpeedOffsets, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblSpeedType, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.cmbSpeedType, 3, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 52);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -337,15 +337,15 @@ namespace LiveSplit.Roboquest
             this.lblModule.Text = "Module:";
             this.lblModule.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // txtOffsets
+            // txtSpeedOffsets
             // 
-            this.txtOffsets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtOffsets.Location = new System.Drawing.Point(170, 21);
-            this.txtOffsets.Margin = new System.Windows.Forms.Padding(2);
-            this.txtOffsets.Name = "txtOffsets";
-            this.txtOffsets.Size = new System.Drawing.Size(164, 20);
-            this.txtOffsets.TabIndex = 1;
-            this.txtOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOffsets_Validating);
+            this.txtSpeedOffsets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSpeedOffsets.Location = new System.Drawing.Point(170, 21);
+            this.txtSpeedOffsets.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSpeedOffsets.Name = "txtSpeedOffsets";
+            this.txtSpeedOffsets.Size = new System.Drawing.Size(164, 20);
+            this.txtSpeedOffsets.TabIndex = 1;
+            this.txtSpeedOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.TxtSpeedOffsets_Validating);
             // 
             // txtBase
             // 
@@ -378,40 +378,40 @@ namespace LiveSplit.Roboquest
             this.lblBase.Text = "Base:";
             this.lblBase.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // lblOffsets
+            // lblSpeedOffsets
             // 
-            this.lblOffsets.AutoSize = true;
-            this.lblOffsets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblOffsets.Location = new System.Drawing.Point(170, 0);
-            this.lblOffsets.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblOffsets.Name = "lblOffsets";
-            this.lblOffsets.Size = new System.Drawing.Size(164, 19);
-            this.lblOffsets.TabIndex = 2;
-            this.lblOffsets.Text = "Offsets (comma seperated):";
-            this.lblOffsets.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lblSpeedOffsets.AutoSize = true;
+            this.lblSpeedOffsets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSpeedOffsets.Location = new System.Drawing.Point(170, 0);
+            this.lblSpeedOffsets.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSpeedOffsets.Name = "lblSpeedOffsets";
+            this.lblSpeedOffsets.Size = new System.Drawing.Size(164, 19);
+            this.lblSpeedOffsets.TabIndex = 2;
+            this.lblSpeedOffsets.Text = "Speed Offsets:";
+            this.lblSpeedOffsets.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // lblType
+            // lblSpeedType
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblType.Location = new System.Drawing.Point(338, 0);
-            this.lblType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(88, 19);
-            this.lblType.TabIndex = 3;
-            this.lblType.Text = "Type:";
-            this.lblType.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lblSpeedType.AutoSize = true;
+            this.lblSpeedType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSpeedType.Location = new System.Drawing.Point(338, 0);
+            this.lblSpeedType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSpeedType.Name = "lblSpeedType";
+            this.lblSpeedType.Size = new System.Drawing.Size(88, 19);
+            this.lblSpeedType.TabIndex = 3;
+            this.lblSpeedType.Text = "Speed Type:";
+            this.lblSpeedType.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // cmbType
+            // cmbSpeedType
             // 
-            this.cmbType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(338, 21);
-            this.cmbType.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(88, 21);
-            this.cmbType.TabIndex = 4;
+            this.cmbSpeedType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbSpeedType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSpeedType.FormattingEnabled = true;
+            this.cmbSpeedType.Location = new System.Drawing.Point(338, 21);
+            this.cmbSpeedType.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbSpeedType.Name = "cmbSpeedType";
+            this.cmbSpeedType.Size = new System.Drawing.Size(88, 21);
+            this.cmbSpeedType.TabIndex = 4;
             // 
             // grpGraph
             // 
@@ -876,9 +876,9 @@ namespace LiveSplit.Roboquest
 
         private void AddComboboxDataSources()
         {
-            cmbType.DisplayMember = "Description";
-            cmbType.ValueMember = "value";
-            cmbType.DataSource = Enum.GetValues(typeof(MemoryType)).Cast<Enum>().Select(value =>
+            cmbSpeedType.DisplayMember = "Description";
+            cmbSpeedType.ValueMember = "value";
+            cmbSpeedType.DataSource = Enum.GetValues(typeof(MemoryType)).Cast<Enum>().Select(value =>
                 new
                 {
                     (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()),
@@ -939,13 +939,13 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.GroupBox grpPointerPath;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label lblModule;
-        private System.Windows.Forms.TextBox txtOffsets;
+        private System.Windows.Forms.TextBox txtSpeedOffsets;
         private System.Windows.Forms.TextBox txtBase;
         private System.Windows.Forms.TextBox txtModule;
         private System.Windows.Forms.Label lblBase;
-        private System.Windows.Forms.Label lblOffsets;
-        private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.Label lblSpeedOffsets;
+        private System.Windows.Forms.Label lblSpeedType;
+        private System.Windows.Forms.ComboBox cmbSpeedType;
         private System.Windows.Forms.GroupBox grpGraph;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label lblMaximumValue;

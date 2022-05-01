@@ -6,8 +6,8 @@
 	<game name="Roboquest (0.8.9)">
 		<process>RoboQuest-Win64-Shipping</process>
 		<base>04B427F0</base>
-		<offsets>180,38,0,30,260,46A0</offsets>
-		<type>Float</type>
+		<speed_offsets>180,38,0,30,260,46A0</speed_offsets>
+		<speed_type>Float</speed_type>
 		<maximumValue>3500</maximumValue>
 		<decimals>2</decimals>
 	</game>
