@@ -240,8 +240,8 @@ namespace LiveSplit.Roboquest
             this.linkLabel_AdditionalFiles.TabIndex = 10;
             this.linkLabel_AdditionalFiles.TabStop = true;
             this.linkLabel_AdditionalFiles.Text = "linkLabel1";
-            this.linkLabel_AdditionalFiles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_AdditionalFiles_LinkClicked);
-            this.linkLabel_AdditionalFiles.TextChanged += new System.EventHandler(this.linkLabel_AdditionalFiles_TextChanged);
+            this.linkLabel_AdditionalFiles.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_AdditionalFiles_LinkClicked);
+            this.linkLabel_AdditionalFiles.TextChanged += new System.EventHandler(this.LinkLabel_AdditionalFiles_TextChanged);
             // 
             // ComboBox_ListOfGames
             // 
@@ -345,7 +345,7 @@ namespace LiveSplit.Roboquest
             this.txtOffsets.Name = "txtOffsets";
             this.txtOffsets.Size = new System.Drawing.Size(164, 20);
             this.txtOffsets.TabIndex = 1;
-            this.txtOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.txtOffsets_Validating);
+            this.txtOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOffsets_Validating);
             // 
             // txtBase
             // 
@@ -355,7 +355,7 @@ namespace LiveSplit.Roboquest
             this.txtBase.Name = "txtBase";
             this.txtBase.Size = new System.Drawing.Size(80, 20);
             this.txtBase.TabIndex = 1;
-            this.txtBase.Validating += new System.ComponentModel.CancelEventHandler(this.txtBase_Validating);
+            this.txtBase.Validating += new System.ComponentModel.CancelEventHandler(this.TxtBase_Validating);
             // 
             // txtModule
             // 
@@ -449,7 +449,7 @@ namespace LiveSplit.Roboquest
             this.btnDeleteColor.TabIndex = 9;
             this.btnDeleteColor.Text = "-";
             this.btnDeleteColor.UseVisualStyleBackColor = false;
-            this.btnDeleteColor.Click += new System.EventHandler(this.btnDeleteColor_Click);
+            this.btnDeleteColor.Click += new System.EventHandler(this.BtnDeleteColor_Click);
             // 
             // btnAddColor
             // 
@@ -461,7 +461,7 @@ namespace LiveSplit.Roboquest
             this.btnAddColor.TabIndex = 8;
             this.btnAddColor.Text = "+";
             this.btnAddColor.UseVisualStyleBackColor = false;
-            this.btnAddColor.Click += new System.EventHandler(this.btnAddColor_Click);
+            this.btnAddColor.Click += new System.EventHandler(this.BtnAddColor_Click);
             // 
             // colorsCBSillyColors
             // 
@@ -473,7 +473,7 @@ namespace LiveSplit.Roboquest
             this.colorsCBSillyColors.TabIndex = 0;
             this.colorsCBSillyColors.Text = "Silly Colors";
             this.colorsCBSillyColors.UseVisualStyleBackColor = true;
-            this.colorsCBSillyColors.MouseHover += new System.EventHandler(this.colorsCBSillyColors_MouseHover);
+            this.colorsCBSillyColors.MouseHover += new System.EventHandler(this.ColorsCBSillyColors_MouseHover);
             // 
             // cmbGraphGradientType
             // 
@@ -486,7 +486,7 @@ namespace LiveSplit.Roboquest
             this.cmbGraphGradientType.Name = "cmbGraphGradientType";
             this.cmbGraphGradientType.Size = new System.Drawing.Size(333, 21);
             this.cmbGraphGradientType.TabIndex = 4;
-            this.cmbGraphGradientType.SelectedValueChanged += new System.EventHandler(this.cmbGraphGradientType_SelectedValueChanged);
+            this.cmbGraphGradientType.SelectedValueChanged += new System.EventHandler(this.CmbGraphGradientType_SelectedValueChanged);
             // 
             // lblGraphStyle
             // 
@@ -528,7 +528,7 @@ namespace LiveSplit.Roboquest
             this.localMaxCB.TabIndex = 8;
             this.localMaxCB.Text = "Local Max";
             this.localMaxCB.UseVisualStyleBackColor = true;
-            this.localMaxCB.MouseHover += new System.EventHandler(this.localMaxCB_MouseHover);
+            this.localMaxCB.MouseHover += new System.EventHandler(this.LocalMaxCB_MouseHover);
             // 
             // numValueTextDecimals
             // 
@@ -654,7 +654,7 @@ namespace LiveSplit.Roboquest
             this.txtMaximumValue.Name = "txtMaximumValue";
             this.txtMaximumValue.Size = new System.Drawing.Size(94, 20);
             this.txtMaximumValue.TabIndex = 6;
-            this.txtMaximumValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtMaximumValue_Validating);
+            this.txtMaximumValue.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMaximumValue_Validating);
             // 
             // lblMinimumValue
             // 
@@ -688,7 +688,7 @@ namespace LiveSplit.Roboquest
             this.txtMinimumValue.Name = "txtMinimumValue";
             this.txtMinimumValue.Size = new System.Drawing.Size(94, 20);
             this.txtMinimumValue.TabIndex = 5;
-            this.txtMinimumValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtMinimumValue_Validating);
+            this.txtMinimumValue.Validating += new System.ComponentModel.CancelEventHandler(this.TxtMinimumValue_Validating);
             // 
             // numHeight
             // 
@@ -837,7 +837,7 @@ namespace LiveSplit.Roboquest
             this.cmbBackgroundGradientType.Name = "cmbBackgroundGradientType";
             this.cmbBackgroundGradientType.Size = new System.Drawing.Size(288, 21);
             this.cmbBackgroundGradientType.TabIndex = 1;
-            this.cmbBackgroundGradientType.SelectedValueChanged += new System.EventHandler(this.cmbBackgroundGradientType_SelectedValueChanged);
+            this.cmbBackgroundGradientType.SelectedValueChanged += new System.EventHandler(this.CmbBackgroundGradientType_SelectedValueChanged);
             // 
             // Settings
             // 

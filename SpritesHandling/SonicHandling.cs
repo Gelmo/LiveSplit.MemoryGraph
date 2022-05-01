@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +9,14 @@ namespace LiveSplit.Roboquest
 {
     class SonicHandling
     {
-        public sonicHandlingSizes[] idle;
-        public sonicHandlingSizes[] idle_foot;
-        public sonicHandlingSizes[] walking;
-        public sonicHandlingSizes[] running;
-        public sonicHandlingSizes[] idle_frustrated;
-        public sonicHandlingSizes[] sonic_sprint;
+        public SonicHandlingSizes[] idle;
+        public SonicHandlingSizes[] idle_foot;
+        public SonicHandlingSizes[] walking;
+        public SonicHandlingSizes[] running;
+        public SonicHandlingSizes[] idle_frustrated;
+        public SonicHandlingSizes[] sonic_sprint;
 
-        private enum sonicStatesIDs : int
+        private enum SonicStatesIDs : int
         {
             idle,
             idle_foot,
@@ -33,54 +33,54 @@ namespace LiveSplit.Roboquest
 
         public SonicHandling()
         {
-            idle = new sonicHandlingSizes[11];
-            for (int i=0; i<idle.Length; i++)
+            idle = new SonicHandlingSizes[11];
+            for (int i = 0; i < idle.Length; i++)
             {
-                idle[i] = new sonicHandlingSizes(i * 36, 0, 36, 46);
+                idle[i] = new SonicHandlingSizes(i * 36, 0, 36, 46);
             }
 
-            idle_foot = new sonicHandlingSizes[]            //foot animation (animated at draw/3)
+            idle_foot = new SonicHandlingSizes[]            //foot animation (animated at draw/3)
             {
-                new sonicHandlingSizes(572, 0, 36, 46),
-                new sonicHandlingSizes(608, 0, 36, 46),
-                new sonicHandlingSizes(644, 0, 36, 46),
-                new sonicHandlingSizes(644, 0, 36, 46),
-                new sonicHandlingSizes(608, 0, 36, 46),
-                new sonicHandlingSizes(644, 0, 36, 46),
-                new sonicHandlingSizes(608, 0, 36, 46),
-                new sonicHandlingSizes(644, 0, 36, 46),
-                new sonicHandlingSizes(644, 0, 36, 46),
-                new sonicHandlingSizes(608, 0, 36, 46),
-                new sonicHandlingSizes(572, 0, 36, 46),
-                new sonicHandlingSizes(572, 0, 36, 46),
+                new SonicHandlingSizes(572, 0, 36, 46),
+                new SonicHandlingSizes(608, 0, 36, 46),
+                new SonicHandlingSizes(644, 0, 36, 46),
+                new SonicHandlingSizes(644, 0, 36, 46),
+                new SonicHandlingSizes(608, 0, 36, 46),
+                new SonicHandlingSizes(644, 0, 36, 46),
+                new SonicHandlingSizes(608, 0, 36, 46),
+                new SonicHandlingSizes(644, 0, 36, 46),
+                new SonicHandlingSizes(644, 0, 36, 46),
+                new SonicHandlingSizes(608, 0, 36, 46),
+                new SonicHandlingSizes(572, 0, 36, 46),
+                new SonicHandlingSizes(572, 0, 36, 46),
             };
 
-            walking = new sonicHandlingSizes[16];
+            walking = new SonicHandlingSizes[16];
             for (int i = 0; i < walking.Length; i++)
             {
-                walking[i] = new sonicHandlingSizes(i/2 * 36 + 680, 0, 36, 46);
+                walking[i] = new SonicHandlingSizes(i / 2 * 36 + 680, 0, 36, 46);
             }
 
-            running = new sonicHandlingSizes[8];
+            running = new SonicHandlingSizes[8];
             for (int i = 0; i < running.Length; i++)
             {
-                running[i] = new sonicHandlingSizes(i * 36 +680, 0, 36, 46);
+                running[i] = new SonicHandlingSizes(i * 36 + 680, 0, 36, 46);
             }
 
-            idle_frustrated = new sonicHandlingSizes[80];
-            for (int i=0; i<40; i++)
+            idle_frustrated = new SonicHandlingSizes[80];
+            for (int i = 0; i < 40; i++)
             {
-                idle_frustrated[i] = new sonicHandlingSizes(i * 36, 47, 36, 46);
+                idle_frustrated[i] = new SonicHandlingSizes(i * 36, 47, 36, 46);
             }
             for (int i = 0; i < 40; i++)
             {
-                idle_frustrated[i+40] = new sonicHandlingSizes(i * 36, 94, 36, 46);
+                idle_frustrated[i + 40] = new SonicHandlingSizes(i * 36, 94, 36, 46);
             }
 
-            sonic_sprint = new sonicHandlingSizes[4];
-            for(int i=0; i<sonic_sprint.Length; i++)
+            sonic_sprint = new SonicHandlingSizes[4];
+            for (int i = 0; i < sonic_sprint.Length; i++)
             {
-                sonic_sprint[i] = new sonicHandlingSizes(i * 36 + 1004, 0, 36, 46);
+                sonic_sprint[i] = new SonicHandlingSizes(i * 36 + 1004, 0, 36, 46);
             }
 
             sonic_state = 0;
@@ -88,48 +88,48 @@ namespace LiveSplit.Roboquest
             sonic_frame = 0;
         }
 
-        public Bitmap getBitmap(float relativeValue)
+        public Bitmap GetBitmap(float relativeValue)
         {
             sonic_frame++;
-            if(relativeValue <0.01)
+            if (relativeValue < 0.01)
             {
-                if (sonic_repetition == 0 && sonic_state!= (int)sonicStatesIDs.idle_foot && sonic_state!=(int)sonicStatesIDs.idle_frustrated)
-                    sonic_state = (int)sonicStatesIDs.idle;
-                if(sonic_repetition==6*idle.Length)
-                    sonic_state = (int)sonicStatesIDs.idle_foot;
+                if (sonic_repetition == 0 && sonic_state != (int)SonicStatesIDs.idle_foot && sonic_state != (int)SonicStatesIDs.idle_frustrated)
+                    sonic_state = (int)SonicStatesIDs.idle;
+                if (sonic_repetition == 6 * idle.Length)
+                    sonic_state = (int)SonicStatesIDs.idle_foot;
                 if (sonic_repetition == 6 * idle.Length + 2 * idle_foot.Length)
-                    sonic_state = (int)sonicStatesIDs.idle_frustrated;
+                    sonic_state = (int)SonicStatesIDs.idle_frustrated;
                 if (sonic_repetition == 6 * idle.Length + 2 * idle_foot.Length + idle_frustrated.Length)
                 {
                     sonic_state = 0;
                     sonic_repetition = 0;
                 }
-                    
+
 
                 sonic_repetition++;
             }
             else if (relativeValue > 0 && relativeValue < 0.3f)
             {
-                sonic_state = (int)sonicStatesIDs.walking;
+                sonic_state = (int)SonicStatesIDs.walking;
             }
-            else if(relativeValue>0.3f && relativeValue < 0.75f)
+            else if (relativeValue > 0.3f && relativeValue < 0.75f)
             {
-                sonic_state = (int)sonicStatesIDs.running;
+                sonic_state = (int)SonicStatesIDs.running;
             }
             else
             {
-                sonic_state = (int)sonicStatesIDs.sprinting;
+                sonic_state = (int)SonicStatesIDs.sprinting;
             }
 
-            if(previous_sonic_state==(int)sonicStatesIDs.walking && sonic_state==(int)sonicStatesIDs.running)       //this and next one for smoothing out transitions between half speed and full speed running loop
+            if (previous_sonic_state == (int)SonicStatesIDs.walking && sonic_state == (int)SonicStatesIDs.running)       //this and next one for smoothing out transitions between half speed and full speed running loop
             {
                 sonic_frame = sonic_frame / 2;
             }
-            else if(previous_sonic_state==(int)sonicStatesIDs.running && sonic_state==(int)sonicStatesIDs.walking)
+            else if (previous_sonic_state == (int)SonicStatesIDs.running && sonic_state == (int)SonicStatesIDs.walking)
             {
                 sonic_frame = sonic_frame * 2;
             }
-            else if (previous_sonic_state!= sonic_state)            //for reseting to frame 0 of each loop
+            else if (previous_sonic_state != sonic_state)            //for reseting to frame 0 of each loop
             {
                 sonic_frame = 0;
             }
@@ -137,66 +137,66 @@ namespace LiveSplit.Roboquest
 
 
             //Get a frame from sprite sheet
-            if(sonic_state==(int)sonicStatesIDs.idle)
+            if (sonic_state == (int)SonicStatesIDs.idle)
             {
                 if (sonic_frame >= idle.Length)
                     sonic_frame = 0;
-                return cropBitmap(Properties.Resources.sonic_spirtes, getArray(idle, sonic_frame));
+                return CropBitmap(Properties.Resources.sonic_spirtes, GetArray(idle, sonic_frame));
             }
-            else if (sonic_state == (int)sonicStatesIDs.idle_foot)
+            else if (sonic_state == (int)SonicStatesIDs.idle_foot)
             {
                 if (sonic_frame >= idle_foot.Length)
                     sonic_frame = 0;
-                return cropBitmap(Properties.Resources.sonic_spirtes, getArray(idle_foot, sonic_frame));
+                return CropBitmap(Properties.Resources.sonic_spirtes, GetArray(idle_foot, sonic_frame));
             }
-            else if (sonic_state == (int)sonicStatesIDs.idle_frustrated)
+            else if (sonic_state == (int)SonicStatesIDs.idle_frustrated)
             {
                 if (sonic_frame >= idle_frustrated.Length)
                     sonic_frame = 0;
-                return cropBitmap(Properties.Resources.sonic_spirtes, getArray(idle_frustrated, sonic_frame));
+                return CropBitmap(Properties.Resources.sonic_spirtes, GetArray(idle_frustrated, sonic_frame));
             }
-            else if (sonic_state == (int)sonicStatesIDs.walking)
+            else if (sonic_state == (int)SonicStatesIDs.walking)
             {
                 if (sonic_frame >= walking.Length)
                     sonic_frame = 0;
                 sonic_repetition = 0;
-                return cropBitmap(Properties.Resources.sonic_spirtes, getArray(walking, sonic_frame));
+                return CropBitmap(Properties.Resources.sonic_spirtes, GetArray(walking, sonic_frame));
             }
-            else if (sonic_state == (int)sonicStatesIDs.running)
+            else if (sonic_state == (int)SonicStatesIDs.running)
             {
                 if (sonic_frame >= running.Length)
                     sonic_frame = 0;
                 sonic_repetition = 0;
-                return cropBitmap(Properties.Resources.sonic_spirtes, getArray(running, sonic_frame));
+                return CropBitmap(Properties.Resources.sonic_spirtes, GetArray(running, sonic_frame));
             }
             else
             {
                 if (sonic_frame >= sonic_sprint.Length)
                     sonic_frame = 0;
                 sonic_repetition = 0;
-                return cropBitmap(Properties.Resources.sonic_spirtes, getArray(sonic_sprint, sonic_frame));
+                return CropBitmap(Properties.Resources.sonic_spirtes, GetArray(sonic_sprint, sonic_frame));
             }
         }
 
-        private int[] getArray(sonicHandlingSizes[] source, int frame)
+        private int[] GetArray(SonicHandlingSizes[] source, int frame)
         {
             return new int[] { source[frame].left, source[frame].top, source[frame].width, source[frame].height };
         }
 
-        private static Bitmap cropBitmap(Bitmap bitmap, int[] array)
+        private static Bitmap CropBitmap(Bitmap bitmap, int[] array)
         {
             return bitmap.Clone(new Rectangle(array[0], array[1], array[2], array[3]), bitmap.PixelFormat);
         }
     }
 
-    class sonicHandlingSizes
+    class SonicHandlingSizes
     {
         public int top;
         public int left;
         public int width;
         public int height;
 
-        public sonicHandlingSizes(int x, int y, int w, int h)
+        public SonicHandlingSizes(int x, int y, int w, int h)
         {
             left = x;
             top = y;

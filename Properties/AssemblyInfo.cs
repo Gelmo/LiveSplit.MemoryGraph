@@ -36,4 +36,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.5.2")]
 [assembly: AssemblyFileVersion("1.5.2")]
 
-[assembly: ComponentFactory(typeof(Factory))]
+[assembly: ComponentFactory(typeof(Factory))] 

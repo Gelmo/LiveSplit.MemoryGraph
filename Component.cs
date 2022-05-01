@@ -129,41 +129,41 @@ namespace LiveSplit.Roboquest
         private float avaragedValue;                                    //For smoothing out
         private float[] fake_particles;
 
-        private Queue<float> pastValues { get; } = new Queue<float>();
+        private Queue<float> PastValues { get; } = new Queue<float>();
         private float? _localMax = 0;
-        private float LocalMax => _localMax ?? (_localMax = pastValues.Max()).Value;
+        private float LocalMax => _localMax ?? (_localMax = PastValues.Max()).Value;
         private float _currentValue;
-        private float currentValue
+        private float CurrentValue
         {
             get => _currentValue;
             set
             {
                 if (settings.LocalMax)
                 {
-                    pastValues.Enqueue(value);
+                    PastValues.Enqueue(value);
 
                     if (!_localMax.HasValue || value == _localMax)
                     {
-                        while (pastValues.Count > graphWidth)
+                        while (PastValues.Count > graphWidth)
                         {
-                            pastValues.Dequeue();
+                            PastValues.Dequeue();
                         }
                     }
                     else if (value > _localMax)
                     {
                         _localMax = value;
 
-                        while (pastValues.Count > graphWidth)
+                        while (PastValues.Count > graphWidth)
                         {
-                            pastValues.Dequeue();
+                            PastValues.Dequeue();
                         }
                     }
                     else
                     {
-                        while (pastValues.Count > graphWidth)
+                        while (PastValues.Count > graphWidth)
                         {
                             // Don't bother recalculating the Max() until it looks like we've dequeued the Max value().
-                            if (pastValues.Dequeue() == _localMax)
+                            if (PastValues.Dequeue() == _localMax)
                             {
                                 _localMax = null;
                             }
@@ -189,11 +189,15 @@ namespace LiveSplit.Roboquest
 
         public Component(LiveSplitState state)
         {
-            valueTextFormat = new StringFormat(StringFormatFlags.NoWrap);
-            valueTextFormat.LineAlignment = StringAlignment.Center;
+            valueTextFormat = new StringFormat(StringFormatFlags.NoWrap)
+            {
+                LineAlignment = StringAlignment.Center
+            };
 
-            descriptiveTextFormat = new StringFormat(StringFormatFlags.NoWrap);
-            descriptiveTextFormat.LineAlignment = StringAlignment.Center;
+            descriptiveTextFormat = new StringFormat(StringFormatFlags.NoWrap)
+            {
+                LineAlignment = StringAlignment.Center
+            };
 
             graphBrush = Brushes.Transparent;
             polygon_points = new PointF[4] { new Point(0, 0), new Point(0, 0), new Point(0, 0), new Point(0, 0), };  //LB, LU, RU, RB
@@ -267,16 +271,18 @@ namespace LiveSplit.Roboquest
 
         public void DrawGraph(Graphics g, LiveSplitState state, float width, float height)
         {
-            if(firstLoad)
+            if (firstLoad)
             {
                 SettingsUpdated(null, null);
                 firstLoad = false;
             }
             // figure out where to draw the graph
-            RectangleF graphRect = new RectangleF();
-            graphRect.Y = (height - graphHeight) / 2;
-            graphRect.Width = graphWidth;
-            graphRect.Height = graphHeight;
+            RectangleF graphRect = new RectangleF
+            {
+                Y = (height - graphHeight) / 2,
+                Width = graphWidth,
+                Height = graphHeight
+            };
             if ((settings.DescriptiveTextPosition == Position.Left && settings.ValueTextPosition == Position.Right) ||
                 (settings.DescriptiveTextPosition == Position.Right && settings.ValueTextPosition == Position.Left))
             {
@@ -299,7 +305,7 @@ namespace LiveSplit.Roboquest
                                      settings.ValueTextPosition == Position.Right);
 
             // calculate relative value between 0 and 1
-            float relativeValue = (currentValue - settings.MinimumValue) / (settings.MaximumValue - settings.MinimumValue);
+            float relativeValue = (CurrentValue - settings.MinimumValue) / (settings.MaximumValue - settings.MinimumValue);
             float relativeValueClamped = Math.Min(1.0f, Math.Max(0.0f, relativeValue));
 
             // create brush
@@ -355,7 +361,7 @@ namespace LiveSplit.Roboquest
                     gBuffer.DrawImageUnscaled(bmpBuffer, -1, 0);
                     gBuffer.FillRectangle(Brushes.Transparent, graphWidth - 1, 0, 1, graphHeight);
 
-                    if (currentValue > settings.MinimumValue)
+                    if (CurrentValue > settings.MinimumValue)
                     {
                         gBuffer.FillRectangle(graphBrush,
                                               graphWidth - 1, (1 - relativeValueClamped) * graphHeight,
@@ -375,7 +381,7 @@ namespace LiveSplit.Roboquest
                 #endregion
                 #region SingleBar
                 case GraphStyle.SingleBar:
-                    if (currentValue > settings.MinimumValue)
+                    if (CurrentValue > settings.MinimumValue)
                     {
                         RectangleF barRect;
                         if (descriptiveNextToGraph || valueNextToGraph)
@@ -395,7 +401,7 @@ namespace LiveSplit.Roboquest
                         g.FillRectangle(graphBrush, barRect);
                     }
                     break;
-                    #endregion
+                #endregion
                 #region Polygonal
                 case GraphStyle.Polygonal:
                     gBuffer.DrawImageUnscaled(bmpBuffer, -1, 0);
@@ -403,7 +409,7 @@ namespace LiveSplit.Roboquest
 
                     avaragedValue += relativeValueClamped;
 
-                    if (drawCounter==10)
+                    if (drawCounter == 10)
                     {
                         avaragedValue = avaragedValue / 10.0f;
                         //LU, LL, RB, RU
@@ -415,7 +421,7 @@ namespace LiveSplit.Roboquest
                         polygon_points[2].X = graphWidth;
                         polygon_points[2].Y = graphHeight;
                         polygon_points[3].X = graphWidth;
-                        if (currentValue > settings.MinimumValue)
+                        if (CurrentValue > settings.MinimumValue)
                             polygon_points[3].Y = graphHeight - (avaragedValue * graphHeight);
                         else
                             polygon_points[3].Y = graphHeight;
@@ -439,7 +445,7 @@ namespace LiveSplit.Roboquest
                                     width - 2 * settings.HorizontalMargins, height - 2 * settings.VerticalMargins);
                     }
                     break;
-                    #endregion
+                #endregion
                 #region PolygonalOverflow
                 case GraphStyle.PolygonalOverflow:
                     gBuffer.DrawImageUnscaled(bmpBuffer, -1, 0);
@@ -455,7 +461,7 @@ namespace LiveSplit.Roboquest
                     polygon_points[2].X = graphWidth;
                     polygon_points[2].Y = graphHeight;
                     polygon_points[3].X = graphWidth;
-                    if (currentValue > settings.MinimumValue)
+                    if (CurrentValue > settings.MinimumValue)
                         polygon_points[3].Y = graphHeight - (relativeValueClamped * graphHeight);
                     else
                         polygon_points[3].Y = graphHeight;
@@ -471,20 +477,20 @@ namespace LiveSplit.Roboquest
                                     width - 2 * settings.HorizontalMargins, height - 2 * settings.VerticalMargins);
                     }
                     break;
-                    #endregion
+                #endregion
                 #region Sonic_Graph
                 case GraphStyle.Sonic:
                     avaragedValue += relativeValue;
 
-                    if (drawCounter==3)
+                    if (drawCounter == 3)
                     {
                         avaragedValue = avaragedValue / 3;
                         gBuffer.Clear(Color.Transparent);
 
-                        if(graphHeight>graphWidth)
-                            gBuffer.DrawImage(sonic.getBitmap(relativeValue), 0, 0, graphWidth, graphWidth*1.27f);
+                        if (graphHeight > graphWidth)
+                            gBuffer.DrawImage(sonic.GetBitmap(relativeValue), 0, 0, graphWidth, graphWidth * 1.27f);
                         else
-                            gBuffer.DrawImage(sonic.getBitmap(relativeValue), 0, 0, graphHeight/1.27f, graphHeight);
+                            gBuffer.DrawImage(sonic.GetBitmap(relativeValue), 0, 0, graphHeight / 1.27f, graphHeight);
 
 
                         gBuffer.DrawLine(graphPen, fake_particles[0] - 10 * avaragedValue, graphHeight * 0.44f, fake_particles[0], graphHeight * 0.44f);
@@ -520,7 +526,7 @@ namespace LiveSplit.Roboquest
                                     width - 2 * settings.HorizontalMargins, height - 2 * settings.VerticalMargins);
                     }
                     break;
-                #endregion
+                    #endregion
             }
 
             // draw descriptive text
@@ -581,7 +587,7 @@ namespace LiveSplit.Roboquest
                 rect.X += 5;
                 rect.Width -= 10;
                 string str;
-                str = currentValue.ToString("n" + settings.ValueTextDecimals);
+                str = CurrentValue.ToString("n" + settings.ValueTextDecimals);
                 if (settings.LocalMax)
                 {
                     str += " (" + LocalMax.ToString("n" + settings.ValueTextDecimals) + ")";
@@ -627,44 +633,44 @@ namespace LiveSplit.Roboquest
                 {
                     case MemoryType.Float:
                         {
-                            currentValue = settings.Pointer.Deref<float>(process);
+                            CurrentValue = settings.Pointer.Deref<float>(process);
                         }
                         break;
                     case MemoryType.Int:
                         {
-                            currentValue = settings.Pointer.Deref<int>(process);
+                            CurrentValue = settings.Pointer.Deref<int>(process);
                         }
                         break;
                     case MemoryType.FloatVec2:
                         {
-                            currentValue = (float)settings.Pointer.Deref<FloatVec2>(process).Norm;
+                            CurrentValue = (float)settings.Pointer.Deref<FloatVec2>(process).Norm;
                         }
                         break;
                     case MemoryType.FloatVec3:
                         {
-                            currentValue = (float)settings.Pointer.Deref<FloatVec3>(process).Norm;
+                            CurrentValue = (float)settings.Pointer.Deref<FloatVec3>(process).Norm;
                         }
                         break;
                     case MemoryType.IntVec2:
                         {
-                            currentValue = (float)settings.Pointer.Deref<IntVec2>(process).Norm;
+                            CurrentValue = (float)settings.Pointer.Deref<IntVec2>(process).Norm;
                         }
 
                         break;
                     case MemoryType.IntVec3:
                         {
-                            currentValue = (float)settings.Pointer.Deref<IntVec3>(process).Norm;
+                            CurrentValue = (float)settings.Pointer.Deref<IntVec3>(process).Norm;
                         }
 
                         break;
                     case MemoryType.FloatVec2XZY:
                         {
-                            currentValue = (float)settings.Pointer.Deref<FloatVec2XZY>(process).Norm;
+                            CurrentValue = (float)settings.Pointer.Deref<FloatVec2XZY>(process).Norm;
                         }
                         break;
                     case MemoryType.IntVec2XZY:
                         {
-                            currentValue = (float)settings.Pointer.Deref<IntVec2XZY>(process).Norm;
+                            CurrentValue = (float)settings.Pointer.Deref<IntVec2XZY>(process).Norm;
                         }
                         break;
                 }

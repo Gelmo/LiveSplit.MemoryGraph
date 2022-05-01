@@ -46,7 +46,7 @@
             this.chkOverrideFont.TabIndex = 8;
             this.chkOverrideFont.Text = "Override Font:";
             this.chkOverrideFont.UseVisualStyleBackColor = true;
-            this.chkOverrideFont.CheckedChanged += new System.EventHandler(this.chkOverrideFont_CheckedChanged);
+            this.chkOverrideFont.CheckedChanged += new System.EventHandler(this.ChkOverrideFont_CheckedChanged);
             //
             // btnFont
             //
@@ -59,7 +59,7 @@
             this.btnFont.TabIndex = 7;
             this.btnFont.Text = "Choose...";
             this.btnFont.UseVisualStyleBackColor = true;
-            this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
+            this.btnFont.Click += new System.EventHandler(this.BtnFont_Click);
             //
             // chkOverrideColor
             //
@@ -71,7 +71,7 @@
             this.chkOverrideColor.TabIndex = 6;
             this.chkOverrideColor.Text = "Override Color:";
             this.chkOverrideColor.UseVisualStyleBackColor = true;
-            this.chkOverrideColor.CheckedChanged += new System.EventHandler(this.chkOverrideColor_CheckedChanged);
+            this.chkOverrideColor.CheckedChanged += new System.EventHandler(this.ChkOverrideColor_CheckedChanged);
             //
             // btnColor
             //
@@ -82,7 +82,7 @@
             this.btnColor.Size = new System.Drawing.Size(24, 25);
             this.btnColor.TabIndex = 5;
             this.btnColor.UseVisualStyleBackColor = false;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            this.btnColor.Click += new System.EventHandler(this.BtnColor_Click);
             //
             // TextStyleOverrideControl
             //

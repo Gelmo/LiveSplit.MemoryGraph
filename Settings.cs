@@ -1,15 +1,15 @@
 ﻿using LiveSplit.ComponentUtil;
 using LiveSplit.UI;
 using System;
-using System.IO;
-using System.Xml;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace LiveSplit.Roboquest
 {
@@ -156,7 +156,7 @@ namespace LiveSplit.Roboquest
 
             if (File.Exists(ListsFilePath))
             {
-                loadXML();
+                LoadXML();
             }
             else
             {
@@ -229,10 +229,9 @@ namespace LiveSplit.Roboquest
 
         private void UpdatePointer(object sender, EventArgs e)
         {
-            int baseAddress;
             int[] offsets;
 
-            if (TryParseHex(txtBase.Text, out baseAddress))
+            if (TryParseHex(txtBase.Text, out int baseAddress))
             {
                 if (!string.IsNullOrWhiteSpace(txtOffsets.Text))
                 {
@@ -276,7 +275,7 @@ namespace LiveSplit.Roboquest
 
         private List<Button> GraphColorButtons = new List<Button>();
 
-        private void btnAddColor_Click(object sender, EventArgs e)
+        private void BtnAddColor_Click(object sender, EventArgs e)
         {
             SettingsHelper.ColorButtonClick(AddColorButton(), this);
         }
@@ -307,7 +306,7 @@ namespace LiveSplit.Roboquest
             return newButton;
         }
 
-        private void btnDeleteColor_Click(object sender, EventArgs e)
+        private void BtnDeleteColor_Click(object sender, EventArgs e)
         {
             DeleteColorButton(true);
         }
@@ -362,7 +361,7 @@ namespace LiveSplit.Roboquest
                 }
             }
             // The trigger that occurs when GraphGradientType is Plain fires too early. Redo it!
-            cmbGraphGradientType_SelectedValueChanged(null, null);
+            CmbGraphGradientType_SelectedValueChanged(null, null);
             MinimumValue = SettingsHelper.ParseFloat(element["MinimumValue"]);
             MaximumValue = SettingsHelper.ParseFloat(element["MaximumValue"]);
             GraphWidth = SettingsHelper.ParseInt(element["GraphWidth"]);
@@ -382,16 +381,14 @@ namespace LiveSplit.Roboquest
             var selectedGame = SettingsHelper.ParseString(element["SelectedGame"]);
             if (selectedGame != null)
             {
-                var games = ComboBox_ListOfGames.DataSource as List<string>;
-                if (games != null && games.Contains(selectedGame))
+                if (ComboBox_ListOfGames.DataSource is List<string> games && games.Contains(selectedGame))
                 {
                     ComboBox_ListOfGames.SelectedItem = selectedGame;
 
                     var selectedOption = SettingsHelper.ParseString(element["SelectedGameOption"]);
                     if (selectedOption != null)
                     {
-                        var options = ComboBox_GameOption.DataSource as List<string>;
-                        if (options != null && options.Contains(selectedOption))
+                        if (ComboBox_GameOption.DataSource is List<string> options && options.Contains(selectedOption))
                         {
                             ComboBox_GameOption.SelectedItem = selectedOption;
                         }
@@ -507,7 +504,7 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "ValueTextDecimals", ValueTextDecimals);
         }
 
-        private void cmbBackgroundGradientType_SelectedValueChanged(object sender, EventArgs e)
+        private void CmbBackgroundGradientType_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbBackgroundGradientType.SelectedValue == null)
             {
@@ -519,7 +516,7 @@ namespace LiveSplit.Roboquest
             btnBackgroundColor2.DataBindings.Add("BackColor", this, btnBackgroundColor1.Visible ? "BackgroundColor2" : "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
-        private void cmbGraphGradientType_SelectedValueChanged(object sender, EventArgs e)
+        private void CmbGraphGradientType_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbGraphGradientType.SelectedValue == null)
             {
@@ -563,10 +560,9 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private void txtBase_Validating(object sender, CancelEventArgs e)
+        private void TxtBase_Validating(object sender, CancelEventArgs e)
         {
-            int parsed;
-            if (!TryParseHex(txtBase.Text, out parsed))
+            if (!TryParseHex(txtBase.Text, out int parsed))
             {
                 MessageBox.Show("'Base' has to be a hexadecimal number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -575,10 +571,9 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private void txtOffsets_Validating(object sender, CancelEventArgs e)
+        private void TxtOffsets_Validating(object sender, CancelEventArgs e)
         {
-            int parsed;
-            string[] offsets = txtOffsets.Text.Split(',');
+            var offsets = txtOffsets.Text.Split(',');
             if (offsets.Length == 1 && string.IsNullOrEmpty(offsets[0]))
             {
                 return;
@@ -586,7 +581,7 @@ namespace LiveSplit.Roboquest
 
             foreach (string offset in offsets)
             {
-                if (!TryParseHex(offset, out parsed))
+                if (!TryParseHex(offset, out int parsed))
                 {
                     MessageBox.Show("All offsets have to be hexadecimal numbers!", "Invalid value!",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -596,10 +591,9 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private void txtMinimumValue_Validating(object sender, CancelEventArgs e)
+        private void TxtMinimumValue_Validating(object sender, CancelEventArgs e)
         {
-            float parsed;
-            if (!float.TryParse(txtMinimumValue.Text, out parsed))
+            if (!float.TryParse(txtMinimumValue.Text, out float parsed))
             {
                 MessageBox.Show("Minimum Value has to be a number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -608,10 +602,9 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private void txtMaximumValue_Validating(object sender, CancelEventArgs e)
+        private void TxtMaximumValue_Validating(object sender, CancelEventArgs e)
         {
-            float parsed;
-            if (!float.TryParse(txtMaximumValue.Text, out parsed))
+            if (!float.TryParse(txtMaximumValue.Text, out float parsed))
             {
                 MessageBox.Show("Maximum Value has to be a number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -643,7 +636,7 @@ namespace LiveSplit.Roboquest
         /////Related to loading XML, list etc.////
         //////////////////////////////////////////
 
-        private void loadXML()
+        private void LoadXML()
         {
             ComboBox_ListOfGames.DataSource = null;
             gamesOnTheList.Clear();
@@ -696,8 +689,7 @@ namespace LiveSplit.Roboquest
                             {
                                 optionNames.Add(optionNode.Attributes[0].Value);
                             }
-                            var prevSource = ComboBox_GameOption.DataSource as List<string>;
-                            if (prevSource == null || !prevSource.SequenceEqual(optionNames))
+                            if (!(ComboBox_GameOption.DataSource is List<string> prevSource) || !prevSource.SequenceEqual(optionNames))
                             {
                                 ComboBox_GameOption.DataSource = optionNames;
                             }
@@ -740,7 +732,7 @@ namespace LiveSplit.Roboquest
             bool result = _downloader.DownloadNew();
             if (result)
             {
-                loadXML();
+                LoadXML();
             }
         }
 
@@ -803,19 +795,13 @@ namespace LiveSplit.Roboquest
             if (docNode.SelectSingleNode(nodeName) != null)
             {
                 string text = docNode.SelectSingleNode(nodeName).InnerText;
-                decimal value;
-                if (decimal.TryParse(text, out value))
-                {
-                    return value;
-                }
-                else
-                    return defaultValue;
+                return decimal.TryParse(text, out decimal value) ? value : defaultValue;
             }
             return defaultValue;
         }
         #endregion
 
-        private void linkLabel_AdditionalFiles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel_AdditionalFiles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (linkLabel_AdditionalFiles.Text.StartsWith("http"))
             {
@@ -823,7 +809,7 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private void linkLabel_AdditionalFiles_TextChanged(object sender, EventArgs e)
+        private void LinkLabel_AdditionalFiles_TextChanged(object sender, EventArgs e)
         {
             if (!linkLabel_AdditionalFiles.Text.StartsWith("http"))
             {
@@ -838,13 +824,13 @@ namespace LiveSplit.Roboquest
         }
         #endregion
 
-        private void colorsCBSillyColors_MouseHover(object sender, EventArgs e)
+        private void ColorsCBSillyColors_MouseHover(object sender, EventArgs e)
         {
             //Displays tooltip
             toolTip.Show("This options allows the multiplier to exceed '1.0', meaning that if using color grading, the maximum color can be brighter than specified.", colorsCBSillyColors);
         }
 
-        private void localMaxCB_MouseHover(object sender, EventArgs e)
+        private void LocalMaxCB_MouseHover(object sender, EventArgs e)
         {
             // Displays tooltip
             toolTip.Show("Shows the largest value which is visible on the graph.", localMaxCB);

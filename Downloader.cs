@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using System.IO;
-using System.Net;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace LiveSplit.Roboquest
 {
@@ -15,11 +15,11 @@ namespace LiveSplit.Roboquest
         {
             string uriToSource = "https://raw.githubusercontent.com/Gelmo/LiveSplit.Roboquest/roboquest/XML/";
             string xmlFileName = Settings.listsFile;
-            bool result = false;
             string downloadedFileLocation = "";
-            if (CheckIfXMLExists(uriToSource+ xmlFileName))
+            bool result = false;
+            if (CheckIfXMLExists(uriToSource + xmlFileName))
             {
-                result = downloadFiles(uriToSource, xmlFileName, out downloadedFileLocation);
+                result = DownloadFiles(uriToSource, xmlFileName, out downloadedFileLocation);
             }
             else
             {
@@ -30,7 +30,7 @@ namespace LiveSplit.Roboquest
             if (result)
             {
                 string currentPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                File.Copy(downloadedFileLocation, Path.Combine(currentPath,xmlFileName), true);
+                File.Copy(downloadedFileLocation, Path.Combine(currentPath, xmlFileName), true);
                 Debug.WriteLine("COPY: " + downloadedFileLocation + " --> " + Path.Combine(currentPath, xmlFileName));
                 MessageBox.Show("Successfully dowloaded new XML from a server", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
@@ -42,7 +42,7 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private bool downloadFiles(string sourceLocation, string file, out string tempLocation)
+        private bool DownloadFiles(string sourceLocation, string file, out string tempLocation)
         {
             WebClient wbClient = new WebClient();
             wbClient.DownloadFileCompleted += WbClient_DownloadFileCompleted;
