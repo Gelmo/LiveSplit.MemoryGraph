@@ -15,7 +15,7 @@ namespace LiveSplit.Roboquest
         }
         public string Description
         {
-            get { return "Shows Memory"; }
+            get { return "Component that provides enhancements for Roboquest"; }
         }
         public IComponent Create(Model.LiveSplitState state)
         {
