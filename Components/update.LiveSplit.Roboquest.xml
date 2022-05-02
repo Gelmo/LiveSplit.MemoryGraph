@@ -1,4 +1,12 @@
 <updates>
+    <update version="0.0.2">
+        <files>
+            <file path="Components/LiveSplit.Roboquest.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>- Prepare the component for the addition of additional offsets</change>
+        </changelog>
+    </update>
     <update version="0.0.1">
         <files>
             <file path="Components/LiveSplit.Roboquest.dll" status="changed"/>
