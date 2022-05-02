@@ -146,7 +146,7 @@ namespace LiveSplit.Roboquest
 
         public string AdditionalRequirement { get; set; }
 
-        public DeepPointer Pointer { get; set; }
+        public DeepPointer SpeedPointer { get; set; }
 
         public Settings()
         {
@@ -249,20 +249,20 @@ namespace LiveSplit.Roboquest
 
                 if (string.IsNullOrWhiteSpace(txtModule.Text))
                 {
-                    Pointer = new DeepPointer(baseAddress, speed_offsets);
+                    SpeedPointer = new DeepPointer(baseAddress, speed_offsets);
                 }
                 else if (txtModule.Text == "[absolute_base]")
                 {
-                    Pointer = new DeepPointer(new IntPtr(baseAddress), speed_offsets);
+                    SpeedPointer = new DeepPointer(new IntPtr(baseAddress), speed_offsets);
                 }
                 else
                 {
-                    Pointer = new DeepPointer(txtModule.Text, baseAddress, speed_offsets);
+                    SpeedPointer = new DeepPointer(txtModule.Text, baseAddress, speed_offsets);
                 }
             }
             else
             {
-                Pointer = null;
+                SpeedPointer = null;
             }
         }
 

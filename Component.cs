@@ -128,10 +128,10 @@ namespace LiveSplit.Roboquest
         private Queue<float> PastValues { get; } = new Queue<float>();
         private float? _localMax = 0;
         private float LocalMax => _localMax ?? (_localMax = PastValues.Max()).Value;
-        private float _currentValue;
-        private float CurrentValue
+        private float _currentSpeedValue;
+        private float CurrentSpeedValue
         {
-            get => _currentValue;
+            get => _currentSpeedValue;
             set
             {
                 if (settings.LocalMax)
@@ -167,7 +167,7 @@ namespace LiveSplit.Roboquest
                     }
                 }
 
-                _currentValue = value;
+                _currentSpeedValue = value;
             }
         }
         private System.Diagnostics.Process process;
@@ -299,7 +299,7 @@ namespace LiveSplit.Roboquest
                                      settings.ValueTextPosition == Position.Right);
 
             // calculate relative value between 0 and 1
-            float relativeValue = (CurrentValue - settings.MinimumValue) / (settings.MaximumValue - settings.MinimumValue);
+            float relativeValue = (CurrentSpeedValue - settings.MinimumValue) / (settings.MaximumValue - settings.MinimumValue);
             float relativeValueClamped = Math.Min(1.0f, Math.Max(0.0f, relativeValue));
 
             // create brush
@@ -355,7 +355,7 @@ namespace LiveSplit.Roboquest
                     gBuffer.DrawImageUnscaled(bmpBuffer, -1, 0);
                     gBuffer.FillRectangle(Brushes.Transparent, graphWidth - 1, 0, 1, graphHeight);
 
-                    if (CurrentValue > settings.MinimumValue)
+                    if (CurrentSpeedValue > settings.MinimumValue)
                     {
                         gBuffer.FillRectangle(graphBrush,
                                               graphWidth - 1, (1 - relativeValueClamped) * graphHeight,
@@ -375,7 +375,7 @@ namespace LiveSplit.Roboquest
                 #endregion
                 #region SingleBar
                 case GraphStyle.SingleBar:
-                    if (CurrentValue > settings.MinimumValue)
+                    if (CurrentSpeedValue > settings.MinimumValue)
                     {
                         RectangleF barRect;
                         if (descriptiveNextToGraph || valueNextToGraph)
@@ -415,7 +415,7 @@ namespace LiveSplit.Roboquest
                         polygon_points[2].X = graphWidth;
                         polygon_points[2].Y = graphHeight;
                         polygon_points[3].X = graphWidth;
-                        if (CurrentValue > settings.MinimumValue)
+                        if (CurrentSpeedValue > settings.MinimumValue)
                             polygon_points[3].Y = graphHeight - (avaragedValue * graphHeight);
                         else
                             polygon_points[3].Y = graphHeight;
@@ -455,7 +455,7 @@ namespace LiveSplit.Roboquest
                     polygon_points[2].X = graphWidth;
                     polygon_points[2].Y = graphHeight;
                     polygon_points[3].X = graphWidth;
-                    if (CurrentValue > settings.MinimumValue)
+                    if (CurrentSpeedValue > settings.MinimumValue)
                         polygon_points[3].Y = graphHeight - (relativeValueClamped * graphHeight);
                     else
                         polygon_points[3].Y = graphHeight;
@@ -532,7 +532,7 @@ namespace LiveSplit.Roboquest
                 rect.X += 5;
                 rect.Width -= 10;
                 string str;
-                str = CurrentValue.ToString("n" + settings.ValueTextDecimals);
+                str = CurrentSpeedValue.ToString("n" + settings.ValueTextDecimals);
                 if (settings.LocalMax)
                 {
                     str += " (" + LocalMax.ToString("n" + settings.ValueTextDecimals) + ")";
@@ -571,51 +571,51 @@ namespace LiveSplit.Roboquest
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            if (process != null && settings.Pointer != null && !process.HasExited &&
+            if (process != null && settings.SpeedPointer != null && !process.HasExited &&
                 string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
             {
                 switch (settings.ValueType)
                 {
                     case MemoryType.Float:
                         {
-                            CurrentValue = settings.Pointer.Deref<float>(process);
+                            CurrentSpeedValue = settings.SpeedPointer.Deref<float>(process);
                         }
                         break;
                     case MemoryType.Int:
                         {
-                            CurrentValue = settings.Pointer.Deref<int>(process);
+                            CurrentSpeedValue = settings.SpeedPointer.Deref<int>(process);
                         }
                         break;
                     case MemoryType.FloatVec2:
                         {
-                            CurrentValue = (float)settings.Pointer.Deref<FloatVec2>(process).Norm;
+                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<FloatVec2>(process).Norm;
                         }
                         break;
                     case MemoryType.FloatVec3:
                         {
-                            CurrentValue = (float)settings.Pointer.Deref<FloatVec3>(process).Norm;
+                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<FloatVec3>(process).Norm;
                         }
                         break;
                     case MemoryType.IntVec2:
                         {
-                            CurrentValue = (float)settings.Pointer.Deref<IntVec2>(process).Norm;
+                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<IntVec2>(process).Norm;
                         }
 
                         break;
                     case MemoryType.IntVec3:
                         {
-                            CurrentValue = (float)settings.Pointer.Deref<IntVec3>(process).Norm;
+                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<IntVec3>(process).Norm;
                         }
 
                         break;
                     case MemoryType.FloatVec2XZY:
                         {
-                            CurrentValue = (float)settings.Pointer.Deref<FloatVec2XZY>(process).Norm;
+                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<FloatVec2XZY>(process).Norm;
                         }
                         break;
                     case MemoryType.IntVec2XZY:
                         {
-                            CurrentValue = (float)settings.Pointer.Deref<IntVec2XZY>(process).Norm;
+                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<IntVec2XZY>(process).Norm;
                         }
                         break;
                 }
