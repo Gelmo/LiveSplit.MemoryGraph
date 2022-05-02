@@ -127,7 +127,7 @@ namespace LiveSplit.Roboquest
         public Position ValueTextPosition { get; set; }
         public Position DescriptiveTextPosition { get; set; }
         public bool LocalMax { get; set; }
-        public MemoryType ValueType { get; set; }
+        public MemoryType SpeedValueType { get; set; }
 
         public Color DescriptiveTextColor { get; set; }
         public Font DescriptiveTextFont { get; set; }
@@ -176,7 +176,7 @@ namespace LiveSplit.Roboquest
             ValueTextPosition = Position.Right;
             DescriptiveTextPosition = Position.Left;
             LocalMax = false;
-            ValueType = MemoryType.Float;
+            SpeedValueType = MemoryType.Float;
             ValueTextDecimals = 2;
             ProcessName = "RoboQuest-Win64-Shipping";
             DescriptiveText = "Speed";
@@ -202,7 +202,7 @@ namespace LiveSplit.Roboquest
 
             cmbDescriptiveTextPosition.DataBindings.Add("SelectedValue", this, "DescriptiveTextPosition", false, DataSourceUpdateMode.OnPropertyChanged);
             localMaxCB.DataBindings.Add("Checked", this, "LocalMax", false, DataSourceUpdateMode.OnPropertyChanged);
-            cmbSpeedType.DataBindings.Add("SelectedValue", this, "ValueType", false, DataSourceUpdateMode.OnPropertyChanged);
+            cmbSpeedType.DataBindings.Add("SelectedValue", this, "SpeedValueType", false, DataSourceUpdateMode.OnPropertyChanged);
 
             txtProcessName.DataBindings.Add("Text", this, "ProcessName");
             txtDescriptiveText.DataBindings.Add("Text", this, "DescriptiveText");
@@ -392,7 +392,7 @@ namespace LiveSplit.Roboquest
             txtModule.Text = SettingsHelper.ParseString(element["Module"]);
             txtBase.Text = SettingsHelper.ParseString(element["Base"]);
             txtSpeedOffsets.Text = SettingsHelper.ParseString(element["SpeedOffsets"]);
-            ValueType = SettingsHelper.ParseEnum<MemoryType>(element["ValueType"]);
+            SpeedValueType = SettingsHelper.ParseEnum<MemoryType>(element["SpeedValueType"]);
 
             DescriptiveTextColor = SettingsHelper.ParseColor(element["DescriptiveTextColor"]);
             DescriptiveTextFont = SettingsHelper.GetFontFromElement(element["DescriptiveTextFont"]);
@@ -483,7 +483,7 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "Module", txtModule.Text) ^
             SettingsHelper.CreateSetting(document, parent, "Base", txtBase.Text) ^
             SettingsHelper.CreateSetting(document, parent, "SpeedOffsets", txtSpeedOffsets.Text) ^
-            SettingsHelper.CreateSetting(document, parent, "ValueType", ValueType) ^
+            SettingsHelper.CreateSetting(document, parent, "SpeedValueType", SpeedValueType) ^
 
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextColor", DescriptiveTextColor) ^
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextFont", DescriptiveTextFont) ^

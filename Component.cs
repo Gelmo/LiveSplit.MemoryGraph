@@ -574,7 +574,7 @@ namespace LiveSplit.Roboquest
             if (process != null && settings.SpeedPointer != null && !process.HasExited &&
                 string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
             {
-                switch (settings.ValueType)
+                switch (settings.SpeedValueType)
                 {
                     case MemoryType.Float:
                         {
