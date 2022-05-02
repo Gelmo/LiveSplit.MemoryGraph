@@ -6,11 +6,9 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Component.descriptiveTextFormat")]
-[assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Component.fake_particles")]
 [assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Component.graphPen")]
 [assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Component.polygon_points")]
 [assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Component.settings")]
-[assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Component.sonic")]
 [assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Component.valueTextFormat")]
 [assembly: SuppressMessage("CodeQuality", "IDE0052:Remove unread private members", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Settings.ci")]
 [assembly: SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>", Scope = "member", Target = "~F:LiveSplit.Roboquest.Settings.ci")]
@@ -33,4 +31,3 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>", Scope = "member", Target = "~M:LiveSplit.Roboquest.Settings.TxtMaximumValue_Validating(System.Object,System.ComponentModel.CancelEventArgs)")]
 [assembly: SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>", Scope = "member", Target = "~M:LiveSplit.Roboquest.Settings.TxtMinimumValue_Validating(System.Object,System.ComponentModel.CancelEventArgs)")]
 [assembly: SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "<Pending>", Scope = "member", Target = "~M:LiveSplit.Roboquest.Settings.TxtSpeedOffsets_Validating(System.Object,System.ComponentModel.CancelEventArgs)")]
-[assembly: SuppressMessage("Style", "IDE0054:Use compound assignment", Justification = "<Pending>", Scope = "member", Target = "~M:LiveSplit.Roboquest.SonicHandling.GetBitmap(System.Single)~System.Drawing.Bitmap")]

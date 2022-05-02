@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Diagnostics;
 
 namespace LiveSplit.Roboquest
 {
@@ -106,8 +105,6 @@ namespace LiveSplit.Roboquest
     {
         private Settings settings;
 
-        SonicHandling sonic;
-
         public string ComponentName => "Roboquest";
 
         public float PaddingTop => 0;
@@ -127,7 +124,6 @@ namespace LiveSplit.Roboquest
         private int graphWidth;
         private int drawCounter = 0;                                        //For smoothing out
         private float avaragedValue;                                    //For smoothing out
-        private float[] fake_particles;
 
         private Queue<float> PastValues { get; } = new Queue<float>();
         private float? _localMax = 0;
@@ -201,9 +197,7 @@ namespace LiveSplit.Roboquest
 
             graphBrush = Brushes.Transparent;
             polygon_points = new PointF[4] { new Point(0, 0), new Point(0, 0), new Point(0, 0), new Point(0, 0), };  //LB, LU, RU, RB
-            fake_particles = new float[5] { 185, 143, 6, 168, 91 };
             graphPen = new Pen(graphBrush);
-            sonic = new SonicHandling();
 
             settings = new Settings();
             settings.HandleDestroyed += SettingsUpdated;
@@ -466,55 +460,6 @@ namespace LiveSplit.Roboquest
                     else
                         polygon_points[3].Y = graphHeight;
                     gBuffer.FillPolygon(graphBrush, polygon_points);
-
-                    if (descriptiveNextToGraph || valueNextToGraph)
-                    {
-                        g.DrawImageUnscaled(bmpBuffer, (int)graphRect.X, (int)graphRect.Y);
-                    }
-                    else
-                    {
-                        g.DrawImage(bmpBuffer, settings.HorizontalMargins, settings.VerticalMargins,
-                                    width - 2 * settings.HorizontalMargins, height - 2 * settings.VerticalMargins);
-                    }
-                    break;
-                #endregion
-                #region Sonic_Graph
-                case GraphStyle.Sonic:
-                    avaragedValue += relativeValue;
-
-                    if (drawCounter == 3)
-                    {
-                        avaragedValue = avaragedValue / 3;
-                        gBuffer.Clear(Color.Transparent);
-
-                        if (graphHeight > graphWidth)
-                            gBuffer.DrawImage(sonic.GetBitmap(relativeValue), 0, 0, graphWidth, graphWidth * 1.27f);
-                        else
-                            gBuffer.DrawImage(sonic.GetBitmap(relativeValue), 0, 0, graphHeight / 1.27f, graphHeight);
-
-
-                        gBuffer.DrawLine(graphPen, fake_particles[0] - 10 * avaragedValue, graphHeight * 0.44f, fake_particles[0], graphHeight * 0.44f);
-                        gBuffer.DrawLine(graphPen, fake_particles[1] - 10 * avaragedValue, graphHeight * 0.76f, fake_particles[1], graphHeight * 0.76f);
-                        gBuffer.DrawLine(graphPen, fake_particles[2] - 10 * avaragedValue, graphHeight * 0.67f, fake_particles[2], graphHeight * 0.67f);
-                        gBuffer.DrawLine(graphPen, fake_particles[3] - 10 * avaragedValue, graphHeight * 0.14f, fake_particles[3], graphHeight * 0.14f);
-                        gBuffer.DrawLine(graphPen, fake_particles[4] - 10 * avaragedValue, graphHeight * 0.33f, fake_particles[4], graphHeight * 0.33f);
-
-                        drawCounter = 0;
-
-                        for (int i = 0; i < fake_particles.Length; i++)
-                        {
-                            fake_particles[i] = fake_particles[i] - 15 * avaragedValue;
-                            if (fake_particles[i] < 0)
-                                fake_particles[i] += graphWidth + 5;
-                        }
-                    }
-                    else
-                    {
-                        drawCounter++;
-                    }
-
-                    //LU, LL, RB, RU
-                    //X,Y, width, height
 
                     if (descriptiveNextToGraph || valueNextToGraph)
                     {

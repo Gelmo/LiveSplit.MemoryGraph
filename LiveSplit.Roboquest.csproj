@@ -74,7 +74,6 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="SpritesHandling\SonicHandling.cs" />
     <Compile Include="TextStyleOverrideControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,9 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SpritesHandling\spirtes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

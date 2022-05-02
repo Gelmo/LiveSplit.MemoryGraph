@@ -42,9 +42,7 @@ namespace LiveSplit.Roboquest
         [Description("Polygonal Graph")]
         Polygonal,
         [Description("Polygonal Overflowing Graph")]
-        PolygonalOverflow,
-        [Description("Sonic")]
-        Sonic
+        PolygonalOverflow
     }
 
     enum GradientType
