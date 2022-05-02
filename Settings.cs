@@ -806,17 +806,7 @@ namespace LiveSplit.Roboquest
             toolTip.Show("Shows the largest value which is visible on the graph.", localMaxCB);
         }
 
-        private void GrpPointerPath_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LblSpeedOffsets_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void GrpRoboquest_Enter(object sender, EventArgs e)
         {
 
         }

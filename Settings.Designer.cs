@@ -40,21 +40,15 @@ namespace LiveSplit.Roboquest
             this.txtDescriptiveText = new System.Windows.Forms.TextBox();
             this.lblDescriptiveTextPosition = new System.Windows.Forms.Label();
             this.cmbDescriptiveTextPosition = new System.Windows.Forms.ComboBox();
-            this.grpPointerPath = new System.Windows.Forms.GroupBox();
+            this.grpRoboquest = new System.Windows.Forms.GroupBox();
             this.ComboBox_GameOption = new System.Windows.Forms.ComboBox();
             this.ComboBox_ListOfGames = new System.Windows.Forms.ComboBox();
             this.B_UpdateXML = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProcessName = new System.Windows.Forms.TextBox();
-            this.lblProcessName = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lblModule = new System.Windows.Forms.Label();
             this.txtSpeedOffsets = new System.Windows.Forms.TextBox();
             this.txtBase = new System.Windows.Forms.TextBox();
             this.txtModule = new System.Windows.Forms.TextBox();
-            this.lblBase = new System.Windows.Forms.Label();
-            this.lblSpeedOffsets = new System.Windows.Forms.Label();
-            this.lblSpeedType = new System.Windows.Forms.Label();
             this.cmbSpeedType = new System.Windows.Forms.ComboBox();
             this.grpGraph = new System.Windows.Forms.GroupBox();
             this.btnDeleteColor = new System.Windows.Forms.Button();
@@ -91,8 +85,7 @@ namespace LiveSplit.Roboquest
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.grpDescriptiveText.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.grpPointerPath.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.grpRoboquest.SuspendLayout();
             this.grpGraph.SuspendLayout();
             this.grpValueText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numValueTextDecimals)).BeginInit();
@@ -109,7 +102,7 @@ namespace LiveSplit.Roboquest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpDescriptiveText.Controls.Add(this.overrideControlDescriptiveText);
             this.grpDescriptiveText.Controls.Add(this.tableLayoutPanel4);
-            this.grpDescriptiveText.Location = new System.Drawing.Point(15, 383);
+            this.grpDescriptiveText.Location = new System.Drawing.Point(15, 321);
             this.grpDescriptiveText.Margin = new System.Windows.Forms.Padding(2);
             this.grpDescriptiveText.Name = "grpDescriptiveText";
             this.grpDescriptiveText.Padding = new System.Windows.Forms.Padding(2);
@@ -183,26 +176,23 @@ namespace LiveSplit.Roboquest
             this.cmbDescriptiveTextPosition.Size = new System.Drawing.Size(136, 21);
             this.cmbDescriptiveTextPosition.TabIndex = 1;
             // 
-            // grpPointerPath
+            // grpRoboquest
             // 
-            this.grpPointerPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpRoboquest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpPointerPath.Controls.Add(this.ComboBox_GameOption);
-            this.grpPointerPath.Controls.Add(this.ComboBox_ListOfGames);
-            this.grpPointerPath.Controls.Add(this.B_UpdateXML);
-            this.grpPointerPath.Controls.Add(this.label1);
-            this.grpPointerPath.Controls.Add(this.txtProcessName);
-            this.grpPointerPath.Controls.Add(this.lblProcessName);
-            this.grpPointerPath.Controls.Add(this.tableLayoutPanel2);
-            this.grpPointerPath.Location = new System.Drawing.Point(11, 11);
-            this.grpPointerPath.Margin = new System.Windows.Forms.Padding(2);
-            this.grpPointerPath.Name = "grpPointerPath";
-            this.grpPointerPath.Padding = new System.Windows.Forms.Padding(2);
-            this.grpPointerPath.Size = new System.Drawing.Size(436, 107);
-            this.grpPointerPath.TabIndex = 0;
-            this.grpPointerPath.TabStop = false;
-            this.grpPointerPath.Text = "Pointer path";
-            this.grpPointerPath.Enter += new System.EventHandler(this.GrpPointerPath_Enter);
+            this.grpRoboquest.Controls.Add(this.ComboBox_GameOption);
+            this.grpRoboquest.Controls.Add(this.ComboBox_ListOfGames);
+            this.grpRoboquest.Controls.Add(this.B_UpdateXML);
+            this.grpRoboquest.Controls.Add(this.label1);
+            this.grpRoboquest.Location = new System.Drawing.Point(11, 11);
+            this.grpRoboquest.Margin = new System.Windows.Forms.Padding(2);
+            this.grpRoboquest.Name = "grpRoboquest";
+            this.grpRoboquest.Padding = new System.Windows.Forms.Padding(2);
+            this.grpRoboquest.Size = new System.Drawing.Size(436, 43);
+            this.grpRoboquest.TabIndex = 0;
+            this.grpRoboquest.TabStop = false;
+            this.grpRoboquest.Text = "Roboquest";
+            this.grpRoboquest.Enter += new System.EventHandler(this.GrpRoboquest_Enter);
             // 
             // ComboBox_GameOption
             // 
@@ -246,9 +236,9 @@ namespace LiveSplit.Roboquest
             this.label1.Location = new System.Drawing.Point(4, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Game:";
+            this.label1.Text = "Version:";
             // 
             // txtProcessName
             // 
@@ -259,57 +249,6 @@ namespace LiveSplit.Roboquest
             this.txtProcessName.Name = "txtProcessName";
             this.txtProcessName.Size = new System.Drawing.Size(334, 20);
             this.txtProcessName.TabIndex = 5;
-            // 
-            // lblProcessName
-            // 
-            this.lblProcessName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblProcessName.AutoSize = true;
-            this.lblProcessName.Location = new System.Drawing.Point(4, 84);
-            this.lblProcessName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblProcessName.Name = "lblProcessName";
-            this.lblProcessName.Size = new System.Drawing.Size(91, 13);
-            this.lblProcessName.TabIndex = 4;
-            this.lblProcessName.Text = "Name of Process:";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
-            this.tableLayoutPanel2.Controls.Add(this.lblModule, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.txtSpeedOffsets, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtBase, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.txtModule, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblBase, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblSpeedOffsets, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.lblSpeedType, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.cmbSpeedType, 3, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 37);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(428, 43);
-            this.tableLayoutPanel2.TabIndex = 3;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanel2_Paint);
-            // 
-            // lblModule
-            // 
-            this.lblModule.AutoSize = true;
-            this.lblModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblModule.Location = new System.Drawing.Point(2, 0);
-            this.lblModule.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblModule.Name = "lblModule";
-            this.lblModule.Size = new System.Drawing.Size(80, 17);
-            this.lblModule.TabIndex = 0;
-            this.lblModule.Text = "Module:";
-            this.lblModule.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // txtSpeedOffsets
             // 
@@ -340,43 +279,6 @@ namespace LiveSplit.Roboquest
             this.txtModule.Size = new System.Drawing.Size(80, 20);
             this.txtModule.TabIndex = 1;
             // 
-            // lblBase
-            // 
-            this.lblBase.AutoSize = true;
-            this.lblBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBase.Location = new System.Drawing.Point(86, 0);
-            this.lblBase.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBase.Name = "lblBase";
-            this.lblBase.Size = new System.Drawing.Size(80, 17);
-            this.lblBase.TabIndex = 1;
-            this.lblBase.Text = "Base:";
-            this.lblBase.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // lblSpeedOffsets
-            // 
-            this.lblSpeedOffsets.AutoSize = true;
-            this.lblSpeedOffsets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSpeedOffsets.Location = new System.Drawing.Point(170, 0);
-            this.lblSpeedOffsets.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSpeedOffsets.Name = "lblSpeedOffsets";
-            this.lblSpeedOffsets.Size = new System.Drawing.Size(164, 17);
-            this.lblSpeedOffsets.TabIndex = 2;
-            this.lblSpeedOffsets.Text = "Speed Offsets:";
-            this.lblSpeedOffsets.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.lblSpeedOffsets.Click += new System.EventHandler(this.LblSpeedOffsets_Click);
-            // 
-            // lblSpeedType
-            // 
-            this.lblSpeedType.AutoSize = true;
-            this.lblSpeedType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblSpeedType.Location = new System.Drawing.Point(338, 0);
-            this.lblSpeedType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSpeedType.Name = "lblSpeedType";
-            this.lblSpeedType.Size = new System.Drawing.Size(88, 17);
-            this.lblSpeedType.TabIndex = 3;
-            this.lblSpeedType.Text = "Speed Type:";
-            this.lblSpeedType.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // cmbSpeedType
             // 
             this.cmbSpeedType.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -405,14 +307,14 @@ namespace LiveSplit.Roboquest
             this.grpGraph.Controls.Add(this.btnBackgroundColor1);
             this.grpGraph.Controls.Add(this.btnBackgroundColor2);
             this.grpGraph.Controls.Add(this.cmbBackgroundGradientType);
-            this.grpGraph.Location = new System.Drawing.Point(11, 117);
+            this.grpGraph.Location = new System.Drawing.Point(11, 56);
             this.grpGraph.Margin = new System.Windows.Forms.Padding(2);
             this.grpGraph.Name = "grpGraph";
             this.grpGraph.Padding = new System.Windows.Forms.Padding(2);
             this.grpGraph.Size = new System.Drawing.Size(436, 346);
             this.grpGraph.TabIndex = 1;
             this.grpGraph.TabStop = false;
-            this.grpGraph.Text = "Graph";
+            this.grpGraph.Text = "Speed Graph";
             // 
             // btnDeleteColor
             // 
@@ -819,7 +721,7 @@ namespace LiveSplit.Roboquest
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grpDescriptiveText);
-            this.Controls.Add(this.grpPointerPath);
+            this.Controls.Add(this.grpRoboquest);
             this.Controls.Add(this.grpGraph);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Settings";
@@ -828,10 +730,8 @@ namespace LiveSplit.Roboquest
             this.grpDescriptiveText.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.grpPointerPath.ResumeLayout(false);
-            this.grpPointerPath.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.grpRoboquest.ResumeLayout(false);
+            this.grpRoboquest.PerformLayout();
             this.grpGraph.ResumeLayout(false);
             this.grpGraph.PerformLayout();
             this.grpValueText.ResumeLayout(false);
@@ -911,15 +811,10 @@ namespace LiveSplit.Roboquest
                    value
                }).OrderBy(item => item.value).ToList();
         }
-        private System.Windows.Forms.GroupBox grpPointerPath;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label lblModule;
+        private System.Windows.Forms.GroupBox grpRoboquest;
         private System.Windows.Forms.TextBox txtSpeedOffsets;
         private System.Windows.Forms.TextBox txtBase;
         private System.Windows.Forms.TextBox txtModule;
-        private System.Windows.Forms.Label lblBase;
-        private System.Windows.Forms.Label lblSpeedOffsets;
-        private System.Windows.Forms.Label lblSpeedType;
         private System.Windows.Forms.ComboBox cmbSpeedType;
         private System.Windows.Forms.GroupBox grpGraph;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
@@ -939,7 +834,6 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.NumericUpDown numHorizontalMargins;
         private System.Windows.Forms.GroupBox grpValueText;
         private System.Windows.Forms.TextBox txtProcessName;
-        private System.Windows.Forms.Label lblProcessName;
         private System.Windows.Forms.GroupBox grpDescriptiveText;
         private TextStyleOverrideControl overrideControlDescriptiveText;
         private TextStyleOverrideControl overrideControlValueText;
