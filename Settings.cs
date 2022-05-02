@@ -3,7 +3,6 @@ using LiveSplit.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -144,8 +143,6 @@ namespace LiveSplit.Roboquest
         public string ProcessName { get; set; }
         public string DescriptiveText { get; set; }
 
-        public string AdditionalRequirement { get; set; }
-
         public DeepPointer SpeedPointer { get; set; }
 
         public Settings()
@@ -183,7 +180,6 @@ namespace LiveSplit.Roboquest
             ValueTextDecimals = 2;
             ProcessName = "RoboQuest-Win64-Shipping";
             DescriptiveText = "Speed";
-            AdditionalRequirement = "";
             DescriptiveTextFont = overrideControlDescriptiveText.OverridingFont;
             ValueTextFont = overrideControlValueText.OverridingFont;
 
@@ -210,7 +206,6 @@ namespace LiveSplit.Roboquest
 
             txtProcessName.DataBindings.Add("Text", this, "ProcessName");
             txtDescriptiveText.DataBindings.Add("Text", this, "DescriptiveText");
-            linkLabel_AdditionalFiles.DataBindings.Add("Text", this, "AdditionalRequirement");
 
             overrideControlDescriptiveText.DataBindings.Add("OverridingColor", this, "DescriptiveTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
             overrideControlDescriptiveText.DataBindings.Add("OverridingFont", this, "DescriptiveTextFont", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -669,7 +664,6 @@ namespace LiveSplit.Roboquest
                     {
                         ProcessName = GetSafeStringValueFromXML(gameNode, "process");
                         txtProcessName.Text = ProcessName;
-                        AdditionalRequirement = GetSafeStringValueFromXML(gameNode, "additional_requirement_url");
 
                         txtModule.Text = GetSafeStringValueFromXML(gameNode, "module");
                         txtBase.Text = GetSafeStringValueFromXML(gameNode, "base");
@@ -699,7 +693,6 @@ namespace LiveSplit.Roboquest
                                 {
                                     ProcessName = GetSafeStringValueFromXML(optionNode, "process", ProcessName);
                                     txtProcessName.Text = ProcessName;
-                                    AdditionalRequirement = GetSafeStringValueFromXML(optionNode, "additional_requirement_url", AdditionalRequirement);
 
                                     txtModule.Text = GetSafeStringValueFromXML(optionNode, "module", txtModule.Text);
                                     txtBase.Text = GetSafeStringValueFromXML(optionNode, "base", txtBase.Text);
@@ -799,27 +792,6 @@ namespace LiveSplit.Roboquest
         }
         #endregion
 
-        private void LinkLabel_AdditionalFiles_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (linkLabel_AdditionalFiles.Text.StartsWith("http"))
-            {
-                Process.Start(linkLabel_AdditionalFiles.Text);
-            }
-        }
-
-        private void LinkLabel_AdditionalFiles_TextChanged(object sender, EventArgs e)
-        {
-            if (!linkLabel_AdditionalFiles.Text.StartsWith("http"))
-            {
-                linkLabel_AdditionalFiles.Text = "";
-                L_Requires.Visible = false;
-            }
-            else
-            {
-                L_Requires.Visible = true;
-                linkLabel_AdditionalFiles.LinkArea = new LinkArea(0, linkLabel_AdditionalFiles.Text.Length);
-            }
-        }
         #endregion
 
         private void ColorsCBSillyColors_MouseHover(object sender, EventArgs e)
@@ -832,6 +804,21 @@ namespace LiveSplit.Roboquest
         {
             // Displays tooltip
             toolTip.Show("Shows the largest value which is visible on the graph.", localMaxCB);
+        }
+
+        private void GrpPointerPath_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LblSpeedOffsets_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
