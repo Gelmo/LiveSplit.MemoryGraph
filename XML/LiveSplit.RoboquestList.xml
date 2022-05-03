@@ -3,7 +3,7 @@
 	Do not add new games to this file! Add them to LiveSplit.Roboquest.Games.xml instead.
 -->
 <games>
-	<game name="Roboquest (0.8.9)">
+	<game name="Steam (0.8.9-551)">
 		<process>RoboQuest-Win64-Shipping</process>
 		<base>04B427F0</base>
 		<!-- <lastlevel_offsets>120,3D0</lastlevel_offsets> -->
@@ -14,10 +14,9 @@
 		<totalruntime_offsets>120,860</totalruntime_offsets>
 		<!-- <bgametimepaused_offsets>120,864</bgametimepaused_offsets> -->
 		<bisdead_offsets>180,38,0,30,260,88A</bisdead_offsets>
-		<!-- <bcurrentlyfightingboss_offsets>180,38,0,30,260,4EF9</bcurrentlyfightingboss_offsets> -->
-		<!-- <classname_offsets>180,38,0,30,260,4EF9</classname_offsets> -->
 		<speed_offsets>180,38,0,30,260,46A0</speed_offsets>
-		<speed_type>Float</speed_type>
+		<!-- <bcurrentlyfightingboss_offsets>180,38,0,30,260,4EF9</bcurrentlyfightingboss_offsets> -->
+		<!-- <classname_offsets>180,38,0,30,260,1150,28,0</classname_offsets> -->
 		<maximumValue>3500</maximumValue>
 		<decimals>2</decimals>
 	</game>
