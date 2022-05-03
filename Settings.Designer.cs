@@ -49,7 +49,6 @@ namespace LiveSplit.Roboquest
             this.txtSpeedOffsets = new System.Windows.Forms.TextBox();
             this.txtBase = new System.Windows.Forms.TextBox();
             this.txtModule = new System.Windows.Forms.TextBox();
-            this.cmbSpeedType = new System.Windows.Forms.ComboBox();
             this.grpGraph = new System.Windows.Forms.GroupBox();
             this.btnDeleteColor = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
@@ -278,17 +277,6 @@ namespace LiveSplit.Roboquest
             this.txtModule.Name = "txtModule";
             this.txtModule.Size = new System.Drawing.Size(80, 20);
             this.txtModule.TabIndex = 1;
-            // 
-            // cmbSpeedType
-            // 
-            this.cmbSpeedType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbSpeedType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSpeedType.FormattingEnabled = true;
-            this.cmbSpeedType.Location = new System.Drawing.Point(338, 19);
-            this.cmbSpeedType.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbSpeedType.Name = "cmbSpeedType";
-            this.cmbSpeedType.Size = new System.Drawing.Size(88, 21);
-            this.cmbSpeedType.TabIndex = 4;
             // 
             // grpGraph
             // 
@@ -751,16 +739,6 @@ namespace LiveSplit.Roboquest
 
         private void AddComboboxDataSources()
         {
-            cmbSpeedType.DisplayMember = "Description";
-            cmbSpeedType.ValueMember = "value";
-            cmbSpeedType.DataSource = Enum.GetValues(typeof(MemoryType)).Cast<Enum>().Select(value =>
-                new
-                {
-                    (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()),
-                     typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
-                    value
-                }).OrderBy(item => item.value).ToList();
-
             cmbGraphGradientType.DisplayMember = "Description";
             cmbGraphGradientType.ValueMember = "value";
             cmbGraphGradientType.DataSource = Enum.GetValues(typeof(GraphGradientType)).Cast<Enum>().Select(value =>
@@ -815,7 +793,6 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.TextBox txtSpeedOffsets;
         private System.Windows.Forms.TextBox txtBase;
         private System.Windows.Forms.TextBox txtModule;
-        private System.Windows.Forms.ComboBox cmbSpeedType;
         private System.Windows.Forms.GroupBox grpGraph;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label lblMaximumValue;

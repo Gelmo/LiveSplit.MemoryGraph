@@ -12,25 +12,6 @@ using System.Xml;
 
 namespace LiveSplit.Roboquest
 {
-    enum MemoryType
-    {
-        [Description("Float")]
-        Float,
-        [Description("Int")]
-        Int,
-        [Description("FloatVec2")]
-        FloatVec2,
-        [Description("IntVec2")]
-        IntVec2,
-        [Description("FloatVec3")]
-        FloatVec3,
-        [Description("IntVec3")]
-        IntVec3,
-        [Description("FloatVec2XZY")]
-        FloatVec2XZY,
-        [Description("IntVec2XZY")]
-        IntVec2XZY
-    }
 
     enum GraphStyle
     {
@@ -127,7 +108,6 @@ namespace LiveSplit.Roboquest
         public Position ValueTextPosition { get; set; }
         public Position DescriptiveTextPosition { get; set; }
         public bool LocalMax { get; set; }
-        public MemoryType SpeedValueType { get; set; }
 
         public Color DescriptiveTextColor { get; set; }
         public Font DescriptiveTextFont { get; set; }
@@ -176,7 +156,6 @@ namespace LiveSplit.Roboquest
             ValueTextPosition = Position.Right;
             DescriptiveTextPosition = Position.Left;
             LocalMax = false;
-            SpeedValueType = MemoryType.Float;
             ValueTextDecimals = 2;
             ProcessName = "RoboQuest-Win64-Shipping";
             DescriptiveText = "Speed";
@@ -202,7 +181,6 @@ namespace LiveSplit.Roboquest
 
             cmbDescriptiveTextPosition.DataBindings.Add("SelectedValue", this, "DescriptiveTextPosition", false, DataSourceUpdateMode.OnPropertyChanged);
             localMaxCB.DataBindings.Add("Checked", this, "LocalMax", false, DataSourceUpdateMode.OnPropertyChanged);
-            cmbSpeedType.DataBindings.Add("SelectedValue", this, "SpeedValueType", false, DataSourceUpdateMode.OnPropertyChanged);
 
             txtProcessName.DataBindings.Add("Text", this, "ProcessName");
             txtDescriptiveText.DataBindings.Add("Text", this, "DescriptiveText");
@@ -392,7 +370,6 @@ namespace LiveSplit.Roboquest
             txtModule.Text = SettingsHelper.ParseString(element["Module"]);
             txtBase.Text = SettingsHelper.ParseString(element["Base"]);
             txtSpeedOffsets.Text = SettingsHelper.ParseString(element["SpeedOffsets"]);
-            SpeedValueType = SettingsHelper.ParseEnum<MemoryType>(element["SpeedValueType"]);
 
             DescriptiveTextColor = SettingsHelper.ParseColor(element["DescriptiveTextColor"]);
             DescriptiveTextFont = SettingsHelper.GetFontFromElement(element["DescriptiveTextFont"]);
@@ -483,7 +460,6 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "Module", txtModule.Text) ^
             SettingsHelper.CreateSetting(document, parent, "Base", txtBase.Text) ^
             SettingsHelper.CreateSetting(document, parent, "SpeedOffsets", txtSpeedOffsets.Text) ^
-            SettingsHelper.CreateSetting(document, parent, "SpeedValueType", SpeedValueType) ^
 
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextColor", DescriptiveTextColor) ^
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextFont", DescriptiveTextFont) ^
@@ -668,7 +644,6 @@ namespace LiveSplit.Roboquest
                         txtModule.Text = GetSafeStringValueFromXML(gameNode, "module");
                         txtBase.Text = GetSafeStringValueFromXML(gameNode, "base");
                         txtSpeedOffsets.Text = GetSafeStringValueFromXML(gameNode, "speed_offsets");
-                        cmbSpeedType.SelectedIndex = GetSafeTypeFromXML(gameNode, "speed_type");
                         txtMaximumValue.Text = GetSafeStringValueFromXML(gameNode, "maximumValue", txtMaximumValue.Text);
                         numValueTextDecimals.Value = GetSafeDecimalFromXML(gameNode, "decimals");
 
@@ -697,10 +672,6 @@ namespace LiveSplit.Roboquest
                                     txtModule.Text = GetSafeStringValueFromXML(optionNode, "module", txtModule.Text);
                                     txtBase.Text = GetSafeStringValueFromXML(optionNode, "base", txtBase.Text);
                                     txtSpeedOffsets.Text = GetSafeStringValueFromXML(optionNode, "speed_offsets", txtSpeedOffsets.Text);
-                                    if (optionNode.SelectSingleNode("speed_type") != null)
-                                    {
-                                        cmbSpeedType.SelectedIndex = GetSafeTypeFromXML(optionNode, "speed_type");
-                                    }
                                     txtMaximumValue.Text = GetSafeStringValueFromXML(optionNode, "maximumValue", txtMaximumValue.Text);
                                     numValueTextDecimals.Value = GetSafeDecimalFromXML(optionNode, "decimals", numValueTextDecimals.Value);
                                 }
@@ -736,49 +707,6 @@ namespace LiveSplit.Roboquest
             }
             else
                 return defaultValue;
-        }
-
-        private int GetSafeTypeFromXML(XmlNode docNode, string nodeName)
-        {
-            if (docNode.SelectSingleNode(nodeName) != null)
-            {
-                string speedTypeTemp = docNode.SelectSingleNode(nodeName).InnerText.ToLower();
-                if (speedTypeTemp == "float")
-                {
-                    return (int)MemoryType.Float;
-                }
-                else if (speedTypeTemp == "int")
-                {
-                    return (int)MemoryType.Int;
-                }
-                else if (speedTypeTemp == "floatvec2")
-                {
-                    return (int)MemoryType.FloatVec2;
-                }
-                else if (speedTypeTemp == "floatvec3")
-                {
-                    return (int)MemoryType.FloatVec3;
-                }
-                else if (speedTypeTemp == "intvec2")
-                {
-                    return (int)MemoryType.IntVec2;
-                }
-                else if (speedTypeTemp == "intvec3")
-                {
-                    return (int)MemoryType.IntVec3;
-                }
-                else if (speedTypeTemp == "floatvec2xzy")
-                {
-                    return (int)MemoryType.FloatVec2XZY;
-                }
-                else if (speedTypeTemp == "intvec2xzy")
-                {
-                    return (int)MemoryType.IntVec2XZY;
-                }
-                else
-                    return (int)MemoryType.Float;
-            }
-            return (int)MemoryType.Float;
         }
 
         private decimal GetSafeDecimalFromXML(XmlNode docNode, string nodeName, decimal defaultValue = 0m)

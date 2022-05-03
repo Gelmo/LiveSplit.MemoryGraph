@@ -574,51 +574,8 @@ namespace LiveSplit.Roboquest
             if (process != null && settings.SpeedPointer != null && !process.HasExited &&
                 string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
             {
-                switch (settings.SpeedValueType)
-                {
-                    case MemoryType.Float:
-                        {
-                            CurrentSpeedValue = settings.SpeedPointer.Deref<float>(process);
-                        }
-                        break;
-                    case MemoryType.Int:
-                        {
-                            CurrentSpeedValue = settings.SpeedPointer.Deref<int>(process);
-                        }
-                        break;
-                    case MemoryType.FloatVec2:
-                        {
-                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<FloatVec2>(process).Norm;
-                        }
-                        break;
-                    case MemoryType.FloatVec3:
-                        {
-                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<FloatVec3>(process).Norm;
-                        }
-                        break;
-                    case MemoryType.IntVec2:
-                        {
-                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<IntVec2>(process).Norm;
-                        }
 
-                        break;
-                    case MemoryType.IntVec3:
-                        {
-                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<IntVec3>(process).Norm;
-                        }
-
-                        break;
-                    case MemoryType.FloatVec2XZY:
-                        {
-                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<FloatVec2XZY>(process).Norm;
-                        }
-                        break;
-                    case MemoryType.IntVec2XZY:
-                        {
-                            CurrentSpeedValue = (float)settings.SpeedPointer.Deref<IntVec2XZY>(process).Norm;
-                        }
-                        break;
-                }
+                CurrentSpeedValue = settings.SpeedPointer.Deref<float>(process);
 
                 if (invalidator != null)
                 {
