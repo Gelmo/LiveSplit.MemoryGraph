@@ -530,7 +530,7 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private void TxtSpeedOffsets_Validating(object sender, CancelEventArgs e)
+        private void TxtOffsets_Validating(object sender, CancelEventArgs e)
         {
             var speed_offsets = txtSpeedOffsets.Text.Split(',');
             if (speed_offsets.Length == 1 && string.IsNullOrEmpty(speed_offsets[0]))

@@ -243,7 +243,7 @@ namespace LiveSplit.Roboquest
             this.txtSpeedOffsets.Name = "txtSpeedOffsets";
             this.txtSpeedOffsets.Size = new System.Drawing.Size(164, 20);
             this.txtSpeedOffsets.TabIndex = 1;
-            this.txtSpeedOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.TxtSpeedOffsets_Validating);
+            this.txtSpeedOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOffsets_Validating);
             // 
             // txtBase
             // 
