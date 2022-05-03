@@ -355,15 +355,6 @@ namespace LiveSplit.Roboquest
                 if (ComboBox_ListOfGames.DataSource is List<string> games && games.Contains(selectedGame))
                 {
                     ComboBox_ListOfGames.SelectedItem = selectedGame;
-
-                    var selectedOption = SettingsHelper.ParseString(element["SelectedGameOption"]);
-                    if (selectedOption != null)
-                    {
-                        if (ComboBox_GameOption.DataSource is List<string> options && options.Contains(selectedOption))
-                        {
-                            ComboBox_GameOption.SelectedItem = selectedOption;
-                        }
-                    }
                 }
             }
 
@@ -455,7 +446,6 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "DescriptiveText", DescriptiveText) ^
 
             SettingsHelper.CreateSetting(document, parent, "SelectedGame", ComboBox_ListOfGames.SelectedValue) ^
-            SettingsHelper.CreateSetting(document, parent, "SelectedGameOption", ComboBox_GameOption.SelectedValue) ^
 
             SettingsHelper.CreateSetting(document, parent, "Module", txtModule.Text) ^
             SettingsHelper.CreateSetting(document, parent, "Base", txtBase.Text) ^
@@ -626,8 +616,6 @@ namespace LiveSplit.Roboquest
         {
             if ((string)ComboBox_ListOfGames.SelectedValue == "-None-")
             {
-                ComboBox_GameOption.DataSource = null;
-                ComboBox_GameOption.Enabled = false;
             }
             else
             {
@@ -646,42 +634,6 @@ namespace LiveSplit.Roboquest
                         txtSpeedOffsets.Text = GetSafeStringValueFromXML(gameNode, "speed_offsets");
                         txtMaximumValue.Text = GetSafeStringValueFromXML(gameNode, "maximumValue", txtMaximumValue.Text);
                         numValueTextDecimals.Value = GetSafeDecimalFromXML(gameNode, "decimals");
-
-                        var options = gameNode.SelectSingleNode("options");
-                        if (options != null)
-                        {
-                            // Update the options drop down to include the verisons.
-                            var optionNames = new List<string>();
-                            foreach (XmlNode optionNode in options.ChildNodes)
-                            {
-                                optionNames.Add(optionNode.Attributes[0].Value);
-                            }
-                            if (!(ComboBox_GameOption.DataSource is List<string> prevSource) || !prevSource.SequenceEqual(optionNames))
-                            {
-                                ComboBox_GameOption.DataSource = optionNames;
-                            }
-                            ComboBox_GameOption.Enabled = true;
-
-                            foreach (XmlNode optionNode in options.ChildNodes)
-                            {
-                                if (optionNode.Attributes[0].Value == (string)ComboBox_GameOption.SelectedValue)
-                                {
-                                    ProcessName = GetSafeStringValueFromXML(optionNode, "process", ProcessName);
-                                    txtProcessName.Text = ProcessName;
-
-                                    txtModule.Text = GetSafeStringValueFromXML(optionNode, "module", txtModule.Text);
-                                    txtBase.Text = GetSafeStringValueFromXML(optionNode, "base", txtBase.Text);
-                                    txtSpeedOffsets.Text = GetSafeStringValueFromXML(optionNode, "speed_offsets", txtSpeedOffsets.Text);
-                                    txtMaximumValue.Text = GetSafeStringValueFromXML(optionNode, "maximumValue", txtMaximumValue.Text);
-                                    numValueTextDecimals.Value = GetSafeDecimalFromXML(optionNode, "decimals", numValueTextDecimals.Value);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            ComboBox_GameOption.DataSource = null;
-                            ComboBox_GameOption.Enabled = false;
-                        }
 
                         break;
                     }

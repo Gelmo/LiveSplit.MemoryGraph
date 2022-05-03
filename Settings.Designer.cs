@@ -41,7 +41,6 @@ namespace LiveSplit.Roboquest
             this.lblDescriptiveTextPosition = new System.Windows.Forms.Label();
             this.cmbDescriptiveTextPosition = new System.Windows.Forms.ComboBox();
             this.grpRoboquest = new System.Windows.Forms.GroupBox();
-            this.ComboBox_GameOption = new System.Windows.Forms.ComboBox();
             this.ComboBox_ListOfGames = new System.Windows.Forms.ComboBox();
             this.B_UpdateXML = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -179,7 +178,6 @@ namespace LiveSplit.Roboquest
             // 
             this.grpRoboquest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpRoboquest.Controls.Add(this.ComboBox_GameOption);
             this.grpRoboquest.Controls.Add(this.ComboBox_ListOfGames);
             this.grpRoboquest.Controls.Add(this.B_UpdateXML);
             this.grpRoboquest.Controls.Add(this.label1);
@@ -193,27 +191,15 @@ namespace LiveSplit.Roboquest
             this.grpRoboquest.Text = "Roboquest";
             this.grpRoboquest.Enter += new System.EventHandler(this.GrpRoboquest_Enter);
             // 
-            // ComboBox_GameOption
-            // 
-            this.ComboBox_GameOption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ComboBox_GameOption.FormattingEnabled = true;
-            this.ComboBox_GameOption.Location = new System.Drawing.Point(248, 15);
-            this.ComboBox_GameOption.Margin = new System.Windows.Forms.Padding(2);
-            this.ComboBox_GameOption.Name = "ComboBox_GameOption";
-            this.ComboBox_GameOption.Size = new System.Drawing.Size(76, 21);
-            this.ComboBox_GameOption.TabIndex = 12;
-            this.ComboBox_GameOption.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ListOfGames_SelectedIndexChanged);
-            // 
             // ComboBox_ListOfGames
             // 
             this.ComboBox_ListOfGames.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBox_ListOfGames.FormattingEnabled = true;
-            this.ComboBox_ListOfGames.Location = new System.Drawing.Point(63, 15);
+            this.ComboBox_ListOfGames.Location = new System.Drawing.Point(51, 15);
             this.ComboBox_ListOfGames.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBox_ListOfGames.Name = "ComboBox_ListOfGames";
-            this.ComboBox_ListOfGames.Size = new System.Drawing.Size(181, 21);
+            this.ComboBox_ListOfGames.Size = new System.Drawing.Size(272, 21);
             this.ComboBox_ListOfGames.TabIndex = 9;
             this.ComboBox_ListOfGames.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ListOfGames_SelectedIndexChanged);
             // 
@@ -836,6 +822,5 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.CheckBox localMaxCB;
         private System.Windows.Forms.Button btnAddColor;
         private System.Windows.Forms.Button btnDeleteColor;
-        private System.Windows.Forms.ComboBox ComboBox_GameOption;
     }
 }
