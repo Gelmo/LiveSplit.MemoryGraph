@@ -122,7 +122,16 @@ namespace LiveSplit.Roboquest
         public string ProcessName { get; set; }
         public string DescriptiveText { get; set; }
 
-        public DeepPointer SpeedPointer { get; set; }
+        public DeepPointer LastLevelPointer { get; set; }
+        public DeepPointer GameLevelPointer { get; set; }
+        public DeepPointer PlayerLevelPointer { get; set; }
+        public DeepPointer GameTimePointer { get; set; }
+        public DeepPointer GameTimeOnLevelStartPointer { get; set; }
+        public DeepPointer TotalRunTimePointer { get; set; }
+        public DeepPointer BGameTimePausedPointer { get; set; }
+        public DeepPointer BIsDeadPointer { get; set; }
+        public DeepPointer AnimSpeedPointer { get; set; }
+        public DeepPointer BCurrentlyFightingBossPointer { get; set; }
 
         public Settings()
         {
@@ -199,42 +208,231 @@ namespace LiveSplit.Roboquest
 
         private void UpdatePointer(object sender, EventArgs e)
         {
-            int[] speed_offsets;
+            int[] lastlevel_offsets;
+            int[] gamelevel_offsets;
+            int[] playerlevel_offsets;
+            int[] gametime_offsets;
+            int[] gametimeonlevelstart_offsets;
+            int[] totalruntime_offsets;
+            int[] bgametimepaused_offsets;
+            int[] bisdead_offsets;
+            int[] animspeed_offsets;
+            int[] bcurrentlyfightingboss_offsets;
 
             if (TryParseHex(txtBase.Text, out int baseAddress))
             {
-                if (!string.IsNullOrWhiteSpace(txtSpeedOffsets.Text))
+                if (!string.IsNullOrWhiteSpace(txtLastLevelOffsets.Text))
                 {
-                    string[] speedoffsetStrings = txtSpeedOffsets.Text.Split(',');
-                    speed_offsets = new int[speedoffsetStrings.Length];
+                    string[] lastleveloffsetStrings = txtLastLevelOffsets.Text.Split(',');
+                    lastlevel_offsets = new int[lastleveloffsetStrings.Length];
                     int j = 0;
-                    foreach (string speedoffset in speedoffsetStrings)
+                    foreach (string lastleveloffset in lastleveloffsetStrings)
                     {
-                        TryParseHex(speedoffset.Trim(), out speed_offsets[j]);
+                        TryParseHex(lastleveloffset.Trim(), out lastlevel_offsets[j]);
                         j += 1;
                     }
                 }
                 else
                 {
-                    speed_offsets = new int[0];
+                    lastlevel_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtGameLevelOffsets.Text))
+                {
+                    string[] gameleveloffsetStrings = txtGameLevelOffsets.Text.Split(',');
+                    gamelevel_offsets = new int[gameleveloffsetStrings.Length];
+                    int j = 0;
+                    foreach (string gameleveloffset in gameleveloffsetStrings)
+                    {
+                        TryParseHex(gameleveloffset.Trim(), out gamelevel_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    gamelevel_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtPlayerLevelOffsets.Text))
+                {
+                    string[] playerleveloffsetStrings = txtPlayerLevelOffsets.Text.Split(',');
+                    playerlevel_offsets = new int[playerleveloffsetStrings.Length];
+                    int j = 0;
+                    foreach (string playerleveloffset in playerleveloffsetStrings)
+                    {
+                        TryParseHex(playerleveloffset.Trim(), out playerlevel_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    playerlevel_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtGameTimeOffsets.Text))
+                {
+                    string[] gametimeoffsetStrings = txtGameTimeOffsets.Text.Split(',');
+                    gametime_offsets = new int[gametimeoffsetStrings.Length];
+                    int j = 0;
+                    foreach (string gametimeoffset in gametimeoffsetStrings)
+                    {
+                        TryParseHex(gametimeoffset.Trim(), out gametime_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    gametime_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtGameTimeOnLevelStartOffsets.Text))
+                {
+                    string[] gametimeonlevelstartoffsetStrings = txtGameTimeOnLevelStartOffsets.Text.Split(',');
+                    gametimeonlevelstart_offsets = new int[gametimeonlevelstartoffsetStrings.Length];
+                    int j = 0;
+                    foreach (string gametimeonlevelstartoffset in gametimeonlevelstartoffsetStrings)
+                    {
+                        TryParseHex(gametimeonlevelstartoffset.Trim(), out gametimeonlevelstart_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    gametimeonlevelstart_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtTotalRunTimeOffsets.Text))
+                {
+                    string[] totalruntimeoffsetStrings = txtTotalRunTimeOffsets.Text.Split(',');
+                    totalruntime_offsets = new int[totalruntimeoffsetStrings.Length];
+                    int j = 0;
+                    foreach (string totalruntimeoffset in totalruntimeoffsetStrings)
+                    {
+                        TryParseHex(totalruntimeoffset.Trim(), out totalruntime_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    totalruntime_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtBGameTimePausedOffsets.Text))
+                {
+                    string[] bgametimepausedoffsetStrings = txtBGameTimePausedOffsets.Text.Split(',');
+                    bgametimepaused_offsets = new int[bgametimepausedoffsetStrings.Length];
+                    int j = 0;
+                    foreach (string bgametimepausedoffset in bgametimepausedoffsetStrings)
+                    {
+                        TryParseHex(bgametimepausedoffset.Trim(), out bgametimepaused_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    bgametimepaused_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtBIsDeadOffsets.Text))
+                {
+                    string[] bisdeadoffsetStrings = txtBIsDeadOffsets.Text.Split(',');
+                    bisdead_offsets = new int[bisdeadoffsetStrings.Length];
+                    int j = 0;
+                    foreach (string bisdeadoffset in bisdeadoffsetStrings)
+                    {
+                        TryParseHex(bisdeadoffset.Trim(), out bisdead_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    bisdead_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtAnimSpeedOffsets.Text))
+                {
+                    string[] animspeedoffsetStrings = txtAnimSpeedOffsets.Text.Split(',');
+                    animspeed_offsets = new int[animspeedoffsetStrings.Length];
+                    int j = 0;
+                    foreach (string animspeedoffset in animspeedoffsetStrings)
+                    {
+                        TryParseHex(animspeedoffset.Trim(), out animspeed_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    animspeed_offsets = new int[0];
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtBCurrentlyFightingBossOffsets.Text))
+                {
+                    string[] bcurrentlyfightingbossoffsetStrings = txtBCurrentlyFightingBossOffsets.Text.Split(',');
+                    bcurrentlyfightingboss_offsets = new int[bcurrentlyfightingbossoffsetStrings.Length];
+                    int j = 0;
+                    foreach (string bcurrentlyfightingbossoffset in bcurrentlyfightingbossoffsetStrings)
+                    {
+                        TryParseHex(bcurrentlyfightingbossoffset.Trim(), out bcurrentlyfightingboss_offsets[j]);
+                        j += 1;
+                    }
+                }
+                else
+                {
+                    bcurrentlyfightingboss_offsets = new int[0];
                 }
 
                 if (string.IsNullOrWhiteSpace(txtModule.Text))
                 {
-                    SpeedPointer = new DeepPointer(baseAddress, speed_offsets);
+                    LastLevelPointer = new DeepPointer(baseAddress, lastlevel_offsets);
+                    GameLevelPointer = new DeepPointer(baseAddress, gamelevel_offsets);
+                    PlayerLevelPointer = new DeepPointer(baseAddress, playerlevel_offsets);
+                    GameTimePointer = new DeepPointer(baseAddress, gametime_offsets);
+                    GameTimeOnLevelStartPointer = new DeepPointer(baseAddress, gametimeonlevelstart_offsets);
+                    TotalRunTimePointer = new DeepPointer(baseAddress, totalruntime_offsets);
+                    BGameTimePausedPointer = new DeepPointer(baseAddress, bgametimepaused_offsets);
+                    BIsDeadPointer = new DeepPointer(baseAddress, bisdead_offsets);
+                    BCurrentlyFightingBossPointer = new DeepPointer(baseAddress, bcurrentlyfightingboss_offsets);
+                    AnimSpeedPointer = new DeepPointer(baseAddress, animspeed_offsets);
                 }
                 else if (txtModule.Text == "[absolute_base]")
                 {
-                    SpeedPointer = new DeepPointer(new IntPtr(baseAddress), speed_offsets);
+                    LastLevelPointer = new DeepPointer(new IntPtr(baseAddress), lastlevel_offsets);
+                    GameLevelPointer = new DeepPointer(new IntPtr(baseAddress), gamelevel_offsets);
+                    PlayerLevelPointer = new DeepPointer(new IntPtr(baseAddress), playerlevel_offsets);
+                    GameTimePointer = new DeepPointer(new IntPtr(baseAddress), gametime_offsets);
+                    GameTimeOnLevelStartPointer = new DeepPointer(new IntPtr(baseAddress), gametimeonlevelstart_offsets);
+                    TotalRunTimePointer = new DeepPointer(new IntPtr(baseAddress), totalruntime_offsets);
+                    BGameTimePausedPointer = new DeepPointer(new IntPtr(baseAddress), bgametimepaused_offsets);
+                    BIsDeadPointer = new DeepPointer(new IntPtr(baseAddress), bisdead_offsets);
+                    BCurrentlyFightingBossPointer = new DeepPointer(new IntPtr(baseAddress), bcurrentlyfightingboss_offsets);
+                    AnimSpeedPointer = new DeepPointer(new IntPtr(baseAddress), animspeed_offsets);
                 }
                 else
                 {
-                    SpeedPointer = new DeepPointer(txtModule.Text, baseAddress, speed_offsets);
+                    LastLevelPointer = new DeepPointer(txtModule.Text, baseAddress, lastlevel_offsets);
+                    GameLevelPointer = new DeepPointer(txtModule.Text, baseAddress, gamelevel_offsets);
+                    PlayerLevelPointer = new DeepPointer(txtModule.Text, baseAddress, playerlevel_offsets);
+                    GameTimePointer = new DeepPointer(txtModule.Text, baseAddress, gametime_offsets);
+                    GameTimeOnLevelStartPointer = new DeepPointer(txtModule.Text, baseAddress, gametimeonlevelstart_offsets);
+                    TotalRunTimePointer = new DeepPointer(txtModule.Text, baseAddress, totalruntime_offsets);
+                    BGameTimePausedPointer = new DeepPointer(txtModule.Text, baseAddress, bgametimepaused_offsets);
+                    BIsDeadPointer = new DeepPointer(txtModule.Text, baseAddress, bisdead_offsets);
+                    BCurrentlyFightingBossPointer = new DeepPointer(txtModule.Text, baseAddress, bcurrentlyfightingboss_offsets);
+                    AnimSpeedPointer = new DeepPointer(txtModule.Text, baseAddress, animspeed_offsets);
                 }
             }
             else
             {
-                SpeedPointer = null;
+                LastLevelPointer = null;
+                GameLevelPointer = null;
+                PlayerLevelPointer = null;
+                GameTimePointer = null;
+                GameTimeOnLevelStartPointer = null;
+                TotalRunTimePointer = null;
+                BGameTimePausedPointer = null;
+                BIsDeadPointer = null;
+                AnimSpeedPointer = null;
+                BCurrentlyFightingBossPointer = null;
             }
         }
 
@@ -349,7 +547,16 @@ namespace LiveSplit.Roboquest
 
             txtModule.Text = SettingsHelper.ParseString(element["Module"]);
             txtBase.Text = SettingsHelper.ParseString(element["Base"]);
-            txtSpeedOffsets.Text = SettingsHelper.ParseString(element["SpeedOffsets"]);
+            txtLastLevelOffsets.Text = SettingsHelper.ParseString(element["LastLevelOffsets"]);
+            txtGameLevelOffsets.Text = SettingsHelper.ParseString(element["GameLevelOffsets"]);
+            txtPlayerLevelOffsets.Text = SettingsHelper.ParseString(element["PlayerLevelOffsets"]);
+            txtGameTimeOffsets.Text = SettingsHelper.ParseString(element["GameTimeOffsets"]);
+            txtGameTimeOnLevelStartOffsets.Text = SettingsHelper.ParseString(element["GameTimeOnLevelStartOffsets"]);
+            txtTotalRunTimeOffsets.Text = SettingsHelper.ParseString(element["TotalRunTimeOffsets"]);
+            txtBGameTimePausedOffsets.Text = SettingsHelper.ParseString(element["BGameTimePausedOffsets"]);
+            txtBIsDeadOffsets.Text = SettingsHelper.ParseString(element["BIsDeadOffsets"]);
+            txtAnimSpeedOffsets.Text = SettingsHelper.ParseString(element["AnimSpeedOffsets"]);
+            txtBCurrentlyFightingBossOffsets.Text = SettingsHelper.ParseString(element["BCurrentlyFightingBossOffsets"]);
 
             DescriptiveTextColor = SettingsHelper.ParseColor(element["DescriptiveTextColor"]);
             DescriptiveTextFont = SettingsHelper.GetFontFromElement(element["DescriptiveTextFont"]);
@@ -414,7 +621,16 @@ namespace LiveSplit.Roboquest
 
             SettingsHelper.CreateSetting(document, parent, "Module", txtModule.Text) ^
             SettingsHelper.CreateSetting(document, parent, "Base", txtBase.Text) ^
-            SettingsHelper.CreateSetting(document, parent, "SpeedOffsets", txtSpeedOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "LastLevelOffsets", txtLastLevelOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "GameLevelOffsets", txtGameLevelOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "PlayerLevelOffsets", txtPlayerLevelOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "GameTimeOffsets", txtGameTimeOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "GameTimeOnLevelStartOffsets", txtGameTimeOnLevelStartOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "TotalRunTimeOffsets", txtTotalRunTimeOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "BGameTimePausedOffsets", txtBGameTimePausedOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "BIsDeadOffsets", txtBIsDeadOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "AnimSpeedOffsets", txtAnimSpeedOffsets.Text) ^
+            SettingsHelper.CreateSetting(document, parent, "BCurrentlyFightingBossOffsets", txtBCurrentlyFightingBossOffsets.Text) ^
 
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextColor", DescriptiveTextColor) ^
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextFont", DescriptiveTextFont) ^
@@ -495,19 +711,199 @@ namespace LiveSplit.Roboquest
             }
         }
 
-        private void TxtOffsets_Validating(object sender, CancelEventArgs e)
+        private void LastLevelOffsets_Validating(object sender, CancelEventArgs e)
         {
-            var speed_offsets = txtSpeedOffsets.Text.Split(',');
-            if (speed_offsets.Length == 1 && string.IsNullOrEmpty(speed_offsets[0]))
+            var lastlevel_offsets = txtLastLevelOffsets.Text.Split(',');
+            if (lastlevel_offsets.Length == 1 && string.IsNullOrEmpty(lastlevel_offsets[0]))
             {
                 return;
             }
 
-            foreach (string speedoffset in speed_offsets)
+            foreach (string lastleveloffset in lastlevel_offsets)
             {
-                if (!TryParseHex(speedoffset, out int parsed))
+                if (!TryParseHex(lastleveloffset, out _))
+                {
+                    MessageBox.Show("All lastlevel offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void GameLevelOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var gamelevel_offsets = txtGameLevelOffsets.Text.Split(',');
+            if (gamelevel_offsets.Length == 1 && string.IsNullOrEmpty(gamelevel_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string gameleveloffset in gamelevel_offsets)
+            {
+                if (!TryParseHex(gameleveloffset, out _))
+                {
+                    MessageBox.Show("All gamelevel offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void PlayerLevelOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var playerlevel_offsets = txtPlayerLevelOffsets.Text.Split(',');
+            if (playerlevel_offsets.Length == 1 && string.IsNullOrEmpty(playerlevel_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string playerleveloffset in playerlevel_offsets)
+            {
+                if (!TryParseHex(playerleveloffset, out _))
+                {
+                    MessageBox.Show("All playerlevel offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void GameTimeOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var gametime_offsets = txtGameTimeOffsets.Text.Split(',');
+            if (gametime_offsets.Length == 1 && string.IsNullOrEmpty(gametime_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string gametimeoffset in gametime_offsets)
+            {
+                if (!TryParseHex(gametimeoffset, out _))
+                {
+                    MessageBox.Show("All gametime offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void GameTimeOnLevelStartOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var gametimeonlevelstart_offsets = txtGameTimeOnLevelStartOffsets.Text.Split(',');
+            if (gametimeonlevelstart_offsets.Length == 1 && string.IsNullOrEmpty(gametimeonlevelstart_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string gametimeonlevelstartoffset in gametimeonlevelstart_offsets)
+            {
+                if (!TryParseHex(gametimeonlevelstartoffset, out _))
+                {
+                    MessageBox.Show("All gametimeonlevelstart offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void TotalRunTimeOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var totalruntime_offsets = txtTotalRunTimeOffsets.Text.Split(',');
+            if (totalruntime_offsets.Length == 1 && string.IsNullOrEmpty(totalruntime_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string totalruntimeoffset in totalruntime_offsets)
+            {
+                if (!TryParseHex(totalruntimeoffset, out _))
+                {
+                    MessageBox.Show("All totalruntime offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void BGameTimePausedOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var bgametimepaused_offsets = txtBGameTimePausedOffsets.Text.Split(',');
+            if (bgametimepaused_offsets.Length == 1 && string.IsNullOrEmpty(bgametimepaused_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string bgametimepausedoffset in bgametimepaused_offsets)
+            {
+                if (!TryParseHex(bgametimepausedoffset, out _))
+                {
+                    MessageBox.Show("All bgametimepaused offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void BIsDeadOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var bisdead_offsets = txtBIsDeadOffsets.Text.Split(',');
+            if (bisdead_offsets.Length == 1 && string.IsNullOrEmpty(bisdead_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string bisdeadoffset in bisdead_offsets)
+            {
+                if (!TryParseHex(bisdeadoffset, out _))
+                {
+                    MessageBox.Show("All bisdead offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void AnimSpeedOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var animspeed_offsets = txtAnimSpeedOffsets.Text.Split(',');
+            if (animspeed_offsets.Length == 1 && string.IsNullOrEmpty(animspeed_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string animspeedoffset in animspeed_offsets)
+            {
+                if (!TryParseHex(animspeedoffset, out _))
                 {
                     MessageBox.Show("All speed offsets need to be hexadecimal numbers!", "Invalid value!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
+        private void BCurrentlyFightingBossOffsets_Validating(object sender, CancelEventArgs e)
+        {
+            var bcurrentlyfightingboss_offsets = txtBCurrentlyFightingBossOffsets.Text.Split(',');
+            if (bcurrentlyfightingboss_offsets.Length == 1 && string.IsNullOrEmpty(bcurrentlyfightingboss_offsets[0]))
+            {
+                return;
+            }
+
+            foreach (string bcurrentlyfightingbossoffset in bcurrentlyfightingboss_offsets)
+            {
+                if (!TryParseHex(bcurrentlyfightingbossoffset, out _))
+                {
+                    MessageBox.Show("All bcurrentlyfightingboss offsets need to be hexadecimal numbers!", "Invalid value!",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
                     return;
@@ -596,7 +992,16 @@ namespace LiveSplit.Roboquest
 
                         txtModule.Text = GetSafeStringValueFromXML(gameNode, "module");
                         txtBase.Text = GetSafeStringValueFromXML(gameNode, "base");
-                        txtSpeedOffsets.Text = GetSafeStringValueFromXML(gameNode, "speed_offsets");
+                        txtLastLevelOffsets.Text = GetSafeStringValueFromXML(gameNode, "lastlevel_offsets");
+                        txtGameLevelOffsets.Text = GetSafeStringValueFromXML(gameNode, "gamelevel_offsets");
+                        txtPlayerLevelOffsets.Text = GetSafeStringValueFromXML(gameNode, "playerlevel_offsets");
+                        txtGameTimeOffsets.Text = GetSafeStringValueFromXML(gameNode, "gametime_offsets");
+                        txtGameTimeOnLevelStartOffsets.Text = GetSafeStringValueFromXML(gameNode, "gametimeonlevelstart_offsets");
+                        txtTotalRunTimeOffsets.Text = GetSafeStringValueFromXML(gameNode, "totalruntime_offsets");
+                        txtBGameTimePausedOffsets.Text = GetSafeStringValueFromXML(gameNode, "bgametimepaused_offsets");
+                        txtBIsDeadOffsets.Text = GetSafeStringValueFromXML(gameNode, "bisdead_offsets");
+                        txtAnimSpeedOffsets.Text = GetSafeStringValueFromXML(gameNode, "animspeed_offsets");
+                        txtBCurrentlyFightingBossOffsets.Text = GetSafeStringValueFromXML(gameNode, "bcurrentlyfightingboss_offsets");
                         txtMaximumValue.Text = GetSafeStringValueFromXML(gameNode, "maximumValue", txtMaximumValue.Text);
                         numValueTextDecimals.Value = GetSafeDecimalFromXML(gameNode, "decimals");
 

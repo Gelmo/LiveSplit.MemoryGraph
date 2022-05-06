@@ -11,9 +11,9 @@
 		<totalruntime_offsets>120,860</totalruntime_offsets>
 		<bgametimepaused_offsets>120,864</bgametimepaused_offsets>
 		<bisdead_offsets>180,38,0,30,260,88A</bisdead_offsets>
-		<speed_offsets>180,38,0,30,260,46A0</speed_offsets>
+		<animspeed_offsets>180,38,0,30,260,46A0</animspeed_offsets>
 		<bcurrentlyfightingboss_offsets>180,38,0,30,260,4EF9</bcurrentlyfightingboss_offsets>
-		<classname_offsets>180,38,0,30,260,1150,28,0</classname_offsets>
+		<!-- <classname_offsets>180,38,0,30,260,1150,28,0</classname_offsets> -->
 		<maximumValue>3500</maximumValue>
 		<decimals>2</decimals>
 	</game>
@@ -28,9 +28,9 @@
 		<totalruntime_offsets>120,948</totalruntime_offsets>
 		<bgametimepaused_offsets>120,94C</bgametimepaused_offsets>
 		<bisdead_offsets>180,38,0,30,260,892</bisdead_offsets>
-		<speed_offsets>180,38,0,30,260,4840</speed_offsets>
+		<animspeed_offsets>180,38,0,30,260,4840</animspeed_offsets>
 		<bcurrentlyfightingboss_offsets>180,38,0,30,260,4D69</bcurrentlyfightingboss_offsets>
-		<classname_offsets>180,38,0,30,260,1450,28,0</classname_offsets>
+		<!-- <classname_offsets>180,38,0,30,260,1450,28,0</classname_offsets> -->
 		<maximumValue>3500</maximumValue>
 		<decimals>2</decimals>
 	</game>

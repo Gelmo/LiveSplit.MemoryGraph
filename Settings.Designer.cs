@@ -45,7 +45,16 @@ namespace LiveSplit.Roboquest
             this.B_UpdateXML = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProcessName = new System.Windows.Forms.TextBox();
-            this.txtSpeedOffsets = new System.Windows.Forms.TextBox();
+            this.txtLastLevelOffsets = new System.Windows.Forms.TextBox();
+            this.txtGameLevelOffsets = new System.Windows.Forms.TextBox();
+            this.txtPlayerLevelOffsets = new System.Windows.Forms.TextBox();
+            this.txtGameTimeOffsets = new System.Windows.Forms.TextBox();
+            this.txtGameTimeOnLevelStartOffsets = new System.Windows.Forms.TextBox();
+            this.txtTotalRunTimeOffsets = new System.Windows.Forms.TextBox();
+            this.txtBGameTimePausedOffsets = new System.Windows.Forms.TextBox();
+            this.txtBIsDeadOffsets = new System.Windows.Forms.TextBox();
+            this.txtAnimSpeedOffsets = new System.Windows.Forms.TextBox();
+            this.txtBCurrentlyFightingBossOffsets = new System.Windows.Forms.TextBox();
             this.txtBase = new System.Windows.Forms.TextBox();
             this.txtModule = new System.Windows.Forms.TextBox();
             this.grpGraph = new System.Windows.Forms.GroupBox();
@@ -96,16 +105,16 @@ namespace LiveSplit.Roboquest
             // 
             // grpDescriptiveText
             // 
-            this.grpDescriptiveText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpDescriptiveText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpDescriptiveText.Controls.Add(this.overrideControlDescriptiveText);
             this.grpDescriptiveText.Controls.Add(this.tableLayoutPanel4);
-            this.grpDescriptiveText.Location = new System.Drawing.Point(15, 321);
+            this.grpDescriptiveText.Location = new System.Drawing.Point(4, 261);
             this.grpDescriptiveText.Margin = new System.Windows.Forms.Padding(2);
             this.grpDescriptiveText.Name = "grpDescriptiveText";
             this.grpDescriptiveText.Padding = new System.Windows.Forms.Padding(2);
             this.grpDescriptiveText.Size = new System.Drawing.Size(428, 76);
-            this.grpDescriptiveText.TabIndex = 2;
+            this.grpDescriptiveText.TabIndex = 6;
             this.grpDescriptiveText.TabStop = false;
             this.grpDescriptiveText.Text = "Descriptive Text";
             // 
@@ -185,7 +194,7 @@ namespace LiveSplit.Roboquest
             this.grpRoboquest.Margin = new System.Windows.Forms.Padding(2);
             this.grpRoboquest.Name = "grpRoboquest";
             this.grpRoboquest.Padding = new System.Windows.Forms.Padding(2);
-            this.grpRoboquest.Size = new System.Drawing.Size(436, 43);
+            this.grpRoboquest.Size = new System.Drawing.Size(436, 71);
             this.grpRoboquest.TabIndex = 0;
             this.grpRoboquest.TabStop = false;
             this.grpRoboquest.Text = "Roboquest";
@@ -234,16 +243,97 @@ namespace LiveSplit.Roboquest
             this.txtProcessName.Name = "txtProcessName";
             this.txtProcessName.Size = new System.Drawing.Size(334, 20);
             this.txtProcessName.TabIndex = 5;
+            this.txtProcessName.TabStop = false;
             // 
-            // txtSpeedOffsets
+            // txtLastLevelOffsets
             // 
-            this.txtSpeedOffsets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSpeedOffsets.Location = new System.Drawing.Point(170, 19);
-            this.txtSpeedOffsets.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSpeedOffsets.Name = "txtSpeedOffsets";
-            this.txtSpeedOffsets.Size = new System.Drawing.Size(164, 20);
-            this.txtSpeedOffsets.TabIndex = 1;
-            this.txtSpeedOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.TxtOffsets_Validating);
+            this.txtLastLevelOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtLastLevelOffsets.Name = "txtLastLevelOffsets";
+            this.txtLastLevelOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtLastLevelOffsets.TabIndex = 0;
+            this.txtLastLevelOffsets.TabStop = false;
+            this.txtLastLevelOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.LastLevelOffsets_Validating);
+            // 
+            // txtGameLevelOffsets
+            // 
+            this.txtGameLevelOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtGameLevelOffsets.Name = "txtGameLevelOffsets";
+            this.txtGameLevelOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtGameLevelOffsets.TabIndex = 0;
+            this.txtGameLevelOffsets.TabStop = false;
+            this.txtGameLevelOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.GameLevelOffsets_Validating);
+            // 
+            // txtPlayerLevelOffsets
+            // 
+            this.txtPlayerLevelOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtPlayerLevelOffsets.Name = "txtPlayerLevelOffsets";
+            this.txtPlayerLevelOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtPlayerLevelOffsets.TabIndex = 0;
+            this.txtPlayerLevelOffsets.TabStop = false;
+            this.txtPlayerLevelOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.PlayerLevelOffsets_Validating);
+            // 
+            // txtGameTimeOffsets
+            // 
+            this.txtGameTimeOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtGameTimeOffsets.Name = "txtGameTimeOffsets";
+            this.txtGameTimeOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtGameTimeOffsets.TabIndex = 0;
+            this.txtGameTimeOffsets.TabStop = false;
+            this.txtGameTimeOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.GameTimeOffsets_Validating);
+            // 
+            // txtGameTimeOnLevelStartOffsets
+            // 
+            this.txtGameTimeOnLevelStartOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtGameTimeOnLevelStartOffsets.Name = "txtGameTimeOnLevelStartOffsets";
+            this.txtGameTimeOnLevelStartOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtGameTimeOnLevelStartOffsets.TabIndex = 0;
+            this.txtGameTimeOnLevelStartOffsets.TabStop = false;
+            this.txtGameTimeOnLevelStartOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.GameTimeOnLevelStartOffsets_Validating);
+            // 
+            // txtTotalRunTimeOffsets
+            // 
+            this.txtTotalRunTimeOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtTotalRunTimeOffsets.Name = "txtTotalRunTimeOffsets";
+            this.txtTotalRunTimeOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtTotalRunTimeOffsets.TabIndex = 0;
+            this.txtTotalRunTimeOffsets.TabStop = false;
+            this.txtTotalRunTimeOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.TotalRunTimeOffsets_Validating);
+            // 
+            // txtBGameTimePausedOffsets
+            // 
+            this.txtBGameTimePausedOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtBGameTimePausedOffsets.Name = "txtBGameTimePausedOffsets";
+            this.txtBGameTimePausedOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtBGameTimePausedOffsets.TabIndex = 0;
+            this.txtBGameTimePausedOffsets.TabStop = false;
+            this.txtBGameTimePausedOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.BGameTimePausedOffsets_Validating);
+            // 
+            // txtBIsDeadOffsets
+            // 
+            this.txtBIsDeadOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtBIsDeadOffsets.Name = "txtBIsDeadOffsets";
+            this.txtBIsDeadOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtBIsDeadOffsets.TabIndex = 0;
+            this.txtBIsDeadOffsets.TabStop = false;
+            this.txtBIsDeadOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.BIsDeadOffsets_Validating);
+            // 
+            // txtAnimSpeedOffsets
+            // 
+            this.txtAnimSpeedOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtAnimSpeedOffsets.Name = "txtAnimSpeedOffsets";
+            this.txtAnimSpeedOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtAnimSpeedOffsets.TabIndex = 0;
+            this.txtAnimSpeedOffsets.TabStop = false;
+            this.txtAnimSpeedOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.AnimSpeedOffsets_Validating);
+            // 
+            // txtBCurrentlyFightingBossOffsets
+            // 
+            this.txtBCurrentlyFightingBossOffsets.Location = new System.Drawing.Point(0, 0);
+            this.txtBCurrentlyFightingBossOffsets.Name = "txtBCurrentlyFightingBossOffsets";
+            this.txtBCurrentlyFightingBossOffsets.Size = new System.Drawing.Size(0, 20);
+            this.txtBCurrentlyFightingBossOffsets.TabIndex = 0;
+            this.txtBCurrentlyFightingBossOffsets.TabStop = false;
+            this.txtBCurrentlyFightingBossOffsets.Validating += new System.ComponentModel.CancelEventHandler(this.BCurrentlyFightingBossOffsets_Validating);
             // 
             // txtBase
             // 
@@ -253,6 +343,7 @@ namespace LiveSplit.Roboquest
             this.txtBase.Name = "txtBase";
             this.txtBase.Size = new System.Drawing.Size(80, 20);
             this.txtBase.TabIndex = 1;
+            this.txtBase.TabStop = false;
             this.txtBase.Validating += new System.ComponentModel.CancelEventHandler(this.TxtBase_Validating);
             // 
             // txtModule
@@ -263,6 +354,7 @@ namespace LiveSplit.Roboquest
             this.txtModule.Name = "txtModule";
             this.txtModule.Size = new System.Drawing.Size(80, 20);
             this.txtModule.TabIndex = 1;
+            this.txtModule.TabStop = false;
             // 
             // grpGraph
             // 
@@ -274,6 +366,7 @@ namespace LiveSplit.Roboquest
             this.grpGraph.Controls.Add(this.cmbGraphGradientType);
             this.grpGraph.Controls.Add(this.lblGraphStyle);
             this.grpGraph.Controls.Add(this.grpValueText);
+            this.grpGraph.Controls.Add(this.grpDescriptiveText);
             this.grpGraph.Controls.Add(this.cmbGraphStyle);
             this.grpGraph.Controls.Add(this.tableLayoutPanel5);
             this.grpGraph.Controls.Add(this.lblGraphColor);
@@ -281,11 +374,11 @@ namespace LiveSplit.Roboquest
             this.grpGraph.Controls.Add(this.btnBackgroundColor1);
             this.grpGraph.Controls.Add(this.btnBackgroundColor2);
             this.grpGraph.Controls.Add(this.cmbBackgroundGradientType);
-            this.grpGraph.Location = new System.Drawing.Point(11, 56);
+            this.grpGraph.Location = new System.Drawing.Point(11, 83);
             this.grpGraph.Margin = new System.Windows.Forms.Padding(2);
             this.grpGraph.Name = "grpGraph";
             this.grpGraph.Padding = new System.Windows.Forms.Padding(2);
-            this.grpGraph.Size = new System.Drawing.Size(436, 346);
+            this.grpGraph.Size = new System.Drawing.Size(436, 341);
             this.grpGraph.TabIndex = 1;
             this.grpGraph.TabStop = false;
             this.grpGraph.Text = "Speed Graph";
@@ -360,7 +453,7 @@ namespace LiveSplit.Roboquest
             this.grpValueText.Controls.Add(this.overrideControlValueText);
             this.grpValueText.Controls.Add(this.cmbValueTextPosition);
             this.grpValueText.Controls.Add(this.lblValueTextPosition);
-            this.grpValueText.Location = new System.Drawing.Point(4, 191);
+            this.grpValueText.Location = new System.Drawing.Point(4, 188);
             this.grpValueText.Margin = new System.Windows.Forms.Padding(2);
             this.grpValueText.Name = "grpValueText";
             this.grpValueText.Padding = new System.Windows.Forms.Padding(2);
@@ -694,7 +787,7 @@ namespace LiveSplit.Roboquest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.grpDescriptiveText);
+            this.AutoSize = true;
             this.Controls.Add(this.grpRoboquest);
             this.Controls.Add(this.grpGraph);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -776,7 +869,16 @@ namespace LiveSplit.Roboquest
                }).OrderBy(item => item.value).ToList();
         }
         private System.Windows.Forms.GroupBox grpRoboquest;
-        private System.Windows.Forms.TextBox txtSpeedOffsets;
+        private System.Windows.Forms.TextBox txtLastLevelOffsets;
+        private System.Windows.Forms.TextBox txtGameLevelOffsets;
+        private System.Windows.Forms.TextBox txtPlayerLevelOffsets;
+        private System.Windows.Forms.TextBox txtGameTimeOffsets;
+        private System.Windows.Forms.TextBox txtGameTimeOnLevelStartOffsets;
+        private System.Windows.Forms.TextBox txtTotalRunTimeOffsets;
+        private System.Windows.Forms.TextBox txtBGameTimePausedOffsets;
+        private System.Windows.Forms.TextBox txtBIsDeadOffsets;
+        private System.Windows.Forms.TextBox txtAnimSpeedOffsets;
+        private System.Windows.Forms.TextBox txtBCurrentlyFightingBossOffsets;
         private System.Windows.Forms.TextBox txtBase;
         private System.Windows.Forms.TextBox txtModule;
         private System.Windows.Forms.GroupBox grpGraph;
