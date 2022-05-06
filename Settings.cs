@@ -1,4 +1,4 @@
-﻿using LiveSplit.ComponentUtil;
+using LiveSplit.ComponentUtil;
 using LiveSplit.UI;
 using System;
 using System.Collections.Generic;
@@ -65,7 +65,6 @@ namespace LiveSplit.Roboquest
 
     partial class Settings : UserControl
     {
-        CultureInfo ci = new CultureInfo(System.Threading.Thread.CurrentThread.CurrentCulture.Name);
         List<string> gamesOnTheList = new List<string>();
         static string componentsFolder = "Components";
         public static string listsFile = "LiveSplit.Roboquest.Games.xml";
@@ -311,17 +310,7 @@ namespace LiveSplit.Roboquest
             BackgroundColor = SettingsHelper.ParseColor(element["BackgroundColor"]);
             BackgroundColor2 = SettingsHelper.ParseColor(element["BackgroundColor2"]);
             GraphColors.Clear();
-            // GraphColor and GraphColor2 were the old values used to store the GraphColors. If they exist, add their values to our new list of colors.
-            var GraphColor = SettingsHelper.ParseColor(element["GraphColor"]);
-            if (GraphColor != default(Color))
-            {
-                GraphColors.Add(GraphColor);
-            }
-            var GraphColor2 = SettingsHelper.ParseColor(element["GraphColor2"]);
-            if (GraphColor2 != default(Color))
-            {
-                GraphColors.Add(GraphColor2);
-            }
+
             // Regular parsing of GraphColors. We can't use a default Parser since it's a list and needs to be comma seperated.
             if (element[nameof(GraphColors)] != null)
             {
@@ -374,30 +363,6 @@ namespace LiveSplit.Roboquest
             ValueTextDecimals = SettingsHelper.ParseInt(element["ValueTextDecimals"]);
 
             UpdatePointer(null, null);
-        }
-
-        private float CultureSafeFloatParse(string vstr, float def = 1)
-        {
-            //This is due to Floats being really crappy in XMLs. What I mean is they can be stored as:
-            //#1 - 0.5
-            //#2 - 0,5
-            //So this function use it to parse it properly no matter what culture they were stored in.
-            if (vstr != null)
-            {
-                float value = 0;
-                if (!float.TryParse(vstr, System.Globalization.NumberStyles.Any, CultureInfo.CurrentCulture, out value) &&
-                    //Then try in US english
-                    !float.TryParse(vstr, System.Globalization.NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out value) &&
-                    //Then in neutral language
-                    !float.TryParse(vstr, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out value))
-                {
-                    return def;
-                }
-
-                return value;
-            }
-            else
-                return def;
         }
 
         public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
