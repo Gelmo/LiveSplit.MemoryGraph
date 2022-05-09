@@ -1060,5 +1060,15 @@ namespace LiveSplit.Roboquest
         {
 
         }
+
+        private void CBResetDeath_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CBResetGame_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

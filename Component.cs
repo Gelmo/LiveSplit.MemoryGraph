@@ -1,3 +1,4 @@
+using LiveSplit.ComponentUtil;
 using LiveSplit.Model;
 using LiveSplit.UI;
 using LiveSplit.UI.Components;
@@ -12,6 +13,7 @@ namespace LiveSplit.Roboquest
     public class Component : IComponent
     {
         private Settings settings;
+        private Watchers _Watchers = new Watchers();
 
         public string ComponentName => "Roboquest";
 
@@ -90,7 +92,10 @@ namespace LiveSplit.Roboquest
         private PointF[] polygon_points;
         private Pen graphPen;
 
-
+        private readonly TimerModel _timer = new TimerModel();
+        public event EventHandler TimerStart;
+        public event EventHandler TimerReset;
+        public event EventHandler TimerSplit;
 
         public Component(LiveSplitState state)
         {
@@ -111,6 +116,11 @@ namespace LiveSplit.Roboquest
             settings = new Settings();
             settings.HandleDestroyed += SettingsUpdated;
             SettingsUpdated(null, null);
+
+            _timer.CurrentState = state;
+            TimerStart += LSTimer_start;
+            TimerReset += LSTimer_reset;
+            TimerSplit += LSTimer_split;
         }
 
         private void SettingsUpdated(object sender, EventArgs e)
@@ -478,6 +488,33 @@ namespace LiveSplit.Roboquest
             DrawGraph(g, state, HorizontalWidth, height);
         }
 
+        class Watchers : MemoryWatcherList
+        {
+            private Settings settings = new Settings();
+            public MemoryWatcher<int> LastLevel { get; }
+            public MemoryWatcher<int> GameLevel { get; }
+            public MemoryWatcher<int> PlayerLevel { get; }
+            public MemoryWatcher<float> GameTime { get; }
+            public MemoryWatcher<float> GameTimeOnLevelStart { get; }
+            public MemoryWatcher<float> TotalRunTime { get; }
+            public MemoryWatcher<bool> BGameTimePaused { get; }
+            public MemoryWatcher<bool> BIsDead { get; }
+            public MemoryWatcher<bool> BCurrentlyFightingBoss { get; }
+
+            public Watchers()
+            {
+                LastLevel = new MemoryWatcher<int>(settings.LastLevelPointer) { Name = "LastLevel" };
+                GameLevel = new MemoryWatcher<int>(settings.GameLevelPointer) { Name = "GameLevel" };
+                PlayerLevel = new MemoryWatcher<int>(settings.PlayerLevelPointer) { Name = "PlayerLevel" };
+                GameTime = new MemoryWatcher<float>(settings.GameTimePointer) { Name = "GameTime" };
+                GameTimeOnLevelStart = new MemoryWatcher<float>(settings.GameTimeOnLevelStartPointer) { Name = "GameTimeOnLevelStart" };
+                TotalRunTime = new MemoryWatcher<float>(settings.TotalRunTimePointer) { Name = "TotalRunTime" };
+                BGameTimePaused = new MemoryWatcher<bool>(settings.BGameTimePausedPointer) { Name = "BGameTimePaused" };
+                BIsDead = new MemoryWatcher<bool>(settings.BIsDeadPointer) { Name = "BIsDead" };
+                BCurrentlyFightingBoss = new MemoryWatcher<bool>(settings.BCurrentlyFightingBossPointer) { Name = "BCurrentlyFightingBoss" };
+            }
+        }
+
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
             if (process != null && !process.HasExited && settings.AnimSpeedPointer != null &&
@@ -485,6 +522,40 @@ namespace LiveSplit.Roboquest
             {
 
                 AnimSpeed = settings.AnimSpeedPointer.Deref<float>(process);
+
+                _Watchers.UpdateAll(process);
+
+                state.SetGameTime(TimeSpan.FromSeconds(_Watchers.GameTime.Current));
+
+                // If the in-game time is running and the in-game time was previously 0, start the timer
+                if (_Watchers.GameTime.Current > 0 && _Watchers.GameTime.Old == 0)
+                {
+                    TimerStart?.Invoke(this, EventArgs.Empty);
+                    state.SetGameTime(TimeSpan.FromSeconds(_Watchers.GameTime.Current));
+                }
+
+                // If the game has updated TotalRunTime and the player has not died, split. This should only occur on the final split
+                if (_Watchers.TotalRunTime.Current > 0 && _Watchers.TotalRunTime.Old == 0 && !_Watchers.BIsDead.Current)
+                {
+                    TimerSplit?.Invoke(this, EventArgs.Empty);
+                }
+                // Otherwise, if the current level differs from the level in the previous loop, split
+                else if (_Watchers.GameLevel.Current != _Watchers.GameLevel.Old)
+                {
+                    TimerSplit?.Invoke(this, EventArgs.Empty);
+                }
+
+                // If the in-game timer is set to 0 and ResetGame is enabled, reset the timer. This occurs when restarting the run in-game, when you leave the Game Over screen, or when you go to Basecamp
+                if (settings.cbResetGame.Checked && _Watchers.GameTime.Current == 0 && _Watchers.GameTime.Old == 0)
+                {
+                    TimerReset?.Invoke(this, EventArgs.Empty);
+                }
+
+                // If the player has died and ResetDeath is enabled, reset the timer
+                if (settings.cbResetDeath.Checked && _Watchers.BIsDead.Current && !_Watchers.BIsDead.Old)
+                {
+                    TimerReset?.Invoke(this, EventArgs.Empty);
+                }
 
                 if (invalidator != null)
                 {
@@ -530,6 +601,21 @@ namespace LiveSplit.Roboquest
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        void LSTimer_start(object sender, EventArgs e)
+        {
+            _timer.Start();
+        }
+
+        void LSTimer_split(object sender, EventArgs e)
+        {
+            _timer.Split();
+        }
+
+        void LSTimer_reset(object sender, EventArgs e)
+        {
+            _timer.Reset();
         }
     }
 }

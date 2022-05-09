@@ -44,6 +44,8 @@ namespace LiveSplit.Roboquest
             this.ComboBox_ListOfGames = new System.Windows.Forms.ComboBox();
             this.B_UpdateXML = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbResetDeath = new System.Windows.Forms.CheckBox();
+            this.cbResetGame = new System.Windows.Forms.CheckBox();
             this.txtProcessName = new System.Windows.Forms.TextBox();
             this.txtLastLevelOffsets = new System.Windows.Forms.TextBox();
             this.txtGameLevelOffsets = new System.Windows.Forms.TextBox();
@@ -190,6 +192,8 @@ namespace LiveSplit.Roboquest
             this.grpRoboquest.Controls.Add(this.ComboBox_ListOfGames);
             this.grpRoboquest.Controls.Add(this.B_UpdateXML);
             this.grpRoboquest.Controls.Add(this.label1);
+            this.grpRoboquest.Controls.Add(this.cbResetDeath);
+            this.grpRoboquest.Controls.Add(this.cbResetGame);
             this.grpRoboquest.Location = new System.Drawing.Point(11, 11);
             this.grpRoboquest.Margin = new System.Windows.Forms.Padding(2);
             this.grpRoboquest.Name = "grpRoboquest";
@@ -233,6 +237,32 @@ namespace LiveSplit.Roboquest
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Version:";
+            // 
+            // cbResetDeath
+            // 
+            this.cbResetDeath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbResetDeath.AutoSize = true;
+            this.cbResetDeath.Location = new System.Drawing.Point(9, 46);
+            this.cbResetDeath.Name = "cbResetDeath";
+            this.cbResetDeath.Size = new System.Drawing.Size(136, 17);
+            this.cbResetDeath.TabIndex = 2;
+            this.cbResetDeath.Text = "Reset timer upon death";
+            this.cbResetDeath.UseVisualStyleBackColor = true;
+            this.cbResetDeath.CheckedChanged += new System.EventHandler(this.CBResetDeath_CheckedChanged);
+            // 
+            // cbResetGame
+            // 
+            this.cbResetGame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbResetGame.AutoSize = true;
+            this.cbResetGame.Checked = true;
+            this.cbResetGame.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbResetGame.Location = new System.Drawing.Point(175, 46);
+            this.cbResetGame.Name = "cbResetGame";
+            this.cbResetGame.Size = new System.Drawing.Size(260, 17);
+            this.cbResetGame.TabIndex = 3;
+            this.cbResetGame.Text = "Reset timer when restarting or going to Basecamp";
+            this.cbResetGame.UseVisualStyleBackColor = true;
+            this.cbResetGame.CheckedChanged += new System.EventHandler(this.CBResetGame_CheckedChanged);
             // 
             // txtProcessName
             // 
@@ -924,5 +954,7 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.CheckBox localMaxCB;
         private System.Windows.Forms.Button btnAddColor;
         private System.Windows.Forms.Button btnDeleteColor;
+        public System.Windows.Forms.CheckBox cbResetDeath;
+        public System.Windows.Forms.CheckBox cbResetGame;
     }
 }
