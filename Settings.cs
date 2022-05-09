@@ -1,4 +1,4 @@
-using LiveSplit.ComponentUtil;
+﻿using LiveSplit.ComponentUtil;
 using LiveSplit.UI;
 using System;
 using System.Collections.Generic;
@@ -132,6 +132,8 @@ namespace LiveSplit.Roboquest
         public DeepPointer BIsDeadPointer { get; set; }
         public DeepPointer AnimSpeedPointer { get; set; }
         public DeepPointer BCurrentlyFightingBossPointer { get; set; }
+        public bool ResetDeath { get; set; }
+        public bool ResetGame { get; set; }
 
         public Settings()
         {
@@ -169,6 +171,8 @@ namespace LiveSplit.Roboquest
             DescriptiveText = "Speed";
             DescriptiveTextFont = overrideControlDescriptiveText.OverridingFont;
             ValueTextFont = overrideControlValueText.OverridingFont;
+            ResetDeath = false;
+            ResetGame = true;
 
             btnBackgroundColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnBackgroundColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -202,6 +206,9 @@ namespace LiveSplit.Roboquest
             overrideControlValueText.DataBindings.Add("OverridingFont", this, "ValueTextFont", false, DataSourceUpdateMode.OnPropertyChanged);
             overrideControlValueText.DataBindings.Add("OverrideColor", this, "ValueTextOverrideColor", false, DataSourceUpdateMode.OnPropertyChanged);
             overrideControlValueText.DataBindings.Add("OverrideFont", this, "ValueTextOverrideFont", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            cbResetDeath.DataBindings.Add("Checked", this, "ResetDeath", false, DataSourceUpdateMode.OnPropertyChanged);
+            cbResetGame.DataBindings.Add("Checked", this, "ResetGame", false, DataSourceUpdateMode.OnPropertyChanged);
 
             AddComboboxDataSources();
         }
@@ -569,6 +576,9 @@ namespace LiveSplit.Roboquest
             ValueTextOverrideFont = SettingsHelper.ParseBool(element["ValueTextOverrideFont"]);
             ValueTextDecimals = SettingsHelper.ParseInt(element["ValueTextDecimals"]);
 
+            ResetDeath = SettingsHelper.ParseBool(element["ResetDeath"]);
+            ResetGame = SettingsHelper.ParseBool(element["ResetGame"]);
+
             UpdatePointer(null, null);
         }
 
@@ -641,7 +651,10 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "ValueTextFont", ValueTextFont) ^
             SettingsHelper.CreateSetting(document, parent, "ValueTextOverrideColor", ValueTextOverrideColor) ^
             SettingsHelper.CreateSetting(document, parent, "ValueTextOverrideFont", ValueTextOverrideFont) ^
-            SettingsHelper.CreateSetting(document, parent, "ValueTextDecimals", ValueTextDecimals);
+            SettingsHelper.CreateSetting(document, parent, "ValueTextDecimals", ValueTextDecimals) ^
+
+            SettingsHelper.CreateSetting(document, parent, "ResetDeath", ResetDeath) ^
+            SettingsHelper.CreateSetting(document, parent, "ResetGame", ResetGame);
         }
 
         private void CmbBackgroundGradientType_SelectedValueChanged(object sender, EventArgs e)
@@ -1063,12 +1076,26 @@ namespace LiveSplit.Roboquest
 
         private void CBResetDeath_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (cbResetDeath.Checked == true)
+            {
+                ResetDeath = true;
+            }
+            else
+            {
+                ResetDeath = false;
+            }
         }
 
         private void CBResetGame_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (cbResetGame.Checked == true)
+            {
+                ResetGame = true;
+            }
+            else
+            {
+                ResetGame = false;
+            }
         }
     }
 }

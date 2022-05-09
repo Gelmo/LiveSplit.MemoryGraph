@@ -534,6 +534,18 @@ namespace LiveSplit.Roboquest
                     state.SetGameTime(TimeSpan.FromSeconds(_Watchers.GameTime.Current));
                 }
 
+                // If the in-game timer is set to 0 and ResetGame is enabled, reset the timer. This occurs when restarting the run in-game, when you leave the Game Over screen, or when you go to Basecamp
+                if (settings.ResetGame == true && _Watchers.GameTime.Current == 0 && _Watchers.GameTime.Old == 0)
+                {
+                    TimerReset?.Invoke(this, EventArgs.Empty);
+                }
+
+                // If the player has died and ResetDeath is enabled, reset the timer
+                if (settings.ResetDeath == true && _Watchers.BIsDead.Current && !_Watchers.BIsDead.Old)
+                {
+                    TimerReset?.Invoke(this, EventArgs.Empty);
+                }
+
                 // If the game has updated TotalRunTime and the player has not died, split. This should only occur on the final split
                 if (_Watchers.TotalRunTime.Current > 0 && _Watchers.TotalRunTime.Old == 0 && !_Watchers.BIsDead.Current)
                 {
@@ -543,18 +555,6 @@ namespace LiveSplit.Roboquest
                 else if (_Watchers.GameLevel.Current != _Watchers.GameLevel.Old)
                 {
                     TimerSplit?.Invoke(this, EventArgs.Empty);
-                }
-
-                // If the in-game timer is set to 0 and ResetGame is enabled, reset the timer. This occurs when restarting the run in-game, when you leave the Game Over screen, or when you go to Basecamp
-                if (settings.cbResetGame.Checked && _Watchers.GameTime.Current == 0 && _Watchers.GameTime.Old == 0)
-                {
-                    TimerReset?.Invoke(this, EventArgs.Empty);
-                }
-
-                // If the player has died and ResetDeath is enabled, reset the timer
-                if (settings.cbResetDeath.Checked && _Watchers.BIsDead.Current && !_Watchers.BIsDead.Old)
-                {
-                    TimerReset?.Invoke(this, EventArgs.Empty);
                 }
 
                 if (invalidator != null)
