@@ -715,7 +715,7 @@ namespace LiveSplit.Roboquest
 
         private void TxtBase_Validating(object sender, CancelEventArgs e)
         {
-            if (!TryParseHex(txtBase.Text, out int parsed))
+            if (!TryParseHex(txtBase.Text, out _))
             {
                 MessageBox.Show("'Base' needs to be a hexadecimal number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -926,7 +926,7 @@ namespace LiveSplit.Roboquest
 
         private void TxtMinimumValue_Validating(object sender, CancelEventArgs e)
         {
-            if (!float.TryParse(txtMinimumValue.Text, out float parsed))
+            if (!float.TryParse(txtMinimumValue.Text, out _))
             {
                 MessageBox.Show("Minimum Value needs to be a number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -937,7 +937,7 @@ namespace LiveSplit.Roboquest
 
         private void TxtMaximumValue_Validating(object sender, CancelEventArgs e)
         {
-            if (!float.TryParse(txtMaximumValue.Text, out float parsed))
+            if (!float.TryParse(txtMaximumValue.Text, out _))
             {
                 MessageBox.Show("Maximum Value needs to be a number!", "Invalid value!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);

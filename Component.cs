@@ -92,7 +92,7 @@ namespace LiveSplit.Roboquest
         private PointF[] polygon_points;
         private Pen graphPen;
 
-        private readonly TimerModel _timer = new TimerModel();
+        private TimerModel _timer = new TimerModel();
         public event EventHandler TimerStart;
         public event EventHandler TimerReset;
         public event EventHandler TimerSplit;
@@ -324,7 +324,7 @@ namespace LiveSplit.Roboquest
 
                     if (drawCounter == 10)
                     {
-                        avaragedValue = avaragedValue / 10.0f;
+                        avaragedValue /= 10.0f;
                         //LU, LL, RB, RU
                         //X,Y, width, height
                         polygon_points[0].X = graphWidth - 11;

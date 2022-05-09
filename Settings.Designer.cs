@@ -111,7 +111,7 @@ namespace LiveSplit.Roboquest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpDescriptiveText.Controls.Add(this.overrideControlDescriptiveText);
             this.grpDescriptiveText.Controls.Add(this.tableLayoutPanel4);
-            this.grpDescriptiveText.Location = new System.Drawing.Point(4, 261);
+            this.grpDescriptiveText.Location = new System.Drawing.Point(4, 265);
             this.grpDescriptiveText.Margin = new System.Windows.Forms.Padding(2);
             this.grpDescriptiveText.Name = "grpDescriptiveText";
             this.grpDescriptiveText.Padding = new System.Windows.Forms.Padding(2);
@@ -408,7 +408,7 @@ namespace LiveSplit.Roboquest
             this.grpGraph.Margin = new System.Windows.Forms.Padding(2);
             this.grpGraph.Name = "grpGraph";
             this.grpGraph.Padding = new System.Windows.Forms.Padding(2);
-            this.grpGraph.Size = new System.Drawing.Size(436, 341);
+            this.grpGraph.Size = new System.Drawing.Size(436, 346);
             this.grpGraph.TabIndex = 1;
             this.grpGraph.TabStop = false;
             this.grpGraph.Text = "Speed Graph";
@@ -483,7 +483,7 @@ namespace LiveSplit.Roboquest
             this.grpValueText.Controls.Add(this.overrideControlValueText);
             this.grpValueText.Controls.Add(this.cmbValueTextPosition);
             this.grpValueText.Controls.Add(this.lblValueTextPosition);
-            this.grpValueText.Location = new System.Drawing.Point(4, 188);
+            this.grpValueText.Location = new System.Drawing.Point(4, 191);
             this.grpValueText.Margin = new System.Windows.Forms.Padding(2);
             this.grpValueText.Name = "grpValueText";
             this.grpValueText.Padding = new System.Windows.Forms.Padding(2);

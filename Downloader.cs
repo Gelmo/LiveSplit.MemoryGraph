@@ -14,8 +14,8 @@ namespace LiveSplit.Roboquest
         {
             string uriToSource = "https://raw.githubusercontent.com/Gelmo/LiveSplit.Roboquest/roboquest/XML/";
             string xmlFileName = Settings.listsFile;
-            string downloadedFileLocation = "";
-            bool result = false;
+            bool result;
+            string downloadedFileLocation;
             if (CheckIfXMLExists(uriToSource + xmlFileName))
             {
                 result = DownloadFiles(uriToSource, xmlFileName, out downloadedFileLocation);
@@ -47,8 +47,7 @@ namespace LiveSplit.Roboquest
             wbClient.DownloadFileCompleted += WbClient_DownloadFileCompleted;
             tempLocation = Path.GetTempFileName();
 
-            Uri tempUri;
-            Uri.TryCreate(sourceLocation + file, UriKind.Absolute, out tempUri);
+            Uri.TryCreate(sourceLocation + file, UriKind.Absolute, out Uri tempUri);
 
             try { wbClient.DownloadFile(tempUri, tempLocation); }
             catch { return false; }
