@@ -13,7 +13,7 @@ namespace LiveSplit.Roboquest
     public class Component : IComponent
     {
         private Settings settings;
-        private Watchers _Watchers = new Watchers();
+        private Watchers _Watchers;
 
         public string ComponentName => "Roboquest";
 
@@ -116,6 +116,8 @@ namespace LiveSplit.Roboquest
             settings = new Settings();
             settings.HandleDestroyed += SettingsUpdated;
             SettingsUpdated(null, null);
+
+            _Watchers = new Watchers(settings);
 
             _timer.CurrentState = state;
             TimerStart += LSTimer_start;
@@ -490,7 +492,6 @@ namespace LiveSplit.Roboquest
 
         class Watchers : MemoryWatcherList
         {
-            private Settings settings = new Settings();
             public MemoryWatcher<int> LastLevel { get; }
             public MemoryWatcher<int> GameLevel { get; }
             public MemoryWatcher<int> PlayerLevel { get; }
@@ -501,7 +502,7 @@ namespace LiveSplit.Roboquest
             public MemoryWatcher<bool> BIsDead { get; }
             public MemoryWatcher<bool> BCurrentlyFightingBoss { get; }
 
-            public Watchers()
+            public Watchers(Settings settings)
             {
                 LastLevel = new MemoryWatcher<int>(settings.LastLevelPointer) { Name = "LastLevel" };
                 GameLevel = new MemoryWatcher<int>(settings.GameLevelPointer) { Name = "GameLevel" };
