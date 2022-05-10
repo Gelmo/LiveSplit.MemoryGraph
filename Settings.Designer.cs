@@ -954,7 +954,7 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.CheckBox localMaxCB;
         private System.Windows.Forms.Button btnAddColor;
         private System.Windows.Forms.Button btnDeleteColor;
-        public System.Windows.Forms.CheckBox cbResetDeath;
-        public System.Windows.Forms.CheckBox cbResetGame;
+        private System.Windows.Forms.CheckBox cbResetDeath;
+        private System.Windows.Forms.CheckBox cbResetGame;
     }
 }
