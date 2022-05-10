@@ -61,13 +61,13 @@ Download [`Components/LiveSplit.Roboquest.dll`](https://github.com/Gelmo/LiveSpl
 
 ## Credits
 
-- [SphereMJ / kugelrund](https://www.twitch.tv/spheremj) - [Created the component from which this was forked](https://github.com/kugelrund/LiveSplit.MemoryGraph)
-- [SuicideMachine](https://www.twitch.tv/suicidemachine) - Credited in the original component
-- [TravisDaily](https://github.com/TravisDaily) - Credited in the original component
-- [LongerWarrior](https://github.com/LongerWarrior) - Provided me with a significant amount of information that was required for making the original ASL script. Also reviewed the script at multiple stages to help improve the quality, size, performance, and maintainability
-- [Sotumney](https://www.twitch.tv/sotumney) - Managing the speedrunning community for Roboquest
-- [dmgvol](https://github.com/Dmgvol) - Pointer path improvements in a previous version
-- [Ero](https://github.com/just-ero) - Helped me learn the basics of memory analysis for games in Unreal Engine 4, also showed me how to update this more easily in the future. More recently, helped me significantly improve my understanding
-- [Tedder](https://github.com/TheTedder) - Helped me understand more about pointers in general
+- [SphereMJ / kugelrund](https://www.twitch.tv/spheremj) - They are responsible for a significant majority of the code in this component. [Here is a link to the component from which this was forked.](https://github.com/kugelrund/LiveSplit.MemoryGraph)
+- [SuicideMachine](https://www.twitch.tv/suicidemachine) - Credited in the original component.
+- [TravisDaily](https://github.com/TravisDaily) - Credited in the original component.
+- [LongerWarrior](https://github.com/LongerWarrior) - Provided me with a significant amount of information that was required for making the original ASL script. Also reviewed the script at multiple stages to help improve the quality, size, performance, and maintainability.
+- [Sotumney](https://www.twitch.tv/sotumney) - Managing the speedrunning community for Roboquest.
+- [dmgvol](https://github.com/Dmgvol) - Pointer path improvements in a previous version.
+- [Ero](https://github.com/just-ero) - Helped me learn the basics of memory analysis for games in Unreal Engine 4, also showed me how to update this more easily in the future. More recently, helped me significantly improve my understanding.
+- [Tedder](https://github.com/TheTedder) - Helped me understand more about pointers in general.
 - [Speedrun Tool Development server on Discord](https://discord.gg/N6wv8pW) - Helped with initial research, general questions, and brainstorming. Very active community that helped me hit the ground running.
 - [Roboquest community on Discord](https://discord.gg/roboquest) - This is a welcoming community that is easy to be a part of, and I would not have been interested in speedrunning this if that were not the case.
