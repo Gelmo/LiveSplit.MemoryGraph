@@ -42,7 +42,6 @@ namespace LiveSplit.Roboquest
             this.cmbDescriptiveTextPosition = new System.Windows.Forms.ComboBox();
             this.grpRoboquest = new System.Windows.Forms.GroupBox();
             this.ComboBox_ListOfGames = new System.Windows.Forms.ComboBox();
-            this.B_UpdateXML = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cbResetDeath = new System.Windows.Forms.CheckBox();
             this.cbResetGame = new System.Windows.Forms.CheckBox();
@@ -190,7 +189,6 @@ namespace LiveSplit.Roboquest
             this.grpRoboquest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpRoboquest.Controls.Add(this.ComboBox_ListOfGames);
-            this.grpRoboquest.Controls.Add(this.B_UpdateXML);
             this.grpRoboquest.Controls.Add(this.label1);
             this.grpRoboquest.Controls.Add(this.cbResetDeath);
             this.grpRoboquest.Controls.Add(this.cbResetGame);
@@ -212,21 +210,9 @@ namespace LiveSplit.Roboquest
             this.ComboBox_ListOfGames.Location = new System.Drawing.Point(51, 15);
             this.ComboBox_ListOfGames.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBox_ListOfGames.Name = "ComboBox_ListOfGames";
-            this.ComboBox_ListOfGames.Size = new System.Drawing.Size(272, 21);
+            this.ComboBox_ListOfGames.Size = new System.Drawing.Size(375, 21);
             this.ComboBox_ListOfGames.TabIndex = 9;
             this.ComboBox_ListOfGames.SelectedIndexChanged += new System.EventHandler(this.ComboBox_ListOfGames_SelectedIndexChanged);
-            // 
-            // B_UpdateXML
-            // 
-            this.B_UpdateXML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.B_UpdateXML.Location = new System.Drawing.Point(327, 14);
-            this.B_UpdateXML.Margin = new System.Windows.Forms.Padding(2);
-            this.B_UpdateXML.Name = "B_UpdateXML";
-            this.B_UpdateXML.Size = new System.Drawing.Size(105, 21);
-            this.B_UpdateXML.TabIndex = 8;
-            this.B_UpdateXML.Text = "Update XML file";
-            this.B_UpdateXML.UseVisualStyleBackColor = true;
-            this.B_UpdateXML.Click += new System.EventHandler(this.B_UpdateXML_Click);
             // 
             // label1
             // 
@@ -940,7 +926,6 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.Label lblDescriptiveTextPosition;
         private System.Windows.Forms.Label lblDecimals;
         private System.Windows.Forms.NumericUpDown numValueTextDecimals;
-        private System.Windows.Forms.Button B_UpdateXML;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox ComboBox_ListOfGames;
         private System.Windows.Forms.Label lblGraphColor;

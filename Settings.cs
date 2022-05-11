@@ -1,4 +1,4 @@
-﻿using LiveSplit.ComponentUtil;
+using LiveSplit.ComponentUtil;
 using LiveSplit.UI;
 using System;
 using System.Collections.Generic;
@@ -138,16 +138,6 @@ namespace LiveSplit.Roboquest
         public Settings()
         {
             InitializeComponent();
-
-            if (File.Exists(ListsFilePath))
-            {
-                LoadXML();
-            }
-            else
-            {
-                ComboBox_ListOfGames.Enabled = false;
-            }
-
 
             HandleDestroyed += UpdatePointer;
 
@@ -969,23 +959,6 @@ namespace LiveSplit.Roboquest
         /////Related to loading XML, list etc.////
         //////////////////////////////////////////
 
-        private void LoadXML()
-        {
-            ComboBox_ListOfGames.DataSource = null;
-            gamesOnTheList.Clear();
-            XmlDocument XmlGames = new XmlDocument();
-            XmlGames.Load(ListsFilePath);
-            gamesOnTheList.Add("-None-");
-            foreach (XmlNode gameNode in XmlGames.DocumentElement)
-            {
-                string name = gameNode.Attributes[0].Value;
-                gamesOnTheList.Add(name);
-            }
-
-            ComboBox_ListOfGames.DataSource = gamesOnTheList;
-            ComboBox_ListOfGames.Enabled = true;
-        }
-
         private void ComboBox_ListOfGames_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((string)ComboBox_ListOfGames.SelectedValue == "-None-")
@@ -1021,15 +994,6 @@ namespace LiveSplit.Roboquest
                         break;
                     }
                 }
-            }
-        }
-        private void B_UpdateXML_Click(object sender, EventArgs e)
-        {
-            MonkeyDownloadingXML _downloader = new MonkeyDownloadingXML();
-            bool result = _downloader.DownloadNew();
-            if (result)
-            {
-                LoadXML();
             }
         }
 
