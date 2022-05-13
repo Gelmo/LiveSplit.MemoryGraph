@@ -1,29 +1,44 @@
 <updates>
-    <update version="0.0.2">
-        <files>
-            <file path="Components/LiveSplit.Roboquest.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>- Prepare the component for the addition of additional offsets</change>
-        </changelog>
-    </update>
-    <update version="0.0.1">
-        <files>
-            <file path="Components/LiveSplit.Roboquest.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>- Version bump to test update functionality</change>
-        </changelog>
-    </update>
-    <update version="0.0.0">
-        <files>
-            <file path="Components/LiveSplit.Roboquest.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>- Initial fork from kugelrund's MemoryGraph component
-- Adjusted defaults and games list to explicitly target Roboquest
-- Removed Unit Converter
-- Linted project files</change>
-        </changelog>
-    </update>
+	<update version="0.0.3">
+		<files>
+			<file path="Components/LiveSplit.Roboquest.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Remove unused parts of the derivative component</change>
+			<change>Initial support for multiple versions (Steam/Beta/GoG/etc) rather than multiple games</change>
+			<change>Decouple data types and pointers from settings</change>
+			<change>Watch all relavent pointers rather than just speed</change>
+			<change>Add autosplitter functionality</change>
+			<change>Add reset options</change>
+			<change>Remove XML-based pointer settings</change>
+			<change>Use LiveSplit's native component update functionality</change>
+		</changelog>
+	</update>
+	<update version="0.0.2">
+		<files>
+			<file path="Components/LiveSplit.Roboquest.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Prepare the component for the addition of additional offsets</change>
+		</changelog>
+	</update>
+	<update version="0.0.1">
+		<files>
+			<file path="Components/LiveSplit.Roboquest.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Version bump to test update functionality</change>
+		</changelog>
+	</update>
+	<update version="0.0.0">
+		<files>
+			<file path="Components/LiveSplit.Roboquest.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Initial fork from kugelrund's MemoryGraph component</change>
+			<change>Adjusted defaults and games list to explicitly target Roboquest</change>
+			<change>Removed Unit Converter</change>
+			<change>Linted project files</change>
+		</changelog>
+	</update>
 </updates>
