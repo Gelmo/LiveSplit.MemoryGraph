@@ -117,8 +117,6 @@ namespace LiveSplit.Roboquest
             settings.HandleDestroyed += SettingsUpdated;
             SettingsUpdated(null, null);
 
-            _Watchers = new Watchers(settings);
-
             _timer.CurrentState = state;
             TimerStart += LSTimer_start;
             TimerReset += LSTimer_reset;
@@ -139,6 +137,8 @@ namespace LiveSplit.Roboquest
                 gBuffer.CompositingMode = CompositingMode.SourceCopy;
 
             }
+
+            _Watchers = new Watchers(settings);
         }
 
         private static Color Blend(IEnumerable<Color> colors, float amount, bool sillyColors)
@@ -500,31 +500,57 @@ namespace LiveSplit.Roboquest
             public MemoryWatcher<float> TotalRunTime { get; }
             public MemoryWatcher<bool> BGameTimePaused { get; }
             public MemoryWatcher<bool> BIsDead { get; }
+            public MemoryWatcher<float> AnimSpeed { get; }
             public MemoryWatcher<bool> BCurrentlyFightingBoss { get; }
 
             public Watchers(Settings settings)
             {
-                LastLevel = new MemoryWatcher<int>(settings.LastLevelPointer) { Name = "LastLevel" };
-                GameLevel = new MemoryWatcher<int>(settings.GameLevelPointer) { Name = "GameLevel" };
-                PlayerLevel = new MemoryWatcher<int>(settings.PlayerLevelPointer) { Name = "PlayerLevel" };
-                GameTime = new MemoryWatcher<float>(settings.GameTimePointer) { Name = "GameTime" };
-                GameTimeOnLevelStart = new MemoryWatcher<float>(settings.GameTimeOnLevelStartPointer) { Name = "GameTimeOnLevelStart" };
-                TotalRunTime = new MemoryWatcher<float>(settings.TotalRunTimePointer) { Name = "TotalRunTime" };
-                BGameTimePaused = new MemoryWatcher<bool>(settings.BGameTimePausedPointer) { Name = "BGameTimePaused" };
-                BIsDead = new MemoryWatcher<bool>(settings.BIsDeadPointer) { Name = "BIsDead" };
-                BCurrentlyFightingBoss = new MemoryWatcher<bool>(settings.BCurrentlyFightingBossPointer) { Name = "BCurrentlyFightingBoss" };
+                if (settings.RQVersion == "Steam")
+                {
+                    LastLevel = new MemoryWatcher<int>(new DeepPointer(0x04B427F0, 0x120, 0x3D0)) { Name = "LastLevel" };
+                    GameLevel = new MemoryWatcher<int>(new DeepPointer(0x04B427F0, 0x120, 0x3D8)) { Name = "GameLevel" };
+                    PlayerLevel = new MemoryWatcher<int>(new DeepPointer(0x04B427F0, 0x120, 0x5A0)) { Name = "PlayerLevel" };
+                    GameTime = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x120, 0x858)) { Name = "GameTime" };
+                    GameTimeOnLevelStart = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x120, 0x85C)) { Name = "GameTimeOnLevelStart" };
+                    TotalRunTime = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x120, 0x860)) { Name = "TotalRunTime" };
+                    BGameTimePaused = new MemoryWatcher<bool>(new DeepPointer(0x04B427F0, 0x120, 0x864)) { Name = "BGameTimePaused" };
+                    BIsDead = new MemoryWatcher<bool>(new DeepPointer(0x04B427F0, 0x180, 0x38, 0x0, 0x30, 0x260, 0x88A)) { Name = "BIsDead" };
+                    AnimSpeed = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x180, 0x38, 0x0, 0x30, 0x260, 0x46A0)) { Name = "AnimSpeed" };
+                    BCurrentlyFightingBoss = new MemoryWatcher<bool>(new DeepPointer(0x04B427F0, 0x180, 0x38, 0x0, 0x30, 0x260, 0x4EF9)) { Name = "BCurrentlyFightingBoss" };
+                }
+                else
+                {
+                    LastLevel = null;
+                    GameLevel = null;
+                    PlayerLevel = null;
+                    GameTime = null;
+                    GameTimeOnLevelStart = null;
+                    TotalRunTime = null;
+                    BGameTimePaused = null;
+                    BIsDead = null;
+                    AnimSpeed = null;
+                    BCurrentlyFightingBoss = null;
+                }
             }
         }
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            if (process != null && !process.HasExited && settings.AnimSpeedPointer != null &&
+            if (process != null && !process.HasExited && settings.RQVersion != null &&
                 string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
             {
+                _Watchers.LastLevel.Update(process);
+                _Watchers.GameLevel.Update(process);
+                _Watchers.PlayerLevel.Update(process);
+                _Watchers.GameTime.Update(process);
+                _Watchers.GameTimeOnLevelStart.Update(process);
+                _Watchers.TotalRunTime.Update(process);
+                _Watchers.BGameTimePaused.Update(process);
+                _Watchers.BIsDead.Update(process);
+                _Watchers.AnimSpeed.Update(process);
+                _Watchers.BCurrentlyFightingBoss.Update(process);
 
-                AnimSpeed = settings.AnimSpeedPointer.Deref<float>(process);
-
-                _Watchers.UpdateAll(process);
+                AnimSpeed = _Watchers.AnimSpeed.Current;
 
                 state.SetGameTime(TimeSpan.FromSeconds(_Watchers.GameTime.Current));
 
