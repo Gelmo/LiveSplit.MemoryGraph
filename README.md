@@ -1,6 +1,6 @@
 # LiveSplit.Roboquest
 
-This [LiveSplit](https://livesplit.org) component will eventually provide a variety of features related to the game [Roboquest](https://store.steampowered.com/app/692890/Roboquest/).
+This [LiveSplit](https://livesplit.org) component provides autosplit functionality for the game [Roboquest](https://store.steampowered.com/app/692890/Roboquest/). It also shows the player's horizontal speed on a configurable graph, and more features are planned.
 
 This preview will be updated soon...
 ![preview.png](/images/preview.png)
@@ -42,6 +42,7 @@ Download [`Components/LiveSplit.Roboquest.dll`](https://github.com/Gelmo/LiveSpl
 - Open LiveSplit
 - Right-click LiveSplit's window
 - Press `Edit Layout`
+- If you were previously using the ASL file, click the `Scriptable Auto Splitter` entry and then press the `-` icon at the top-left of the `Layout Editor` window. If you were not using the ASL file previously, you can skip this step
 - Press the `+` icon at the top-left of the `Layout Editor` window
 - From the context menu that appeared, go to `Other` and then left-click `Roboquest` in the secondary context menu
 - Double-click the new `Roboquest` entry in the main section of the `Layout Editor` window. In the new `Layout Settings` window, you should be on the `Roboquest` tab
