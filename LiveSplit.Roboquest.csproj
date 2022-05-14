@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>C:\LiveSplit\Components\</OutputPath>
+    <OutputPath>Components\debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -36,11 +36,11 @@
   <ItemGroup>
     <Reference Include="CustomFontDialog, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LiveSplit\LiveSplit\Libs\CustomFontDialog\CustomFontDialog.dll</HintPath>
+      <HintPath>CustomFontDialog.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="LiveSplit.Core">
-      <HintPath>..\LiveSplit\LiveSplit\LiveSplit.Core\obj\Release\LiveSplit.Core.dll</HintPath>
+      <HintPath>LiveSplit.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -53,7 +53,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UpdateManager">
-      <HintPath>..\LiveSplit\LiveSplit\UpdateManager\obj\Release\UpdateManager.dll</HintPath>
+      <HintPath>UpdateManager.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
