@@ -2,54 +2,70 @@
 
 This [LiveSplit](https://livesplit.org) component provides autosplit functionality for the game [Roboquest](https://store.steampowered.com/app/692890/Roboquest/). It also shows the player's horizontal speed on a configurable graph, and more features are planned.
 
-This preview will be updated soon...
-![preview.png](/images/preview.png)
+![preview.jpg](/images/preview.jpg)
 
 ## Features
 
 ### Current
 
-- Show the player's horizontal speed on a configurable graph
+- Install the component via LiveSplit's Splits menu
 - Autosplit functionality
+- Use and show in-game time
+- Show your horizontal speed on a configurable graph
 - Configurable option to reset the timer upon death
 - Configurable option to reset the timer when restarting the run in-game, when you leave the Game Over screen, or when you go to Basecamp
 
 ### In-progress
 
-- Get the component added to LiveSplit's official autosplitter update XML
-- Update the installation instructions once added to LiveSplit's official autosplitter update XML
-- Update the preview image
+- Update splits/routes at speedrun.com
+- Update the Resources section at speedrun.com
+- Download split files via LiveSplit's Splits menu
+- Adjust instructions accordingly
 
 ### Planned
 
 - Show the player's chosen class
-- Automatically/dynamically adjust the defined title/splits (mid-run) based on the route taken
-- Choose which title/splits to use from the component settings
-- Show an icon (or change the theme/layout) when in certain scenarios (boss, swarm, challenge room, etc)
+- Automatically/dynamically adjust the category/splits (mid-run) based on the route taken
+- Choose which category/route to use from the component settings
+- Show an icon (or change the theme/layout) when in certain scenarios (boss, swarm, challenge room, etc.)
 - Show time/collectible grade. I'll only add this if the devs are okay with it, since it's already shown in the game itself. The only reason to include it here would be for people that will be covering the in-game grade interface with LiveSplit in their recordings/streams.
 - Show perks/items. Again, only if the devs approve. This would be for people that will be covering the in-game perks/items interface with LiveSplit in their recordings/streams.
 - Show health (including minions/drones?). Again, only if the devs approve. This would be for people that will be covering the in-game healthbar interface with LiveSplit in their recordings/streams.
-- Maybe integrated configurable timers (the goal is to have everything needed, such as timers, configurable from a single tab/component)
 - Support sub-level splits
 - Support single-level runs
 
-## Installation
-
-Download [`Components/LiveSplit.Roboquest.dll`](https://github.com/Gelmo/LiveSplit.Roboquest/raw/roboquest/Components/LiveSplit.Roboquest.dll) and move/copy it into the `Components` directory within your LiveSplit folder. You can then add it to your LiveSplit layout (after restarting LiveSplit), from the `Other` category.
-
 ## Usage
 
+#### Part 1
+
 - Open LiveSplit
+- Right-click LiveSplit's window
+- Press `Edit Splits`
+- Select `Roboquest` from the `Game Name` menu at the top of the `Splits Editor` window
+- Choose an item from the `Run Category` menu in the `Splits Editor` window
+- Press the `Activate` button in the `Splits Editor` window
+- Press the `Settings` button in the `Splits Editor` window
+- In the new `Component Settings` window, choose the appropriate version of the game from the drop-down menu next to `Version:` (For example, `Steam`, `Steam Beta`, `GoG`, etc.)
+- Adjust other options in the `Component Settings` window as desired, and then press `OK`
+- Adjust other options in the `Splits Editor` window as desired, and then press `OK`
+- More information related to splits and routes will be added here soon. For now, refer to the [speedrun.com resources page](https://www.speedrun.com/roboquest/resources)
+
+#### Part 2
+
+- Right-click LiveSplit's window
+- Put your mouse over `Compare Against` and then click `Game Time` from the secondary context menu that appears
+
+#### Part 3
+
 - Right-click LiveSplit's window
 - Press `Edit Layout`
 - If you were previously using the ASL file, click the `Scriptable Auto Splitter` entry and then press the `-` icon at the top-left of the `Layout Editor` window. If you were not using the ASL file previously, you can skip this step
 - Press the `+` icon at the top-left of the `Layout Editor` window
-- From the context menu that appeared, go to `Other` and then left-click `Roboquest` in the secondary context menu
+- From the context menu that appeared, go to `Other` and then left-click `Roboquest` in the secondary context menu that appears
 - Double-click the new `Roboquest` entry in the main section of the `Layout Editor` window. In the new `Layout Settings` window, you should be on the `Roboquest` tab
-- Select the correct version of the game from the drop-down menu next to `Version:` (For example, `Steam`, `Steam Beta`, `GoG`, etc)
-- Adjust any other settings as desired (the defaults are sane)
-- Press `OK`
-- You should configure LiveSplit to use `Game Time` if you will only be showing one timer
+- Choose the appropriate version of the game from the drop-down menu next to `Version:` (For example, `Steam`, `Steam Beta`, `GoG`, etc.)
+- Adjust other options as desired (the defaults are sane), and then press `OK` to close the `Layout Settings` window
+- Press `OK` to close the `Layout Editor` window
 
 ## Notes:
 
