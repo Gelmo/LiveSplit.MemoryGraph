@@ -102,8 +102,6 @@ namespace LiveSplit.Roboquest
         public string DescriptiveText { get; set; }
 
         public string RQVersion { get; set; }
-        public bool ResetDeath { get; set; }
-        public bool ResetGame { get; set; }
 
         public Settings()
         {
@@ -130,8 +128,6 @@ namespace LiveSplit.Roboquest
             DescriptiveTextFont = overrideControlDescriptiveText.OverridingFont;
             ValueTextFont = overrideControlValueText.OverridingFont;
             RQVersion = "Steam";
-            ResetDeath = false;
-            ResetGame = true;
 
             btnBackgroundColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnBackgroundColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -166,8 +162,6 @@ namespace LiveSplit.Roboquest
             overrideControlValueText.DataBindings.Add("OverrideFont", this, "ValueTextOverrideFont", false, DataSourceUpdateMode.OnPropertyChanged);
 
             cmbRQVersion.DataBindings.Add("SelectedItem", this, "RQVersion", false, DataSourceUpdateMode.OnPropertyChanged);
-            cbResetDeath.DataBindings.Add("Checked", this, "ResetDeath", false, DataSourceUpdateMode.OnPropertyChanged);
-            cbResetGame.DataBindings.Add("Checked", this, "ResetGame", false, DataSourceUpdateMode.OnPropertyChanged);
 
             AddComboboxDataSources();
         }
@@ -284,8 +278,6 @@ namespace LiveSplit.Roboquest
             ValueTextDecimals = SettingsHelper.ParseInt(element["ValueTextDecimals"]);
 
             RQVersion = SettingsHelper.ParseString(element["RQVersion"]);
-            ResetDeath = SettingsHelper.ParseBool(element["ResetDeath"]);
-            ResetGame = SettingsHelper.ParseBool(element["ResetGame"]);
         }
 
         public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
@@ -344,9 +336,7 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "ValueTextOverrideFont", ValueTextOverrideFont) ^
             SettingsHelper.CreateSetting(document, parent, "ValueTextDecimals", ValueTextDecimals) ^
 
-            SettingsHelper.CreateSetting(document, parent, "RQVersion", RQVersion) ^
-            SettingsHelper.CreateSetting(document, parent, "ResetDeath", ResetDeath) ^
-            SettingsHelper.CreateSetting(document, parent, "ResetGame", ResetGame);
+            SettingsHelper.CreateSetting(document, parent, "RQVersion", RQVersion);
         }
 
         private void CmbBackgroundGradientType_SelectedValueChanged(object sender, EventArgs e)
@@ -456,30 +446,6 @@ namespace LiveSplit.Roboquest
         private void GrpRoboquest_Enter(object sender, EventArgs e)
         {
 
-        }
-
-        private void CBResetDeath_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbResetDeath.Checked == true)
-            {
-                ResetDeath = true;
-            }
-            else
-            {
-                ResetDeath = false;
-            }
-        }
-
-        private void CBResetGame_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbResetGame.Checked == true)
-            {
-                ResetGame = true;
-            }
-            else
-            {
-                ResetGame = false;
-            }
         }
     }
 }

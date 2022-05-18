@@ -43,8 +43,6 @@ namespace LiveSplit.Roboquest
             this.grpRoboquest = new System.Windows.Forms.GroupBox();
             this.cmbRQVersion = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbResetDeath = new System.Windows.Forms.CheckBox();
-            this.cbResetGame = new System.Windows.Forms.CheckBox();
             this.grpGraph = new System.Windows.Forms.GroupBox();
             this.btnDeleteColor = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
@@ -177,13 +175,11 @@ namespace LiveSplit.Roboquest
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpRoboquest.Controls.Add(this.cmbRQVersion);
             this.grpRoboquest.Controls.Add(this.label1);
-            this.grpRoboquest.Controls.Add(this.cbResetDeath);
-            this.grpRoboquest.Controls.Add(this.cbResetGame);
             this.grpRoboquest.Location = new System.Drawing.Point(11, 11);
             this.grpRoboquest.Margin = new System.Windows.Forms.Padding(2);
             this.grpRoboquest.Name = "grpRoboquest";
             this.grpRoboquest.Padding = new System.Windows.Forms.Padding(2);
-            this.grpRoboquest.Size = new System.Drawing.Size(436, 71);
+            this.grpRoboquest.Size = new System.Drawing.Size(436, 46);
             this.grpRoboquest.TabIndex = 0;
             this.grpRoboquest.TabStop = false;
             this.grpRoboquest.Text = "Roboquest";
@@ -215,32 +211,6 @@ namespace LiveSplit.Roboquest
             this.label1.TabIndex = 7;
             this.label1.Text = "Version:";
             // 
-            // cbResetDeath
-            // 
-            this.cbResetDeath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbResetDeath.AutoSize = true;
-            this.cbResetDeath.Location = new System.Drawing.Point(9, 46);
-            this.cbResetDeath.Name = "cbResetDeath";
-            this.cbResetDeath.Size = new System.Drawing.Size(136, 17);
-            this.cbResetDeath.TabIndex = 2;
-            this.cbResetDeath.Text = "Reset timer upon death";
-            this.cbResetDeath.UseVisualStyleBackColor = true;
-            this.cbResetDeath.CheckedChanged += new System.EventHandler(this.CBResetDeath_CheckedChanged);
-            // 
-            // cbResetGame
-            // 
-            this.cbResetGame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbResetGame.AutoSize = true;
-            this.cbResetGame.Checked = true;
-            this.cbResetGame.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbResetGame.Location = new System.Drawing.Point(175, 46);
-            this.cbResetGame.Name = "cbResetGame";
-            this.cbResetGame.Size = new System.Drawing.Size(260, 17);
-            this.cbResetGame.TabIndex = 3;
-            this.cbResetGame.Text = "Reset timer when restarting or going to Basecamp";
-            this.cbResetGame.UseVisualStyleBackColor = true;
-            this.cbResetGame.CheckedChanged += new System.EventHandler(this.CBResetGame_CheckedChanged);
-            // 
             // grpGraph
             // 
             this.grpGraph.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -259,7 +229,7 @@ namespace LiveSplit.Roboquest
             this.grpGraph.Controls.Add(this.btnBackgroundColor1);
             this.grpGraph.Controls.Add(this.btnBackgroundColor2);
             this.grpGraph.Controls.Add(this.cmbBackgroundGradientType);
-            this.grpGraph.Location = new System.Drawing.Point(11, 83);
+            this.grpGraph.Location = new System.Drawing.Point(11, 59);
             this.grpGraph.Margin = new System.Windows.Forms.Padding(2);
             this.grpGraph.Name = "grpGraph";
             this.grpGraph.Padding = new System.Windows.Forms.Padding(2);
@@ -795,7 +765,5 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.CheckBox localMaxCB;
         private System.Windows.Forms.Button btnAddColor;
         private System.Windows.Forms.Button btnDeleteColor;
-        private System.Windows.Forms.CheckBox cbResetDeath;
-        private System.Windows.Forms.CheckBox cbResetGame;
     }
 }
