@@ -1,0 +1,10 @@
+<updates>
+	<update version="0.0.0">
+		<files>
+			<file path="Components/LiveSplit.RoboquestTimer.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Initial abstraction of Splits from the main component</change>
+		</changelog>
+	</update>
+</updates>

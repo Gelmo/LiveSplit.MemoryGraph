@@ -1,9 +1,10 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.Roboquest", "LiveSplit.Roboquest.csproj", "{EC265AD9-9429-42CE-B27B-F45132029F38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSplit.RoboquestTimer", "LiveSplit.RoboquestTimer\LiveSplit.RoboquestTimer.csproj", "{1100158C-67E5-4A17-A8F9-DDD3886981FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +16,10 @@ Global
 		{EC265AD9-9429-42CE-B27B-F45132029F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC265AD9-9429-42CE-B27B-F45132029F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC265AD9-9429-42CE-B27B-F45132029F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1100158C-67E5-4A17-A8F9-DDD3886981FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1100158C-67E5-4A17-A8F9-DDD3886981FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1100158C-67E5-4A17-A8F9-DDD3886981FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1100158C-67E5-4A17-A8F9-DDD3886981FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
