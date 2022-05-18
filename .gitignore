@@ -214,3 +214,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+
+Components/CustomFontDialog.dll
+
+Components/LiveSplit.Core.dll
+
+Components/UpdateManager.dll
