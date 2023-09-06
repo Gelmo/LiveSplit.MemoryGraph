@@ -1,4 +1,12 @@
 <updates>
+	<update version="0.0.4.1">
+		<files>
+			<file path="Components/LiveSplit.Roboquest.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Update values for latest release</change>
+		</changelog>
+	</update>
 	<update version="0.0.4">
 		<files>
 			<file path="Components/LiveSplit.Roboquest.dll" status="changed" />
