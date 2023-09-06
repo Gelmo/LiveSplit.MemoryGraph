@@ -77,15 +77,15 @@ namespace LiveSplit.RoboquestTimer
             {
                 if (settings.RQVersion == "Steam")
                 {
-                    LastLevel = new MemoryWatcher<int>(new DeepPointer(0x04B427F0, 0x120, 0x3D0)) { Name = "LastLevel" };
-                    GameLevel = new MemoryWatcher<int>(new DeepPointer(0x04B427F0, 0x120, 0x3D8)) { Name = "GameLevel" };
-                    PlayerLevel = new MemoryWatcher<int>(new DeepPointer(0x04B427F0, 0x120, 0x5A0)) { Name = "PlayerLevel" };
-                    GameTime = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x120, 0x858)) { Name = "GameTime" };
-                    GameTimeOnLevelStart = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x120, 0x85C)) { Name = "GameTimeOnLevelStart" };
-                    TotalRunTime = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x120, 0x860)) { Name = "TotalRunTime" };
-                    BGameTimePaused = new MemoryWatcher<bool>(new DeepPointer(0x04B427F0, 0x120, 0x864)) { Name = "BGameTimePaused" };
-                    BIsDead = new MemoryWatcher<bool>(new DeepPointer(0x04B427F0, 0x180, 0x38, 0x0, 0x30, 0x260, 0x88A)) { Name = "BIsDead" };
-                    BCurrentlyFightingBoss = new MemoryWatcher<bool>(new DeepPointer(0x04B427F0, 0x180, 0x38, 0x0, 0x30, 0x260, 0x4EF9)) { Name = "BCurrentlyFightingBoss" };
+                    LastLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x418)) { Name = "LastLevel" };
+                    GameLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x420)) { Name = "GameLevel" };
+                    PlayerLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x7B8)) { Name = "PlayerLevel" };
+                    GameTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAC8)) { Name = "GameTime" };
+                    GameTimeOnLevelStart = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xACC)) { Name = "GameTimeOnLevelStart" };
+                    TotalRunTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD0)) { Name = "TotalRunTime" };
+                    BGameTimePaused = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD4)) { Name = "BGameTimePaused" };
+                    BIsDead = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x8A2)) { Name = "BIsDead" };
+                    BCurrentlyFightingBoss = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x551A)) { Name = "BCurrentlyFightingBoss" };
                 }
                 else
                 {

@@ -488,7 +488,7 @@ namespace LiveSplit.Roboquest
             {
                 if (settings.RQVersion == "Steam")
                 {
-                    AnimSpeed = new MemoryWatcher<float>(new DeepPointer(0x04B427F0, 0x180, 0x38, 0x0, 0x30, 0x260, 0x46A0)) { Name = "AnimSpeed" };
+                    AnimSpeed = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x4E48)) { Name = "AnimSpeed" };
                 }
                 else
                 {
