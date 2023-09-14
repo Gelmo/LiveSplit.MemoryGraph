@@ -1,4 +1,4 @@
-using LiveSplit.ComponentUtil;
+﻿using LiveSplit.ComponentUtil;
 using LiveSplit.Model;
 using LiveSplit.UI;
 using LiveSplit.UI.Components;
@@ -63,41 +63,26 @@ namespace LiveSplit.RoboquestTimer
 
         class Watchers : MemoryWatcherList
         {
-            public MemoryWatcher<int> LastLevel { get; }
             public MemoryWatcher<int> GameLevel { get; }
-            public MemoryWatcher<int> PlayerLevel { get; }
             public MemoryWatcher<float> GameTime { get; }
-            public MemoryWatcher<float> GameTimeOnLevelStart { get; }
             public MemoryWatcher<float> TotalRunTime { get; }
-            public MemoryWatcher<bool> BGameTimePaused { get; }
             public MemoryWatcher<bool> BIsDead { get; }
-            public MemoryWatcher<bool> BCurrentlyFightingBoss { get; }
 
             public Watchers(Settings settings)
             {
                 if (settings.RQVersion == "Steam")
                 {
-                    LastLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x418)) { Name = "LastLevel" };
                     GameLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x420)) { Name = "GameLevel" };
-                    PlayerLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x7B8)) { Name = "PlayerLevel" };
                     GameTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAC8)) { Name = "GameTime" };
-                    GameTimeOnLevelStart = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xACC)) { Name = "GameTimeOnLevelStart" };
                     TotalRunTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD0)) { Name = "TotalRunTime" };
-                    BGameTimePaused = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD4)) { Name = "BGameTimePaused" };
                     BIsDead = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x8A2)) { Name = "BIsDead" };
-                    BCurrentlyFightingBoss = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x551A)) { Name = "BCurrentlyFightingBoss" };
                 }
                 else
                 {
-                    LastLevel = null;
                     GameLevel = null;
-                    PlayerLevel = null;
                     GameTime = null;
-                    GameTimeOnLevelStart = null;
                     TotalRunTime = null;
-                    BGameTimePaused = null;
                     BIsDead = null;
-                    BCurrentlyFightingBoss = null;
                 }
             }
         }
@@ -107,15 +92,10 @@ namespace LiveSplit.RoboquestTimer
             if (process != null && !process.HasExited && settings.RQVersion != null &&
                 string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
             {
-                _Watchers.LastLevel.Update(process);
                 _Watchers.GameLevel.Update(process);
-                _Watchers.PlayerLevel.Update(process);
                 _Watchers.GameTime.Update(process);
-                _Watchers.GameTimeOnLevelStart.Update(process);
                 _Watchers.TotalRunTime.Update(process);
-                _Watchers.BGameTimePaused.Update(process);
                 _Watchers.BIsDead.Update(process);
-                _Watchers.BCurrentlyFightingBoss.Update(process);
 
                 state.SetGameTime(TimeSpan.FromSeconds(_Watchers.GameTime.Current));
 
