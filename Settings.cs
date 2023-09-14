@@ -98,7 +98,6 @@ namespace LiveSplit.Roboquest
         public bool ValueTextOverrideFont { get; set; }
         public int ValueTextDecimals { get; set; }
 
-        public string ProcessName { get; set; }
         public string DescriptiveText { get; set; }
 
         public Settings()
@@ -121,7 +120,6 @@ namespace LiveSplit.Roboquest
             DescriptiveTextPosition = Position.Left;
             LocalMax = false;
             ValueTextDecimals = 2;
-            ProcessName = "RoboQuest-Win64-Shipping";
             DescriptiveText = "Speed";
             DescriptiveTextFont = overrideControlDescriptiveText.OverridingFont;
             ValueTextFont = overrideControlValueText.OverridingFont;
@@ -258,7 +256,6 @@ namespace LiveSplit.Roboquest
             ValueTextPosition = SettingsHelper.ParseEnum<Position>(element["ValueTextPosition"]);
             DescriptiveTextPosition = SettingsHelper.ParseEnum<Position>(element["DescriptiveTextPosition"]);
             LocalMax = SettingsHelper.ParseBool(element["LocalMax"]);
-            ProcessName = SettingsHelper.ParseString(element["ProcessName"]);
             DescriptiveText = SettingsHelper.ParseString(element["DescriptiveText"]);
 
             DescriptiveTextColor = SettingsHelper.ParseColor(element["DescriptiveTextColor"]);
@@ -315,7 +312,6 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "ValueTextPosition", ValueTextPosition) ^
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextPosition", DescriptiveTextPosition) ^
             SettingsHelper.CreateSetting(document, parent, "LocalMax", LocalMax) ^
-            SettingsHelper.CreateSetting(document, parent, "ProcessName", ProcessName) ^
             SettingsHelper.CreateSetting(document, parent, "DescriptiveText", DescriptiveText) ^
 
             SettingsHelper.CreateSetting(document, parent, "DescriptiveTextColor", DescriptiveTextColor) ^

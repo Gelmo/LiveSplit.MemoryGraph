@@ -13,7 +13,6 @@ namespace LiveSplit.RoboquestTimer
 {
     partial class Settings : UserControl
     {
-        public string ProcessName { get; set; }
         public bool ResetDeath { get; set; }
         public bool ResetGame { get; set; }
 
@@ -21,7 +20,6 @@ namespace LiveSplit.RoboquestTimer
         {
             InitializeComponent();
 
-            ProcessName = "RoboQuest-Win64-Shipping";
             ResetDeath = false;
             ResetGame = true;
 
@@ -33,7 +31,6 @@ namespace LiveSplit.RoboquestTimer
         {
             System.Xml.XmlElement element = (System.Xml.XmlElement)node;
 
-            ProcessName = SettingsHelper.ParseString(element["ProcessName"]);
             ResetDeath = SettingsHelper.ParseBool(element["ResetDeath"]);
             ResetGame = SettingsHelper.ParseBool(element["ResetGame"]);
         }
@@ -64,7 +61,6 @@ namespace LiveSplit.RoboquestTimer
         private int CreateSettingsNode(System.Xml.XmlDocument document, System.Xml.XmlElement parent)
         {
             return SettingsHelper.CreateSetting(document, parent, "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version) ^
-            SettingsHelper.CreateSetting(document, parent, "ProcessName", ProcessName) ^
             SettingsHelper.CreateSetting(document, parent, "ResetDeath", ResetDeath) ^
             SettingsHelper.CreateSetting(document, parent, "ResetGame", ResetGame);
         }

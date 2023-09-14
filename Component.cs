@@ -499,7 +499,7 @@ namespace LiveSplit.Roboquest
             }
             else
             {
-                process = System.Diagnostics.Process.GetProcessesByName(settings.ProcessName).FirstOrDefault();
+                process = System.Diagnostics.Process.GetProcessesByName("RoboQuest-Win64-Shipping").FirstOrDefault();
             }
         }
 
