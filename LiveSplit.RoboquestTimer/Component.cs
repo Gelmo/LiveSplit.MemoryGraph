@@ -1,4 +1,4 @@
-﻿using LiveSplit.ComponentUtil;
+using LiveSplit.ComponentUtil;
 using LiveSplit.Model;
 using LiveSplit.UI;
 using LiveSplit.UI.Components;
@@ -149,10 +149,7 @@ namespace LiveSplit.RoboquestTimer
                     TimerSplit?.Invoke(this, EventArgs.Empty);
                 }
 
-                if (invalidator != null)
-                {
-                    invalidator.Invalidate(0, 0, width, height);
-                }
+                invalidator?.Invalidate(0, 0, width, height);
             }
             else
             {

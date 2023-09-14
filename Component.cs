@@ -506,10 +506,7 @@ namespace LiveSplit.Roboquest
 
                 AnimSpeed = _Watchers.AnimSpeed.Current;
 
-                if (invalidator != null)
-                {
-                    invalidator.Invalidate(0, 0, width, height);
-                }
+                invalidator?.Invalidate(0, 0, width, height);
             }
             else
             {
