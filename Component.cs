@@ -13,7 +13,6 @@ namespace LiveSplit.Roboquest
     public class Component : IComponent
     {
         private Settings settings;
-        private Watchers _Watchers;
 
         public string ComponentName => "Roboquest";
 
@@ -127,8 +126,6 @@ namespace LiveSplit.Roboquest
                 gBuffer.CompositingMode = CompositingMode.SourceCopy;
 
             }
-
-            _Watchers = new Watchers();
         }
 
         private static Color Blend(IEnumerable<Color> colors, float amount, bool sillyColors)
@@ -480,24 +477,15 @@ namespace LiveSplit.Roboquest
             DrawGraph(g, state, HorizontalWidth, height);
         }
 
-        class Watchers : MemoryWatcherList
-        {
-            public MemoryWatcher<float> AnimSpeed { get; }
-
-            public Watchers()
-            {
-                AnimSpeed = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x4E48)) { Name = "AnimSpeed" };
-            }
-        }
+        public MemoryWatcher<float> AnimSpeedMem = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x4E48));
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            if (process != null && !process.HasExited &&
-                string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
+            if (process != null && !process.HasExited)
             {
-                _Watchers.AnimSpeed.Update(process);
+                AnimSpeedMem.Update(process);
 
-                AnimSpeed = _Watchers.AnimSpeed.Current;
+                AnimSpeed = AnimSpeedMem.Current;
 
                 invalidator?.Invalidate(0, 0, width, height);
             }

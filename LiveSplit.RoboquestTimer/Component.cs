@@ -13,7 +13,6 @@ namespace LiveSplit.RoboquestTimer
     public class Component : IComponent
     {
         private Settings settings;
-        private Watchers _Watchers;
 
         public string ComponentName => "Roboquest Timer";
 
@@ -50,7 +49,6 @@ namespace LiveSplit.RoboquestTimer
 
         private void SettingsUpdated(object sender, EventArgs e)
         {
-            _Watchers = new Watchers();
         }
 
         public void DrawVertical(Graphics g, LiveSplitState state, float width, Region clipRegion)
@@ -61,60 +59,48 @@ namespace LiveSplit.RoboquestTimer
         {
         }
 
-        class Watchers : MemoryWatcherList
-        {
-            public MemoryWatcher<int> GameLevel { get; }
-            public MemoryWatcher<float> GameTime { get; }
-            public MemoryWatcher<float> TotalRunTime { get; }
-            public MemoryWatcher<bool> BIsDead { get; }
-
-            public Watchers()
-            {
-                GameLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x420)) { Name = "GameLevel" };
-                GameTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAC8)) { Name = "GameTime" };
-                TotalRunTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD0)) { Name = "TotalRunTime" };
-                BIsDead = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x8A2)) { Name = "BIsDead" };
-            }
-        }
+        public MemoryWatcher<int> GameLevelMem = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x420));
+        public MemoryWatcher<float> GameTimeMem = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAC8));
+        public MemoryWatcher<float> TotalRunTimeMem = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD0));
+        public MemoryWatcher<bool> BIsDeadMem = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x8A2));
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            if (process != null && !process.HasExited &&
-                string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
+            if (process != null && !process.HasExited)
             {
-                _Watchers.GameLevel.Update(process);
-                _Watchers.GameTime.Update(process);
-                _Watchers.TotalRunTime.Update(process);
-                _Watchers.BIsDead.Update(process);
+                GameLevelMem.Update(process);
+                GameTimeMem.Update(process);
+                TotalRunTimeMem.Update(process);
+                BIsDeadMem.Update(process);
 
-                state.SetGameTime(TimeSpan.FromSeconds(_Watchers.GameTime.Current));
+                state.SetGameTime(TimeSpan.FromSeconds(GameTimeMem.Current));
 
                 // If the in-game time is running and the in-game time was previously 0, start the timer
-                if (_Watchers.GameTime.Current > 0 && _Watchers.GameTime.Old == 0)
+                if (GameTimeMem.Current > 0 && GameTimeMem.Old == 0)
                 {
                     TimerStart?.Invoke(this, EventArgs.Empty);
-                    state.SetGameTime(TimeSpan.FromSeconds(_Watchers.GameTime.Current));
+                    state.SetGameTime(TimeSpan.FromSeconds(GameTimeMem.Current));
                 }
 
                 // If the in-game timer is set to 0 and ResetGame is enabled, reset the timer. This occurs when restarting the run in-game, when you leave the Game Over screen, or when you go to Basecamp
-                if (settings.ResetGame == true && _Watchers.GameTime.Current == 0 && _Watchers.GameTime.Old == 0)
+                if (settings.ResetGame == true && GameTimeMem.Current == 0 && GameTimeMem.Old == 0)
                 {
                     TimerReset?.Invoke(this, EventArgs.Empty);
                 }
 
                 // If the player has died and ResetDeath is enabled, reset the timer
-                if (settings.ResetDeath == true && _Watchers.BIsDead.Current && !_Watchers.BIsDead.Old)
+                if (settings.ResetDeath == true && BIsDeadMem.Current && !BIsDeadMem.Old)
                 {
                     TimerReset?.Invoke(this, EventArgs.Empty);
                 }
 
                 // If the game has updated TotalRunTime and the player has not died, split. This should only occur on the final split
-                if (_Watchers.TotalRunTime.Current > 0 && _Watchers.TotalRunTime.Old == 0 && !_Watchers.BIsDead.Current)
+                if (TotalRunTimeMem.Current > 0 && TotalRunTimeMem.Old == 0 && !BIsDeadMem.Current)
                 {
                     TimerSplit?.Invoke(this, EventArgs.Empty);
                 }
                 // Otherwise, if the current level differs from the level in the previous loop, split
-                else if (_Watchers.GameLevel.Current != _Watchers.GameLevel.Old)
+                else if (GameLevelMem.Current != GameLevelMem.Old)
                 {
                     TimerSplit?.Invoke(this, EventArgs.Empty);
                 }
