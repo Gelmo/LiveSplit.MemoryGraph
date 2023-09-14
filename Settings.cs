@@ -101,8 +101,6 @@ namespace LiveSplit.Roboquest
         public string ProcessName { get; set; }
         public string DescriptiveText { get; set; }
 
-        public string RQVersion { get; set; }
-
         public Settings()
         {
             InitializeComponent();
@@ -127,7 +125,6 @@ namespace LiveSplit.Roboquest
             DescriptiveText = "Speed";
             DescriptiveTextFont = overrideControlDescriptiveText.OverridingFont;
             ValueTextFont = overrideControlValueText.OverridingFont;
-            RQVersion = "Steam";
 
             btnBackgroundColor1.DataBindings.Add("BackColor", this, "BackgroundColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnBackgroundColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -160,8 +157,6 @@ namespace LiveSplit.Roboquest
             overrideControlValueText.DataBindings.Add("OverridingFont", this, "ValueTextFont", false, DataSourceUpdateMode.OnPropertyChanged);
             overrideControlValueText.DataBindings.Add("OverrideColor", this, "ValueTextOverrideColor", false, DataSourceUpdateMode.OnPropertyChanged);
             overrideControlValueText.DataBindings.Add("OverrideFont", this, "ValueTextOverrideFont", false, DataSourceUpdateMode.OnPropertyChanged);
-
-            cmbRQVersion.DataBindings.Add("SelectedItem", this, "RQVersion", false, DataSourceUpdateMode.OnPropertyChanged);
 
             AddComboboxDataSources();
         }
@@ -276,8 +271,6 @@ namespace LiveSplit.Roboquest
             ValueTextOverrideColor = SettingsHelper.ParseBool(element["ValueTextOverrideColor"]);
             ValueTextOverrideFont = SettingsHelper.ParseBool(element["ValueTextOverrideFont"]);
             ValueTextDecimals = SettingsHelper.ParseInt(element["ValueTextDecimals"]);
-
-            RQVersion = SettingsHelper.ParseString(element["RQVersion"]);
         }
 
         public System.Xml.XmlNode GetSettings(System.Xml.XmlDocument document)
@@ -334,9 +327,7 @@ namespace LiveSplit.Roboquest
             SettingsHelper.CreateSetting(document, parent, "ValueTextFont", ValueTextFont) ^
             SettingsHelper.CreateSetting(document, parent, "ValueTextOverrideColor", ValueTextOverrideColor) ^
             SettingsHelper.CreateSetting(document, parent, "ValueTextOverrideFont", ValueTextOverrideFont) ^
-            SettingsHelper.CreateSetting(document, parent, "ValueTextDecimals", ValueTextDecimals) ^
-
-            SettingsHelper.CreateSetting(document, parent, "RQVersion", RQVersion);
+            SettingsHelper.CreateSetting(document, parent, "ValueTextDecimals", ValueTextDecimals);
         }
 
         private void CmbBackgroundGradientType_SelectedValueChanged(object sender, EventArgs e)
@@ -414,20 +405,6 @@ namespace LiveSplit.Roboquest
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
-            }
-        }
-
-        private void CmbRQVersion_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if ((string)cmbRQVersion.SelectedItem == "Steam")
-            {
-                RQVersion = "Steam";
-                ProcessName = "RoboQuest-Win64-Shipping";
-            }
-            else
-            {
-                RQVersion = null;
-                ProcessName = null;
             }
         }
 

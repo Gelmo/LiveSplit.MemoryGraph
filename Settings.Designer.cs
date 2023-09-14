@@ -40,9 +40,6 @@ namespace LiveSplit.Roboquest
             this.txtDescriptiveText = new System.Windows.Forms.TextBox();
             this.lblDescriptiveTextPosition = new System.Windows.Forms.Label();
             this.cmbDescriptiveTextPosition = new System.Windows.Forms.ComboBox();
-            this.grpRoboquest = new System.Windows.Forms.GroupBox();
-            this.cmbRQVersion = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.grpGraph = new System.Windows.Forms.GroupBox();
             this.btnDeleteColor = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
@@ -76,9 +73,9 @@ namespace LiveSplit.Roboquest
             this.btnBackgroundColor2 = new System.Windows.Forms.Button();
             this.cmbBackgroundGradientType = new System.Windows.Forms.ComboBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.grpRoboquest = new System.Windows.Forms.GroupBox();
             this.grpDescriptiveText.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.grpRoboquest.SuspendLayout();
             this.grpGraph.SuspendLayout();
             this.grpValueText.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numValueTextDecimals)).BeginInit();
@@ -169,48 +166,6 @@ namespace LiveSplit.Roboquest
             this.cmbDescriptiveTextPosition.Size = new System.Drawing.Size(136, 21);
             this.cmbDescriptiveTextPosition.TabIndex = 1;
             // 
-            // grpRoboquest
-            // 
-            this.grpRoboquest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpRoboquest.Controls.Add(this.cmbRQVersion);
-            this.grpRoboquest.Controls.Add(this.label1);
-            this.grpRoboquest.Location = new System.Drawing.Point(11, 11);
-            this.grpRoboquest.Margin = new System.Windows.Forms.Padding(2);
-            this.grpRoboquest.Name = "grpRoboquest";
-            this.grpRoboquest.Padding = new System.Windows.Forms.Padding(2);
-            this.grpRoboquest.Size = new System.Drawing.Size(436, 46);
-            this.grpRoboquest.TabIndex = 0;
-            this.grpRoboquest.TabStop = false;
-            this.grpRoboquest.Text = "Roboquest";
-            this.grpRoboquest.Enter += new System.EventHandler(this.GrpRoboquest_Enter);
-            // 
-            // cmbRQVersion
-            // 
-            this.cmbRQVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbRQVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRQVersion.FormattingEnabled = true;
-            this.cmbRQVersion.Items.AddRange(new object[] {
-            "-None-",
-            "Steam"});
-            this.cmbRQVersion.Location = new System.Drawing.Point(51, 15);
-            this.cmbRQVersion.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbRQVersion.Name = "cmbRQVersion";
-            this.cmbRQVersion.Size = new System.Drawing.Size(375, 21);
-            this.cmbRQVersion.TabIndex = 9;
-            this.cmbRQVersion.SelectedValueChanged += new System.EventHandler(this.CmbRQVersion_SelectedValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Version:";
-            // 
             // grpGraph
             // 
             this.grpGraph.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -229,7 +184,7 @@ namespace LiveSplit.Roboquest
             this.grpGraph.Controls.Add(this.btnBackgroundColor1);
             this.grpGraph.Controls.Add(this.btnBackgroundColor2);
             this.grpGraph.Controls.Add(this.cmbBackgroundGradientType);
-            this.grpGraph.Location = new System.Drawing.Point(11, 59);
+            this.grpGraph.Location = new System.Drawing.Point(11, 39);
             this.grpGraph.Margin = new System.Windows.Forms.Padding(2);
             this.grpGraph.Name = "grpGraph";
             this.grpGraph.Padding = new System.Windows.Forms.Padding(2);
@@ -638,6 +593,20 @@ namespace LiveSplit.Roboquest
             this.cmbBackgroundGradientType.TabIndex = 1;
             this.cmbBackgroundGradientType.SelectedValueChanged += new System.EventHandler(this.CmbBackgroundGradientType_SelectedValueChanged);
             // 
+            // grpRoboquest
+            // 
+            this.grpRoboquest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpRoboquest.Location = new System.Drawing.Point(11, 11);
+            this.grpRoboquest.Margin = new System.Windows.Forms.Padding(2);
+            this.grpRoboquest.Name = "grpRoboquest";
+            this.grpRoboquest.Padding = new System.Windows.Forms.Padding(2);
+            this.grpRoboquest.Size = new System.Drawing.Size(436, 23);
+            this.grpRoboquest.TabIndex = 0;
+            this.grpRoboquest.TabStop = false;
+            this.grpRoboquest.Text = "Roboquest";
+            this.grpRoboquest.Enter += new System.EventHandler(this.GrpRoboquest_Enter);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,8 +621,6 @@ namespace LiveSplit.Roboquest
             this.grpDescriptiveText.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            this.grpRoboquest.ResumeLayout(false);
-            this.grpRoboquest.PerformLayout();
             this.grpGraph.ResumeLayout(false);
             this.grpGraph.PerformLayout();
             this.grpValueText.ResumeLayout(false);
@@ -723,7 +690,6 @@ namespace LiveSplit.Roboquest
                    value
                }).OrderBy(item => item.value).ToList();
         }
-        private System.Windows.Forms.GroupBox grpRoboquest;
         private System.Windows.Forms.GroupBox grpGraph;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label lblMaximumValue;
@@ -752,8 +718,6 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.Label lblDescriptiveTextPosition;
         private System.Windows.Forms.Label lblDecimals;
         private System.Windows.Forms.NumericUpDown numValueTextDecimals;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbRQVersion;
         private System.Windows.Forms.Label lblGraphColor;
         private System.Windows.Forms.ComboBox cmbGraphGradientType;
         private System.Windows.Forms.Label lblBackgroundColor;
@@ -765,5 +729,6 @@ namespace LiveSplit.Roboquest
         private System.Windows.Forms.CheckBox localMaxCB;
         private System.Windows.Forms.Button btnAddColor;
         private System.Windows.Forms.Button btnDeleteColor;
+        private System.Windows.Forms.GroupBox grpRoboquest;
     }
 }

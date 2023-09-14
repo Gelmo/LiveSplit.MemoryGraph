@@ -50,7 +50,7 @@ namespace LiveSplit.RoboquestTimer
 
         private void SettingsUpdated(object sender, EventArgs e)
         {
-            _Watchers = new Watchers(settings);
+            _Watchers = new Watchers();
         }
 
         public void DrawVertical(Graphics g, LiveSplitState state, float width, Region clipRegion)
@@ -68,28 +68,18 @@ namespace LiveSplit.RoboquestTimer
             public MemoryWatcher<float> TotalRunTime { get; }
             public MemoryWatcher<bool> BIsDead { get; }
 
-            public Watchers(Settings settings)
+            public Watchers()
             {
-                if (settings.RQVersion == "Steam")
-                {
-                    GameLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x420)) { Name = "GameLevel" };
-                    GameTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAC8)) { Name = "GameTime" };
-                    TotalRunTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD0)) { Name = "TotalRunTime" };
-                    BIsDead = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x8A2)) { Name = "BIsDead" };
-                }
-                else
-                {
-                    GameLevel = null;
-                    GameTime = null;
-                    TotalRunTime = null;
-                    BIsDead = null;
-                }
+                GameLevel = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x420)) { Name = "GameLevel" };
+                GameTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAC8)) { Name = "GameTime" };
+                TotalRunTime = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD0)) { Name = "TotalRunTime" };
+                BIsDead = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x8A2)) { Name = "BIsDead" };
             }
         }
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            if (process != null && !process.HasExited && settings.RQVersion != null &&
+            if (process != null && !process.HasExited &&
                 string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
             {
                 _Watchers.GameLevel.Update(process);

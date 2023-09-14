@@ -128,7 +128,7 @@ namespace LiveSplit.Roboquest
 
             }
 
-            _Watchers = new Watchers(settings);
+            _Watchers = new Watchers();
         }
 
         private static Color Blend(IEnumerable<Color> colors, float amount, bool sillyColors)
@@ -484,22 +484,15 @@ namespace LiveSplit.Roboquest
         {
             public MemoryWatcher<float> AnimSpeed { get; }
 
-            public Watchers(Settings settings)
+            public Watchers()
             {
-                if (settings.RQVersion == "Steam")
-                {
-                    AnimSpeed = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x4E48)) { Name = "AnimSpeed" };
-                }
-                else
-                {
-                    AnimSpeed = null;
-                }
+                AnimSpeed = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x4E48)) { Name = "AnimSpeed" };
             }
         }
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
-            if (process != null && !process.HasExited && settings.RQVersion != null &&
+            if (process != null && !process.HasExited &&
                 string.Equals(process.ProcessName, settings.ProcessName, StringComparison.OrdinalIgnoreCase))
             {
                 _Watchers.AnimSpeed.Update(process);

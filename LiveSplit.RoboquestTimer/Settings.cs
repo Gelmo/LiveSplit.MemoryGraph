@@ -14,7 +14,6 @@ namespace LiveSplit.RoboquestTimer
     partial class Settings : UserControl
     {
         public string ProcessName { get; set; }
-        public string RQVersion { get; set; }
         public bool ResetDeath { get; set; }
         public bool ResetGame { get; set; }
 
@@ -23,11 +22,9 @@ namespace LiveSplit.RoboquestTimer
             InitializeComponent();
 
             ProcessName = "RoboQuest-Win64-Shipping";
-            RQVersion = "Steam";
             ResetDeath = false;
             ResetGame = true;
 
-            cmbRQVersion.DataBindings.Add("SelectedItem", this, "RQVersion", false, DataSourceUpdateMode.OnPropertyChanged);
             cbResetDeath.DataBindings.Add("Checked", this, "ResetDeath", false, DataSourceUpdateMode.OnPropertyChanged);
             cbResetGame.DataBindings.Add("Checked", this, "ResetGame", false, DataSourceUpdateMode.OnPropertyChanged);
         }
@@ -37,7 +34,6 @@ namespace LiveSplit.RoboquestTimer
             System.Xml.XmlElement element = (System.Xml.XmlElement)node;
 
             ProcessName = SettingsHelper.ParseString(element["ProcessName"]);
-            RQVersion = SettingsHelper.ParseString(element["RQVersion"]);
             ResetDeath = SettingsHelper.ParseBool(element["ResetDeath"]);
             ResetGame = SettingsHelper.ParseBool(element["ResetGame"]);
         }
@@ -69,23 +65,8 @@ namespace LiveSplit.RoboquestTimer
         {
             return SettingsHelper.CreateSetting(document, parent, "Version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version) ^
             SettingsHelper.CreateSetting(document, parent, "ProcessName", ProcessName) ^
-            SettingsHelper.CreateSetting(document, parent, "RQVersion", RQVersion) ^
             SettingsHelper.CreateSetting(document, parent, "ResetDeath", ResetDeath) ^
             SettingsHelper.CreateSetting(document, parent, "ResetGame", ResetGame);
-        }
-
-        private void CmbRQVersion_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if ((string)cmbRQVersion.SelectedItem == "Steam")
-            {
-                RQVersion = "Steam";
-                ProcessName = "RoboQuest-Win64-Shipping";
-            }
-            else
-            {
-                RQVersion = null;
-                ProcessName = null;
-            }
         }
 
         private void GrpRoboquest_Enter(object sender, EventArgs e)
