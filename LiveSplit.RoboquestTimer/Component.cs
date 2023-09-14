@@ -59,15 +59,26 @@ namespace LiveSplit.RoboquestTimer
         {
         }
 
-        public MemoryWatcher<int> GameLevelMem = new MemoryWatcher<int>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0x420));
-        public MemoryWatcher<float> GameTimeMem = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAC8));
-        public MemoryWatcher<float> TotalRunTimeMem = new MemoryWatcher<float>(new DeepPointer(0x04EA8110, 0x30, 0xA98, 0xAD0));
-        public MemoryWatcher<bool> BIsDeadMem = new MemoryWatcher<bool>(new DeepPointer(0x04EA8110, 0x30, 0x758, 0x8A2));
+        public IntPtr GWorld = IntPtr.Zero;
+
+        public MemoryWatcher<int> GameLevelMem = new MemoryWatcher<int>(new DeepPointer(IntPtr.Zero));
+        public MemoryWatcher<float> GameTimeMem = new MemoryWatcher<float>(new DeepPointer(IntPtr.Zero));
+        public MemoryWatcher<float> TotalRunTimeMem = new MemoryWatcher<float>(new DeepPointer(IntPtr.Zero));
+        public MemoryWatcher<bool> BIsDeadMem = new MemoryWatcher<bool>(new DeepPointer(IntPtr.Zero));
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
             if (process != null && !process.HasExited)
             {
+                if (GWorld == IntPtr.Zero)
+                {
+                    GWorld = new SignatureScanner(process, process.MainModuleWow64Safe().BaseAddress, process.MainModuleWow64Safe().ModuleMemorySize).Scan(new SigScanTarget(10, "80 7C 24 ?? 00 ?? ?? 48 8B 3D ???????? 48") { OnFound = (p, s, ptr) => ptr + 0x4 + p.ReadValue<int>(ptr) });
+                    GameLevelMem = new MemoryWatcher<int>(new DeepPointer(GWorld, 0x120, 0x420));
+                    GameTimeMem = new MemoryWatcher<float>(new DeepPointer(GWorld, 0x120, 0xAC8));
+                    TotalRunTimeMem = new MemoryWatcher<float>(new DeepPointer(GWorld, 0x120, 0xAD0));
+                    BIsDeadMem = new MemoryWatcher<bool>(new DeepPointer(GWorld, 0x180, 0x38, 0x0, 0x30, 0x260, 0x8A2));
+                }
+
                 GameLevelMem.Update(process);
                 GameTimeMem.Update(process);
                 TotalRunTimeMem.Update(process);
