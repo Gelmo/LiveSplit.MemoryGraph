@@ -1,4 +1,16 @@
 <updates>
+	<update version="0.12.2.1">
+		<files>
+			<file path="Components/LiveSplit.RoboquestTimer.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Use a signature scan for GWorld</change>
+			<change>Remove Version selection from settings</change>
+			<change>Support builds from other PC marketplaces</change>
+			<change>Minor performance improvements</change>
+			<change>Changes to simplify updates</change>
+		</changelog>
+	</update>
 	<update version="0.0.0.1">
 		<files>
 			<file path="Components/LiveSplit.RoboquestTimer.dll" status="changed" />
