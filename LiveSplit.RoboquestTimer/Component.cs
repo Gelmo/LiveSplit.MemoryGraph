@@ -120,7 +120,15 @@ namespace LiveSplit.RoboquestTimer
             }
             else
             {
-                process = System.Diagnostics.Process.GetProcessesByName("RoboQuest-Win64-Shipping").FirstOrDefault();
+                if (System.Diagnostics.Process.GetProcessesByName("RoboQuest-Win64-Shipping").FirstOrDefault() != null)
+                {
+                    process = System.Diagnostics.Process.GetProcessesByName("RoboQuest-Win64-Shipping").FirstOrDefault();
+                }
+
+                if (System.Diagnostics.Process.GetProcessesByName("RoboQuest-WinGDK-Shipping").FirstOrDefault() != null)
+                {
+                    process = System.Diagnostics.Process.GetProcessesByName("RoboQuest-WinGDK-Shipping").FirstOrDefault();
+                }
             }
         }
 
