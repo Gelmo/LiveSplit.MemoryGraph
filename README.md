@@ -45,8 +45,7 @@ This [LiveSplit](https://livesplit.org) component provides autosplit functionali
 - Choose an item from the `Run Category` menu in the `Splits Editor` window
 - Press the `Activate` button in the `Splits Editor` window
 - Press the `Settings` button in the `Splits Editor` window
-- In the new `Component Settings` window, choose the appropriate version of the game from the drop-down menu next to `Version:` (For example, `Steam`, `Steam Beta`, `GoG`, etc.)
-- Adjust other options in the `Component Settings` window as desired, and then press `OK`
+- Adjust the options in the `Component Settings` window as desired, and then press `OK`
 - Adjust other options in the `Splits Editor` window as desired, and then press `OK`
 - More information related to splits and routes will be added here soon. For now, refer to the [speedrun.com resources page](https://www.speedrun.com/roboquest/resources)
 
@@ -63,8 +62,7 @@ This [LiveSplit](https://livesplit.org) component provides autosplit functionali
 - Press the `+` icon at the top-left of the `Layout Editor` window
 - From the context menu that appeared, go to `Other` and then left-click `Roboquest` in the secondary context menu that appears
 - Double-click the new `Roboquest` entry in the main section of the `Layout Editor` window. In the new `Layout Settings` window, you should be on the `Roboquest` tab
-- Choose the appropriate version of the game from the drop-down menu next to `Version:` (For example, `Steam`, `Steam Beta`, `GoG`, etc.)
-- Adjust other options as desired (the defaults are sane), and then press `OK` to close the `Layout Settings` window
+- Adjust the options as desired (the defaults are sane), and then press `OK` to close the `Layout Settings` window
 - Press `OK` to close the `Layout Editor` window
 
 ## Notes:
