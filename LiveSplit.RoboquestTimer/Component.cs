@@ -59,12 +59,30 @@ namespace LiveSplit.RoboquestTimer
         {
         }
 
-        public IntPtr GWorld = IntPtr.Zero;
-
         public MemoryWatcher<int> GameLevelMem = new MemoryWatcher<int>(new DeepPointer(IntPtr.Zero));
         public MemoryWatcher<float> GameTimeMem = new MemoryWatcher<float>(new DeepPointer(IntPtr.Zero));
         public MemoryWatcher<float> TotalRunTimeMem = new MemoryWatcher<float>(new DeepPointer(IntPtr.Zero));
         public MemoryWatcher<bool> BIsDeadMem = new MemoryWatcher<bool>(new DeepPointer(IntPtr.Zero));
+
+        public IntPtr GWorld = IntPtr.Zero;
+        public String GWorldSig = "80 7C 24 ?? 00 ?? ?? 48 8B 3D ???????? 48";
+        public int GWorldOffset = 10;
+
+        // RoboQuest.AGameState = GameState = GWorld.GameState
+        public int GameState = 0x120;
+
+        // RoboQuest.ACharacter & RoboQuest.Character_Player = PlayerCharacter = GWorld.OwningGameInstance.LocalPlayers[0].PlayerController.Character
+        public int OwningGameInstance = 0x180;
+        public int LocalPlayers = 0x38;
+        public int PlayerZero = 0x0;
+        public int PlayerController = 0x30;
+        public int Character = 0x260;
+
+        // Final offsets
+        public int GameLevelOffset = 0x420;
+        public int GameTimeOffset = 0xAC8;
+        public int TotalRunTimeOffset = 0xAD0;
+        public int BIsDeadOffset = 0x8A2;
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
@@ -72,11 +90,11 @@ namespace LiveSplit.RoboquestTimer
             {
                 if (GWorld == IntPtr.Zero)
                 {
-                    GWorld = new SignatureScanner(process, process.MainModuleWow64Safe().BaseAddress, process.MainModuleWow64Safe().ModuleMemorySize).Scan(new SigScanTarget(10, "80 7C 24 ?? 00 ?? ?? 48 8B 3D ???????? 48") { OnFound = (p, s, ptr) => ptr + 0x4 + p.ReadValue<int>(ptr) });
-                    GameLevelMem = new MemoryWatcher<int>(new DeepPointer(GWorld, 0x120, 0x420));
-                    GameTimeMem = new MemoryWatcher<float>(new DeepPointer(GWorld, 0x120, 0xAC8));
-                    TotalRunTimeMem = new MemoryWatcher<float>(new DeepPointer(GWorld, 0x120, 0xAD0));
-                    BIsDeadMem = new MemoryWatcher<bool>(new DeepPointer(GWorld, 0x180, 0x38, 0x0, 0x30, 0x260, 0x8A2));
+                    GWorld = new SignatureScanner(process, process.MainModuleWow64Safe().BaseAddress, process.MainModuleWow64Safe().ModuleMemorySize).Scan(new SigScanTarget(GWorldOffset, GWorldSig) { OnFound = (p, s, ptr) => ptr + 0x4 + p.ReadValue<int>(ptr) });
+                    GameLevelMem = new MemoryWatcher<int>(new DeepPointer(GWorld, GameState, GameLevelOffset));
+                    GameTimeMem = new MemoryWatcher<float>(new DeepPointer(GWorld, GameState, GameTimeOffset));
+                    TotalRunTimeMem = new MemoryWatcher<float>(new DeepPointer(GWorld, GameState, TotalRunTimeOffset));
+                    BIsDeadMem = new MemoryWatcher<bool>(new DeepPointer(GWorld, OwningGameInstance, LocalPlayers, PlayerZero, PlayerController, Character, BIsDeadOffset));
                 }
 
                 GameLevelMem.Update(process);
