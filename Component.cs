@@ -494,7 +494,7 @@ namespace LiveSplit.Roboquest
         public int Character = 0x260;
 
         // Final offsets
-        public int AnimSpeedOffset = 0x4E48;
+        public int AnimSpeedOffset = 0x4FA0;
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
