@@ -1,4 +1,12 @@
 <updates>
+	<update version="1.2.0.75">
+		<files>
+			<file path="Components/LiveSplit.RoboquestTimer.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Update values for latest release</change>
+		</changelog>
+	</update>
 	<update version="1.1.0.47598">
 		<files>
 			<file path="Components/LiveSplit.RoboquestTimer.dll" status="changed" />
