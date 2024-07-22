@@ -33,6 +33,7 @@ namespace LiveSplit.RoboquestTimer
         private TimerModel _timer = new TimerModel();
         public event EventHandler TimerStart;
         public event EventHandler TimerReset;
+        public event EventHandler TimerResetSave;
         public event EventHandler TimerSplit;
 
         public Component(LiveSplitState state)
@@ -44,6 +45,7 @@ namespace LiveSplit.RoboquestTimer
             _timer.CurrentState = state;
             TimerStart += LSTimer_start;
             TimerReset += LSTimer_reset;
+            TimerResetSave += LSTimer_resetsave;
             TimerSplit += LSTimer_split;
         }
 
@@ -114,13 +116,29 @@ namespace LiveSplit.RoboquestTimer
                 // If the in-game timer is set to 0 and ResetGame is enabled, reset the timer. This occurs when restarting the run in-game, when you leave the Game Over screen, or when you go to Basecamp
                 if (settings.ResetGame == true && GameTimeMem.Current == 0 && GameTimeMem.Old == 0)
                 {
-                    TimerReset?.Invoke(this, EventArgs.Empty);
+                    // If GameSave is enabled, save splits
+                    if (settings.GameSave == true)
+                    {
+                        TimerResetSave?.Invoke(this, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        TimerReset?.Invoke(this, EventArgs.Empty);
+                    }
                 }
 
                 // If the player has died and ResetDeath is enabled, reset the timer
                 if (settings.ResetDeath == true && BIsDeadMem.Current && !BIsDeadMem.Old)
                 {
-                    TimerReset?.Invoke(this, EventArgs.Empty);
+                    // If DeathSave is enabled, save splits
+                    if (settings.DeathSave == true)
+                    {
+                        TimerResetSave?.Invoke(this, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        TimerReset?.Invoke(this, EventArgs.Empty);
+                    }
                 }
 
                 // If the game has updated TotalRunTime and the player has not died, split. This should only occur on the final split
@@ -192,6 +210,11 @@ namespace LiveSplit.RoboquestTimer
         }
 
         void LSTimer_reset(object sender, EventArgs e)
+        {
+            _timer.Reset(false);
+        }
+
+        void LSTimer_resetsave(object sender, EventArgs e)
         {
             _timer.Reset();
         }

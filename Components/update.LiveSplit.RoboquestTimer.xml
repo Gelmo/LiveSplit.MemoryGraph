@@ -1,4 +1,14 @@
 <updates>
+	<update version="1.3.0.185">
+		<files>
+			<file path="Components/LiveSplit.RoboquestTimer.dll" status="changed" />
+		</files>
+		<changelog>
+			<change>Updated reset settings</change>
+			<change>By default, splits will now be discarded when Livesplit is reset via the autosplitter</change>
+			<change>In the autosplitter settings in the "Edit Splits" menu, you can choose whether or not to save splits when automatically resetting</change>
+		</changelog>
+	</update>
 	<update version="1.3.0.184">
 		<files>
 			<file path="Components/LiveSplit.RoboquestTimer.dll" status="changed" />
