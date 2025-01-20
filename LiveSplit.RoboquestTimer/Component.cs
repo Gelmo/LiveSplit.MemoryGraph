@@ -81,9 +81,9 @@ namespace LiveSplit.RoboquestTimer
         public int Character = 0x260;
 
         // Final offsets
-        public int GameLevelOffset = 0x4A8;
-        public int GameTimeOffset = 0xF68;
-        public int TotalRunTimeOffset = 0xF70;
+        public int GameLevelOffset = 0x4B8;
+        public int GameTimeOffset = 0xFA8;
+        public int TotalRunTimeOffset = 0xFB0;
         public int BIsDeadOffset = 0x941;
 
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
